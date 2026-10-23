@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Data: keep documentation and lightweight directory markers only
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+*.feather
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.sqlite
+
+# Generated experiment artifacts; commit selected small figures/tables manually
+results/predictions/*
+!results/predictions/.gitkeep
+results/experiments/*
+!results/experiments/.gitkeep
+models/
+mlruns/
+wandb/
+logs/
+*.log
+
+# Do not ignore all CSV globally: small documented tables can be versioned.
