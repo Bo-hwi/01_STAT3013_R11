@@ -1,7 +1,7 @@
 # Data Quality Report
 
-**Owner:** M1 — Data & Baselines · **Version:** v0.1 (27/10/2026)
-**Scripts:** `scripts/build_source_catalog.py`, `scripts/qa_quick_checks.py`
+**Owner:** M1 — Data & Baselines · **Version:** v0.2 (27/10/2026)
+**Scripts:** `scripts/build_source_catalog.py`, `scripts/qa_quick_checks.py`, `scripts/qa_weather_checks.py`
 **Inputs:** raw files listed in `data/README.md` (hashes verified)
 
 Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứng → Giải thích → Quyết định / Ảnh hưởng**.
@@ -15,6 +15,11 @@ Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứn
 | QA-03 | oil.csv không có cuối tuần, 43 giá trị trống | Thấp | M2 (nếu dùng làm control) |
 | QA-04 | test.csv không có nhãn | Thấp | Cả nhóm |
 | QA-05 | Ngày 01/01 có dòng nhưng sales gần như bằng 0 | Trung bình | M1 (baseline), M2, M3 |
+| QA-06 | Mapping 22 thành phố khớp hoàn toàn giữa stores.csv và tọa độ | Đạt | Cả nhóm |
+| QA-07 | Salinas và Libertad dùng chung một ô lưới ERA5 | Trung bình | M2 (suy luận), M3 |
+| QA-08 | Một số thành phố ven biển nhận ô lưới không phải ô gần nhất | Thấp | Ghi chú giới hạn |
+| QA-09 | `wind_speed_10m_max` có giá trị phi lý (tới 783 km/h) | **Cao** | M3 (M5), M2 |
+| QA-10 | Các biến weather còn lại nằm trong khoảng hợp lý | Đạt | M2, M3, M4 |
 
 ## Phát hiện ban đầu (27/10)
 
@@ -78,10 +83,68 @@ Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứn
   - Seasonal Naive cho ngày 08/01 sẽ lấy đúng giá trị 0 của 01/01 và cho sai số lớn. Cần báo cáo riêng hiệu ứng này khi so sánh baseline.
   - Chưa kiểm tra 01/01 của 2014–2017 (xem việc còn mở).
 
+## Phát hiện về dữ liệu thời tiết (27/10)
+
+**Cấu trúc chung:** 22 file có cùng 16 cột: `city, state, date, precipitation_sum, temperature_2m_max, temperature_2m_mean, relative_humidity_2m_mean, sunshine_duration, wind_speed_10m_max, cloud_cover_mean, source_model, requested_latitude, requested_longitude, grid_latitude, grid_longitude, sunshine_hours`. Mỗi file 1.688 ngày, tổng 37.136 dòng = 22 × 1.688. `source_model = ERA5`. Mỗi file đã lưu cả tọa độ yêu cầu lẫn tọa độ ô lưới trả về, nên metadata grid mà Proposal yêu cầu đã có sẵn.
+
+### QA-06. Mapping thành phố khớp hoàn toàn
+
+- **Quan sát:** Cả 22 thành phố trong stores.csv đều có đúng một dòng tọa độ, tên tỉnh khớp nhau.
+- **Bằng chứng:** Outer join theo `city`: 22/22 dòng `both`, không có thành phố chỉ nằm ở một file, không có tỉnh lệch. Quito có nhiều cửa hàng nhất (18), tiếp theo Guayaquil (8).
+- **Giải thích:** File tọa độ được tạo từ chính danh sách thành phố của stores.csv.
+- **Quyết định / Ảnh hưởng:**
+  - Join weather theo `(city, date)` là many-to-one, an toàn.
+  - stores.csv ghi Libertad thuộc **Guayas**, trong khi tọa độ (-2.233, -80.910) nằm ở La Libertad, nay thuộc tỉnh Santa Elena (tách khỏi Guayas năm 2007). Đây là cách đặt nhãn tỉnh của dữ liệu Favorita, không phải lỗi join. Nếu M2 gom theo vùng/tỉnh, cần ghi chú Libertad về mặt địa lý ở cạnh Salinas.
+  - 5 tọa độ `EXTERNAL_COORDINATE` (Ambato, Playas, Puyo, Quevedo, Riobamba) đều trả về ô lưới gần tọa độ yêu cầu và tên tỉnh khớp; vẫn cần ghi nguồn tọa độ ngoài trong `data/README.md`.
+
+### QA-07. Salinas và Libertad dùng chung một ô lưới ERA5
+
+- **Quan sát:** Hai thành phố cách nhau khoảng 0,045° (khoảng 5 km) và nhận cùng ô lưới (-2.25, -80.75).
+- **Bằng chứng:** Cặp duy nhất có khoảng cách < 0,25°. Thống kê gió theo thành phố trùng khớp (median 15,2, max 42,0 km/h ở cả hai). Tuy vậy chuỗi `temperature_2m_max` không trùng hoàn toàn.
+- **Giải thích:** Hai thành phố nằm cùng một ô ERA5 (~0,25° ≈ 28 km). Nhiệt độ hơi khác nhau có thể do Open-Meteo hiệu chỉnh nhiệt độ theo độ cao của tọa độ yêu cầu; điều này chưa được kiểm chứng.
+- **Quyết định / Ảnh hưởng:** Coi thời tiết của Salinas và Libertad là **không độc lập**. M2 không được tính hai thành phố này như hai cụm thời tiết riêng khi tính sai số chuẩn theo cụm; M3 khi báo cáo theo thành phố cần ghi chú. Số "cụm thời tiết" thực tế là 21, không phải 22.
+
+### QA-08. Ô lưới trả về không phải lúc nào cũng là ô gần nhất
+
+- **Quan sát:** Với một số thành phố ven biển, ô lưới trả về lệch xa hơn mức làm tròn đơn giản.
+- **Bằng chứng:** Esmeraldas yêu cầu kinh độ -79,654 nhưng nhận -79,50 (ô gần nhất theo làm tròn là -79,75). Libertad yêu cầu -80,910 nhưng nhận -80,75 (gần nhất là -81,00). Playas yêu cầu vĩ độ -2,638 nhưng nhận -2,50 (gần nhất là -2,75).
+- **Giải thích:** Có thể Open-Meteo chọn ô lưới trên đất liền thay vì ô trên biển cho tọa độ ven biển; cần đối chiếu tài liệu API để xác nhận.
+- **Quyết định / Ảnh hưởng:** Không đổi dữ liệu. Ghi vào phần giới hạn: thời tiết thành phố là giá trị đại diện của ô lưới khoảng 28 km, không phải số đo tại cửa hàng.
+
+### QA-09. `wind_speed_10m_max` có giá trị phi lý
+
+- **Quan sát:** Có các giá trị tốc độ gió vượt xa mức vật lý hợp lý cho khu vực.
+- **Bằng chứng:**
+  - Phân vị 99% chỉ là 20,9 km/h, nhưng max là **783,1 km/h**. 11 dòng vượt 100 km/h.
+  - Ngày **26/04/2014** xuất hiện đồng thời ở 5 thành phố lân cận: Babahoyo 783,1; Daule 460,6; Guaranda 402,5; Quevedo 310,7; Guayaquil 222,4 km/h.
+  - Babahoyo và Daule còn có giá trị 110–154 km/h vào 14/01/2013 và 25/02/2014. Ambato (104,4) và Riobamba (101,2) cũng vượt ngưỡng.
+- **Giải thích:** 783 km/h vượt xa cả bão cấp mạnh nhất. Việc nhiều thành phố lân cận cùng có cực trị vào cùng một ngày cho thấy đây là lỗi trong dữ liệu nguồn/API theo vùng không gian, không phải hiện tượng thời tiết thật.
+- **Quyết định / Ảnh hưởng:**
+  - Đúng như Proposal đã dự kiến: biến gió **không dùng** trong M0–M4. Cấu hình M5 (gió/mây) giữ ở trạng thái "chưa đạt QA", mặc định ngoài phạm vi chính.
+  - Không âm thầm xóa hay winsorize. Nếu sau này M5 được chạy, phải đánh cờ các dòng > 100 km/h, đối chiếu lại với nguồn khác và chạy phân tích độ nhạy có/không có các dòng này.
+  - M2 không đưa gió vào hồi quy chính.
+
+### QA-10. Các biến weather còn lại nằm trong khoảng hợp lý
+
+- **Quan sát và bằng chứng:**
+
+  | Biến | Min | Median | Max | Nhận xét |
+  |---|---|---|---|---|
+  | precipitation_sum (mm/ngày) | 0,0 | 2,5 | 202,8 | Không âm. Max 202,8 cao nhưng có thể xảy ra ở vùng ven biển; cần xem thành phố và ngày |
+  | temperature_2m_max (°C) | 13,0 | 26,4 | 36,8 | Hợp lý cho cả vùng núi lẫn ven biển |
+  | temperature_2m_mean (°C) | 10,5 | 23,2 | 29,6 | Hợp lý |
+  | relative_humidity_2m_mean (%) | 35 | — | 99 | Trong khoảng 0–100 |
+  | sunshine_duration (giây) | 0 | 36.191 | 43.597 | Max ≈ 12,1 giờ, đúng độ dài ngày ở xích đạo |
+  | sunshine_hours (giờ) | 0 | 10,05 | 12,11 | Đúng bằng sunshine_duration / 3600 |
+  | cloud_cover_mean (%) | 3 | 87 | 100 | Trong khoảng 0–100 |
+
+- **Quyết định / Ảnh hưởng:** Mưa và nhiệt độ (biến lõi của M1–M3 trong ablation) đạt QA. Độ ẩm và nắng (M4) đạt QA ở mức kiểm tra khoảng giá trị. **Chỉ dùng một trong hai** `sunshine_duration` hoặc `sunshine_hours` vì chúng là cùng một biến khác đơn vị; đề xuất dùng `sunshine_hours`.
+
 ## Việc còn mở
 
 - [ ] Kiểm tra ngày 01/01 của 2014–2017 có cùng hành vi như 2013 không.
 - [ ] Tìm các ngày đóng cửa tạm thời ở giữa chuỗi (sales = 0 toàn cửa hàng trong vài ngày liên tiếp) để giải thích phần còn lại của khoảng thiếu transactions.
-- [ ] QA tọa độ 22 thành phố: Libertad (tọa độ rơi vào La Libertad, tỉnh Santa Elena, trong khi file ghi Guayas), 5 tọa độ `EXTERNAL_COORDINATE` (Ambato, Playas, Puyo, Quevedo, Riobamba), Salinas và Libertad có thể dùng chung ô lưới ERA5.
-- [ ] Kiểm tra 16 cột weather: tên, đơn vị, khoảng giá trị hợp lý, ngoại lệ tốc độ gió.
+- [ ] Xác định thành phố và ngày của lượng mưa 202,8 mm, và xem các ngày mưa cực trị có tập trung trong mùa El Niño 2016–2017 không.
+- [ ] Kiểm tra `precipitation_sum` của Salinas và Libertad có trùng nhau hoàn toàn không (xác nhận QA-07).
+- [ ] Ghi nguồn tọa độ ngoài cho 5 thành phố `EXTERNAL_COORDINATE` vào `data/README.md`.
 - [ ] Đánh dấu giai đoạn động đất 16/04/2016 để M2 làm phân tích độ nhạy.
