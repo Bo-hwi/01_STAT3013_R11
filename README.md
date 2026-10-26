@@ -1,6 +1,6 @@
 # Weather × Favorita — Retail Demand Forecasting
 
-**Course:** STAT3013 · **Repository:** `Bo-hwi/01_STAT3013_R11` · **Timeline:** 12 weeks
+**Course:** STAT3013 · **Repository:** `Bo-hwi/01_STAT3013_R11` · **Timeline:** 4 weeks (26/10–22/11/2026)
 
 ## Project overview
 
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 Download Favorita files using the Kaggle competition page and weather using the documented Open-Meteo pipeline. Place local files under `data/raw/favorita/` and `data/raw/weather/`. **Do not commit large raw datasets or secrets.** Consult `data/README.md` for required filenames, licenses, checksums and regeneration instructions once documented by M1.
 
-**Pipeline status:** Repository scaffold only. `scripts/run_pipeline.py` and model modules must be implemented before a reproducible end-to-end run can be claimed. Do not assume a placeholder script is executable.
+**Pipeline status:** `python scripts/run_pipeline.py --test` builds `data/processed/curated_sales_weather.parquet` from local raw files and runs data integrity tests (M1, curated v1). Feature, baseline and model stages are not implemented yet.
 
 ## Experimental protocol and evaluation
 
