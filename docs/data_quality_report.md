@@ -1,7 +1,7 @@
 # Data Quality Report
 
-**Owner:** M1 — Data & Baselines · **Version:** v0.2 (27/10/2026)
-**Scripts:** `scripts/build_source_catalog.py`, `scripts/qa_quick_checks.py`, `scripts/qa_weather_checks.py`
+**Owner:** M1 — Data & Baselines · **Version:** v0.3 (27/10/2026)
+**Scripts:** `scripts/build_source_catalog.py`, `scripts/qa_quick_checks.py`, `scripts/qa_weather_checks.py`, `src/data/merge_data.py`
 **Inputs:** raw files listed in `data/README.md` (hashes verified)
 
 Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứng → Giải thích → Quyết định / Ảnh hưởng**.
@@ -140,11 +140,19 @@ Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứn
 
 - **Quyết định / Ảnh hưởng:** Mưa và nhiệt độ (biến lõi của M1–M3 trong ablation) đạt QA. Độ ẩm và nắng (M4) đạt QA ở mức kiểm tra khoảng giá trị. **Chỉ dùng một trong hai** `sunshine_duration` hoặc `sunshine_hours` vì chúng là cùng một biến khác đơn vị; đề xuất dùng `sunshine_hours`.
 
+## Kết quả sau khi build curated v1 (27/10)
+
+Bảng `curated_sales_weather.parquet` (3.000.888 dòng × 35 cột) được tạo bằng `python scripts/run_pipeline.py --test`; 12/12 kiểm tra trong `tests/test_data_integrity.py` đạt. Pipeline giúp đóng hai việc còn mở:
+
+- **Ngày 01/01 ổn định qua các năm (bổ sung QA-05):** tỷ lệ cửa hàng bán 0 toàn cửa hàng vào 01/01 là 98,1% ở 2013, 2015, 2016, 2017 và 96,3% ở 2014. Đây là quy luật đóng cửa hằng năm, đã gắn cờ `store_zero_day`.
+- **Khoảng thiếu transactions được giải thích đầy đủ (bổ sung QA-02):** 7.448 store-ngày thiếu = **6.729** store-ngày trước khi cửa hàng mở + **719** store-ngày cửa hàng đã hoạt động nhưng không có bản ghi.
+- **Ngày đóng cửa giữa chuỗi:** có 601 store-ngày cửa hàng đã hoạt động nhưng bán 0 toàn cửa hàng; 196 trong số đó là ngày 01/01, còn 405 rải rác (đóng cửa tạm thời). Tất cả được gắn `store_zero_day = 1`.
+- **Giai đoạn động đất:** lấy từ các sự kiện "Terremoto Manabi" trong holidays_events, từ 16/04/2016 đến 16/05/2016, gắn cờ `is_earthquake_period`.
+- **Gió:** 627 dòng (store-family-ngày) có `wind_qa_flag = 1`, tương ứng 11 city-ngày ở QA-09.
+
 ## Việc còn mở
 
-- [ ] Kiểm tra ngày 01/01 của 2014–2017 có cùng hành vi như 2013 không.
-- [ ] Tìm các ngày đóng cửa tạm thời ở giữa chuỗi (sales = 0 toàn cửa hàng trong vài ngày liên tiếp) để giải thích phần còn lại của khoảng thiếu transactions.
-- [ ] Xác định thành phố và ngày của lượng mưa 202,8 mm, và xem các ngày mưa cực trị có tập trung trong mùa El Niño 2016–2017 không.
+- [ ] Xác định thành phố và ngày của lượng mưa 202,8 mm, và xem các ngày mưa cực trị có tập trung trong mùa El Niño 2016 không.
 - [ ] Kiểm tra `precipitation_sum` của Salinas và Libertad có trùng nhau hoàn toàn không (xác nhận QA-07).
 - [ ] Ghi nguồn tọa độ ngoài cho 5 thành phố `EXTERNAL_COORDINATE` vào `data/README.md`.
-- [ ] Đánh dấu giai đoạn động đất 16/04/2016 để M2 làm phân tích độ nhạy.
+- [ ] Chốt với M3 quy tắc dự phòng cho Seasonal Naive khi t−7 rơi vào 25/12 hoặc ngày `store_zero_day`.
