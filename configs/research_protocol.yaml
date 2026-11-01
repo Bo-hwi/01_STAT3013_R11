@@ -11,7 +11,8 @@ scope:
   families_eda_expected: 33
   deep_study_family_count_min: 6
   deep_study_family_count_max: 8
-  deep_study_families: []  # TODO: freeze shortlist based on train-only criteria.
+  # Frozen 2026-11-01 by the pre-registered rule (docs/family_shortlist.md, scripts/screen_families.py)
+  deep_study_families: [GROCERY I, BEVERAGES, CLEANING, DAIRY, BREAD/BAKERY, PERSONAL CARE, FROZEN FOODS]
   unit_of_analysis: [date, store_nbr, family]
   target: sales
   source_period: ["2013-01-01", "2017-08-15"]  # Verify exact coverage in local raw files.
