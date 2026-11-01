@@ -2,7 +2,7 @@
 # REVIEW REQUIRED: placeholders must be finalized before any held-out evaluation.
 project:
   name: weather_favorita
-  duration_weeks: 12
+  duration_weeks: 4  # 26/10/2026 - 22/11/2026 (Proposal v4.1)
   seed: 42  # Proposed reproducibility default; confirm with team.
 
 scope:
