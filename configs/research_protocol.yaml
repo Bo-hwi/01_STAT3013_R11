@@ -37,6 +37,16 @@ rq1:
   causal_claims: false
 
 rq2:
+  protocol_version: M3-RQ2-v1.1
+  protocol_document: docs/rq2_protocol.md
+  readiness_document: docs/rq2_readiness.md
+  decision_status: M3_TECHNICALLY_SELECTED_PENDING_TEAM_APPROVAL
+  execution_ready: false  # Chưa có dữ liệu/QA và xác nhận giao diện từ nhóm.
+  target: sales
+  target_transform: none
+  weather_scenario: retrospective_weather_aware
+  random_state: 42  # Quyết định riêng M3; không ghi đè seed dùng chung ở project.
+  model_scope: pooled_all_shortlisted_store_family_series
   forecast_horizon_days: 1
   forecast_origin: end_of_day_t_minus_1
   forecast_grain: [date, store_nbr, family]
@@ -47,23 +57,217 @@ rq2:
     store_family_city_identifiers: true
     onpromotion_t: conditional_on_verified_advance_schedule
     weather_lags: conditional_on_retrospective_or_verified_availability
+  promotion:
+    enabled: false
+    enable_only_if: advance_schedule_assumption_documented_before_test
+    consistent_across_feature_sets: true
   forbidden_features: [sales_t, transactions_t, measured_rain_t, measured_temperature_t]
   baselines:
     seasonal_naive_lag_days: 7
     trailing_moving_average_windows_candidate: [7, 28]
-  point_models: [ridge, extra_trees, global_hist_gradient_boosting]
-  global_boosted_alternative: lightgbm  # Choose ONE global boosted algorithm.
+  point_models: [ridge, extra_trees, hist_gradient_boosting]
   ablation_config_file: configs/ablation_M0_M5.yaml
   validation:
     scheme: rolling_origin
     nonoverlapping_test_folds: true
     training_precedes_test: true
     inner_validation_for_tuning: true
-    test_folds: []  # TODO: explicit date ranges, frozen before final evaluation.
+    fold_status: BLOCKED_COVERAGE_AND_PILOT_CONFIRMATION
+    date_intervals: inclusive
+    training_window: expanding
+    training_start: null  # M1 xác nhận ngày đầu lịch sử hợp lệ, không tự gán 2013.
+    minimum_common_history_calendar_days: 365
+    validation_days: 28
+    test_days: 28
+    shuffle: false
+    refit_on_train_plus_validation: true
+    refit_frequency: once_before_each_test_fold
+    update_features_daily: true
+    use_prior_test_observations_after_their_availability: true
+    manual_redesign_after_test_scores: forbidden
+    test_folds:
+      - fold: F1
+        train_end: "2017-04-25"
+        validation_start: "2017-04-26"
+        validation_end: "2017-05-23"
+        test_start: "2017-05-24"
+        test_end: "2017-06-20"
+      - fold: F2
+        train_end: "2017-05-23"
+        validation_start: "2017-05-24"
+        validation_end: "2017-06-20"
+        test_start: "2017-06-21"
+        test_end: "2017-07-18"
+      - fold: F3
+        train_end: "2017-06-20"
+        validation_start: "2017-06-21"
+        validation_end: "2017-07-18"
+        test_start: "2017-07-19"
+        test_end: "2017-08-15"
+  eligibility:
+    common_manifest_across_models_and_configs: true
+    valid_nonnegative_observed_target: true
+    activity_policy_owner: M1
+    previous_sales_calendar_days_required: 28
+    previous_sales_must_be_observed_and_nonnegative: true
+    missing_sales_fill_zero: false
+    exclude_rows_due_to_weather_missingness: false
+    report_coverage_and_exclusion_reasons: true
+    empty_family_test_sample: block_official_evaluation
+    missing_duplicate_or_nonfinite_predictions: block_official_evaluation
+  preprocessing:
+    fit_scope: training_partition_only
+    refit_preprocessor_with_model: true
+    numeric_imputation: median
+    numeric_missing_indicators: true
+    all_missing_numeric_training_column: block_affected_configuration
+    ridge:
+      scale_numeric: true
+      scaler: StandardScaler
+      categorical_encoding: one_hot
+      handle_unknown: ignore
+      sparse_output: true
+    extra_trees:
+      scale_numeric: false
+      categorical_encoding: one_hot
+      handle_unknown: ignore
+      sparse_output: true
+    hist_gradient_boosting:
+      scale_numeric: false
+      categorical_encoding: train_fitted_nonnegative_codes
+      categorical_mask: explicit
+      unknown_category: missing
+      max_categories_per_feature: 255
+  postprocessing:
+    minimum_prediction: 0.0
+    maximum_prediction: null
+    round_predictions: false
+    apply_to: [inner_validation, test]
+    preserve_raw_predictions_in_experiment_artifact: true
+  tuning:
+    search: ordered_explicit_candidates
+    selection_metric: MAE_after_postprocessing
+    comparison_tolerance_absolute: 1.0e-12
+    tie_break: first_candidate_within_tolerance_of_minimum
+    same_candidates_across_ablations_of_each_model: true
+    sample_weight: null  # Mỗi dòng cùng trọng số; không gộp sales thành lượng vật lý.
+    ridge:
+      estimator: Ridge
+      fixed: {solver: lsqr, tol: 0.0001, fit_intercept: true}
+      candidates:
+        - {alpha: 0.1}
+        - {alpha: 1.0}
+        - {alpha: 10.0}
+    extra_trees:
+      estimator: ExtraTreesRegressor
+      fixed: {criterion: squared_error, max_depth: 16, bootstrap: false, random_state: 42}
+      candidates:
+        - {n_estimators: 100, min_samples_leaf: 5, max_features: 0.7}
+        - {n_estimators: 200, min_samples_leaf: 5, max_features: 0.7}
+        - {n_estimators: 100, min_samples_leaf: 20, max_features: 0.7}
+        - {n_estimators: 100, min_samples_leaf: 5, max_features: 1.0}
+    hist_gradient_boosting:
+      estimator: HistGradientBoostingRegressor
+      fixed:
+        loss: squared_error
+        learning_rate: 0.1
+        max_iter: 200
+        min_samples_leaf: 20
+        l2_regularization: 1.0
+        max_bins: 255
+        early_stopping: false
+        warm_start: false
+        random_state: 42
+      candidates:
+        - {max_leaf_nodes: 15}
+        - {max_leaf_nodes: 31}
+  compute:
+    experiments_parallel: 1
+    max_threads: 4
+    effective_threads: min_4_and_available_cpu_count
+    limit_openmp_and_blas_threads: true
+    training_subsample: false
+    measured_ram_gib: null
+    measured_runtime_seconds: null
+    machine_confirmed: false
+    core_fit_count: 126
+    M4_additional_fit_count: 36
+    fit_count_excludes: [baselines, bootstrap, technical_smoke_tests, failed_runs]
+    insufficient_resources: block_and_version_protocol_before_test
+    benchmark_scope: training_only_in_later_implementation_task
   primary_metric: MAE
   secondary_metrics: [WAPE_if_denominator_positive, MASE_if_valid]
-  report_by: [family, city, fold_id]
-  uncertainty: paired_block_bootstrap_95ci  # Final block design requires justification.
+  report_by: [store_family, family, city, family_city, fold, overall]
+  metrics:
+    mae_aggregation: pooled_rows_equal_weight
+    overall_mae_interpretation: supplementary_mixed_scale_score
+    wape_multiplier: 100
+    undefined_value: null  # Xuất CSV thành NA; không thay bằng 0 hoặc infinity.
+    mase_seasonal_lag_days: 7
+    mase_scale_partition: train_plus_validation_before_test
+    mase_scale_pairs: observed_calendar_dates_exactly_7_days_apart
+    mase_zero_or_absent_scale: NA
+    mase_aggregation: equal_weight_valid_store_family_fold_scores
+    mase_report_valid_and_total_counts: true
+  uplift:
+    comparator: same_model_M0
+    delta_mae: MAE_M0_minus_MAE_weather
+    percent: 100_times_delta_mae_divided_by_MAE_M0
+    zero_comparator_mae: NA
+    count_improved_folds_if: delta_mae_strictly_positive
+  uncertainty:
+    method: paired_circular_date_block_bootstrap
+    replicates: 2000
+    random_state: 42
+    primary_block_days: 7
+    sensitivity_block_days: 14
+    resample_within_fold: true
+    block_starts: uniform_over_all_28_calendar_positions
+    wrap_at_fold_end: true
+    concatenate_and_trim_to_days: 28
+    keep_all_city_store_family_rows_of_selected_dates: true
+    same_resampled_dates_across_models_and_configs: true
+    recompute_statistic: sum_absolute_error_divided_by_resampled_row_count
+    confidence_percentiles: [2.5, 97.5]
+    primary_comparisons:
+      - {model: ridge, treatment: M3, comparator: M0}
+      - {model: extra_trees, treatment: M3, comparator: M0}
+      - {model: hist_gradient_boosting, treatment: M3, comparator: M0}
+    centered_replicate: delta_bootstrap_minus_delta_observed
+    two_sided_pvalue: "(1 + count(abs(centered_replicate) >= abs(delta_observed))) / (B + 1)"
+    multiplicity: Holm
+    familywise_alpha: 0.05
+    other_comparisons: exploratory_pointwise_intervals
+    disagreement_between_block_lengths: flag_uncertain_and_report_both
+    no_resampled_rows_or_undefined_statistic: report_NA_with_reason
+    inference_scope: conditional_on_observed_cities_period_and_fitted_models
+  handoff:
+    prediction_file: results/predictions/point_models.csv
+    comparison_file: results/tables/rq2_model_comparison.csv
+    raw_prediction_filename: raw_predictions.csv
+    columns: [date, store_nbr, family, city, fold, model, config, y_true, y_pred]
+    unique_key: [date, store_nbr, family, fold, model, config]
+    date_format: "%Y-%m-%d"
+    fold_values: [F1, F2, F3]
+    config_column: config
+    proposal_alias: weather_set
+    baseline_config: BASELINE
+    prediction_scale: original_sales_after_clipping
+    metadata_fields:
+      - experiment_id
+      - protocol_version
+      - code_revision
+      - working_tree_dirty
+      - input_data_sha256
+      - package_versions
+      - random_state
+      - folds
+      - feature_columns_and_availability_assumptions
+      - selected_parameters_and_validation_scores
+      - eligibility_manifest_and_coverage
+      - postprocessing
+      - command
+      - compute_measurements
 
 quantile_and_decision:
   quantiles: [0.50, 0.75, 0.8333333333]

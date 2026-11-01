@@ -1,0 +1,110 @@
+protocol_version: M3-RQ2-v1.1
+decision_status: M3_TECHNICALLY_SELECTED_PENDING_TEAM_APPROVAL
+execution_ready: false
+# Giá trị này là đặc tả M3; không phải bằng chứng feature pipeline M1 đã triển khai.
+temporal_rules:
+  date_basis: source_local_calendar_date_in_Ecuador
+  source_timezone_verification: BLOCKED_M1_METADATA
+  sales_group: [store_nbr, family]
+  weather_group: [city]
+  lag_unit: calendar_day
+  rolling_shift_days: 1
+  rolling_min_periods: full_window
+  rolling_requires_consecutive_calendar_dates: true
+  backfill: false
+  sales_missing_fill_zero: false
+  weather_availability_scenario: retrospective_reanalysis
+
+feature_groups:
+  business:
+    categorical: [store_nbr, family, city, weekday, month]
+    calendar:
+      weekday: {values: [0, 1, 2, 3, 4, 5, 6], monday: 0}
+      month: {minimum: 1, maximum: 12}
+      holiday_flags:
+        columns: [holiday_national, holiday_regional, holiday_local]
+        encoding: binary
+        rule: effective_holiday_for_store_location_including_transfer_rules
+        schema_mapping_owner: M1
+    sales:
+      source: sales
+      lags_days: [1, 7, 14, 28]
+      rolling:
+        - {statistic: mean, window_days: 7}
+        - {statistic: mean, window_days: 28}
+    promotion:
+      source: onpromotion
+      default_enabled: false
+      authority: configs/research_protocol.yaml#rq2.promotion
+  rain:
+    source: precipitation_sum
+    unit: mm_per_day
+    lags_days: [1, 7]
+    rolling: [{statistic: sum, window_days: 7}]
+  temperature:
+    source: temperature_2m_max
+    unit: degrees_Celsius
+    lags_days: [1, 7]
+    rolling: [{statistic: mean, window_days: 7}]
+  humidity:
+    source: relative_humidity_2m_mean
+    unit: percent
+    lags_days: [1]
+    rolling: [{statistic: mean, window_days: 7}]
+  sunshine:
+    source: sunshine_duration
+    source_unit: seconds
+    derived_source: sunshine_hours
+    conversion: divide_by_3600
+    derived_unit: hours
+    lags_days: [1]
+    rolling: [{statistic: mean, window_days: 7}]
+  wind:
+    source: wind_speed_10m_max
+    unit: km_per_hour
+    lags_days: [1]
+    rolling: [{statistic: mean, window_days: 7}]
+
+feature_naming:
+  lag: "{source}_lag_{days}"
+  rolling: "{source}_rolling_{statistic}_{window_days}"
+  naming_status: M3_contract_pending_M1_interface_confirmation
+
+feature_sets:
+  M0: {groups: [business], priority: core}
+  M1: {groups: [business, rain], priority: core}
+  M2: {groups: [business, temperature], priority: core}
+  M3: {groups: [business, rain, temperature], priority: core}
+  M4: {groups: [business, rain, temperature, humidity, sunshine], priority: required_if_gate_passes}
+  M5: {groups: [business, rain, temperature, humidity, sunshine, wind], priority: extension_not_scheduled}
+
+model_matrix:
+  ridge: {core: [M0, M1, M2, M3], required_if_M4_gate_passes: [M4], not_scheduled: [M5]}
+  extra_trees: {core: [M0, M1, M2, M3], required_if_M4_gate_passes: [M4], not_scheduled: [M5]}
+  hist_gradient_boosting: {core: [M0, M3], required_if_M4_gate_passes: [M4], not_scheduled: [M1, M2, M5]}
+
+gates:
+  M4:
+    status: BLOCKED_NO_QA_OR_COMPUTE_EVIDENCE
+    evaluate_before_test_scores: true
+    qa_owner: M1
+    required_qa: [source, units, city_date_join, physical_ranges, availability_assumptions]
+    coverage_partition: F1_train_plus_validation
+    coverage_grain: [city, date]
+    coverage_denominator: expected_city_days_in_release_scope
+    variables: [relative_humidity_2m_mean, sunshine_hours]
+    minimum_coverage_each_variable: 0.95
+    compute_evidence_required: true
+    if_fail: skip_M4_for_all_models_and_record_reason
+    test_input_qa: required_without_inspecting_test_scores
+    change_gate_based_on_test_uplift: forbidden
+  M5:
+    enabled: false
+    enable_only_after: team_scope_change_and_source_QA_before_test
+
+excluded_features:
+  - same_day_sales_transactions_or_measured_weather
+  - weather_anomaly
+  - oil
+  - transactions_lags
+  - manually_engineered_interactions
