@@ -59,7 +59,34 @@ rq2:
     nonoverlapping_test_folds: true
     training_precedes_test: true
     inner_validation_for_tuning: true
-    test_folds: []  # TODO: explicit date ranges, frozen before final evaluation.
+    training_precedes_validation: true
+    expanding_train: true
+    applies_to: [Ridge, ExtraTrees, HistGradientBoosting, MovingAverage, SARIMAX]
+    tuning_data: validation_only
+    refit_before_test: train_plus_validation
+    forecast_horizon_days: 1
+    model_parameters_during_test: fixed
+    observed_past_test_data_for_lags: allowed
+    freeze_design_before_test_evaluation: true
+    shared_rules_file: configs/ablation_M0_M5.yaml
+    # Inclusive ranges: every validation and test has exactly 28 days.
+    test_folds:
+      - fold_id: F1
+        train: ["2013-01-01", "2016-08-03"]
+        validation: ["2016-08-04", "2016-08-31"]
+        test: ["2016-09-01", "2016-09-28"]
+      - fold_id: F2
+        train: ["2013-01-01", "2016-10-17"]
+        validation: ["2016-10-18", "2016-11-14"]
+        test: ["2016-11-15", "2016-12-12"]
+      - fold_id: F3
+        train: ["2013-01-01", "2017-01-31"]
+        validation: ["2017-02-01", "2017-02-28"]
+        test: ["2017-03-01", "2017-03-28"]
+      - fold_id: F4
+        train: ["2013-01-01", "2017-06-20"]
+        validation: ["2017-06-21", "2017-07-18"]
+        test: ["2017-07-19", "2017-08-15"]
   primary_metric: MAE
   secondary_metrics: [WAPE_if_denominator_positive, MASE_if_valid]
   report_by: [family, city, fold_id]

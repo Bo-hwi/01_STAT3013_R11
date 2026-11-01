@@ -1,0 +1,120 @@
+status: frozen_2026-11-04
+result_label: "retrospective weather-aware"
+target: sales
+grain: [date, store_nbr, family]
+row_filter: "store_active == 1"
+models: [Ridge, ExtraTrees, HistGradientBoosting]
+model_scope: global
+
+evaluation:
+  protocol: "configs/research_protocol.yaml"
+  folds_key: "rq2.validation.test_folds"
+  forecast_horizon_days: 1
+  primary_metric: MAE
+  secondary_metrics: [WAPE, MASE]
+  wape_requires: "sum(abs(y_true)) > 0"
+  mase_seasonality_days: 7
+  mase_scale_source: training_only
+  mase_scale_grain: [store_nbr, family]
+  # Use valid calendar-date pairs for eligible training targets.
+  mase_scale_definition: "mean(abs(sales_t - sales_t_minus_7))"
+  mase_invalid_scale: report_NA_and_coverage
+  report_by: [fold_id, family, city]
+  extra_report_by: [store_nbr]
+  same_scored_rows_across_ablations: true
+  # F3 mean rainfall is 16.7 mm/day; always report individual folds.
+  per_fold_results_required: true
+
+feature_policy:
+  shared_nonweather_features: identical_across_ablations
+  weather_lag_days: [1]
+  lag_alignment: calendar_date
+  fill_missing_dec25_sales_with_zero: false
+  missing_lag_policy: preserve_missing_then_fit_handling_on_training
+  forbidden: [sales_t, transactions_t, weather_t, wind]
+  earthquake_flag:
+    start: "2016-04-16"
+    end: "2016-05-16"
+  jan1_policy: retain_only_store_active_rows
+
+comparison_controls:
+  applies_to: [Ridge, ExtraTrees, HistGradientBoosting, MovingAverage, SARIMAX]
+  preprocessing_recipe: shared_across_ablations_within_model
+  tuning_budget_per_model: equal_across_ablations
+  tuning_data: validation_only
+  moving_average_k_selection: validation_only
+  preprocessing_during_tuning: fit_on_training_only
+  refit_before_test: train_plus_validation
+  preprocessing_during_refit: fit_on_train_plus_validation
+  model_parameters_during_test: fixed
+  test_guided_selection: false
+  weather_missingness_must_not_change_scored_rows: true
+  observed_past_test_data_for_lags: allowed
+
+scoring_exclusions:
+  applies_to: all_models
+  scoring_splits: [validation, test]
+  shared_scoring_mask: true
+  temporary_closure:
+    exclude_when: "store_zero_day == 1"
+  post_reopening:
+    closure_grain: store_nbr
+    minimum_consecutive_closure_days: 7
+    closure_condition: "store_active == 1 and store_zero_day == 1"
+    reopening_condition: "store_active == 1 and store_zero_day == 0"
+    excluded_calendar_days: 28
+    reopening_day_counts_as_day: 1
+    detect_across_split_boundaries: true
+  # Keep source rows for calendar-date lag construction.
+  modify_training_rows: exclude_store_zero_day
+  modify_lag_inputs: false
+  reporting:
+    group_by: [fold_id, split]
+    count_grain: [date, store_nbr, family]
+    counts:
+      - rows_before_exclusions
+      - rows_excluded_closure
+      - rows_excluded_post_reopening_only
+      - rows_excluded_total_unique
+      - rows_scored
+
+store_52:
+  opened_on: "2017-04-20"
+  include_after_opening: true
+  synthesize_preopening_sales: false
+  unseen_store_encoding: supported
+  report_separately: true
+  eligible_test_folds: [F4]
+  f4_history_status: limited_history
+
+experiments:
+  M0:
+    enabled: true
+    weather_features: []
+  M1:
+    enabled: true
+    weather_features: [precipitation_sum_lag1]
+  M2:
+    enabled: true
+    weather_features: [temperature_2m_max_lag1]
+  M3:
+    enabled: true
+    weather_features: [precipitation_sum_lag1, temperature_2m_max_lag1]
+  M4:
+    enabled: true
+    weather_features:
+      - precipitation_sum_lag1
+      - temperature_2m_max_lag1
+      - relative_humidity_2m_mean_lag1
+      - sunshine_hours_lag1
+  M5:
+    enabled: false
+    status: dropped
+    reason: wind_failed_QA
+
+optional_extension:
+  cloud:
+    enabled: false
+    requires: [time_available, cloud_QA_passed, column_name_confirmed]
+    base_experiment: M4
+    additional_weather_features: []
