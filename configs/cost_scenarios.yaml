@@ -1,0 +1,86 @@
+# Cost scenarios for the newsvendor decision model (M4, RQ2 economic value).
+# Week-1 design, frozen before any test result is seen. Prepared by the project
+# leader (M1) on 2026-11-01 at M4's request; M4 owns the quantile models,
+# cost simulation code and Decision Matrix.
+status: frozen_2026-11-04
+owner: M4
+consistent_with: configs/research_protocol.yaml  # quantile_and_decision section
+
+decision:
+  # Q = quantity prepared for day t at the end of day t-1, per store x family
+  quantity: Q
+  grain: [date, store_nbr, family]
+  decision_time: end_of_day_t_minus_1
+  nonnegative_quantity: true          # clip Q at 0
+  # Observed sales are a censored proxy for demand (stockouts are unobserved)
+  demand_proxy: observed_sales
+  realised_demand: D
+
+cost_function:
+  # C(Q, D) = c_over * max(Q - D, 0) + c_under * max(D - Q, 0)
+  formula: "c_over * max(Q - D, 0) + c_under * max(D - Q, 0)"
+  units: relative                      # ratios are assumptions, NOT retailer prices
+  # The newsvendor-optimal quantile: tau = c_under / (c_over + c_under)
+  critical_ratio: "c_under / (c_over + c_under)"
+
+scenarios:
+  - id: S1
+    c_over: 1
+    c_under: 1
+    tau: 0.5
+    reading: "overstock and stockout equally costly"
+  - id: S3
+    c_over: 1
+    c_under: 3
+    tau: 0.75
+    reading: "stockout three times as costly"
+  - id: S5
+    c_over: 1
+    c_under: 5
+    tau: 0.8333333333
+    reading: "stockout five times as costly (perishables, lost customers)"
+
+quantile_targets:
+  # Quantile models (M4) must produce exactly these levels
+  taus: [0.5, 0.75, 0.8333333333]
+  feature_sets: [M0, M3]               # no weather vs core weather (ablation_M0_M5.yaml)
+  optional_feature_set: M4             # only if time allows
+  families: from_protocol              # research_protocol.yaml -> scope.deep_study_families
+  folds: from_protocol                 # research_protocol.yaml -> rq2.validation.test_folds
+  scoring_rows: score_mask             # shared mask from model_features.parquet
+
+policies:
+  # All policies are evaluated on the same test rows (score_mask == True)
+  - id: P1_seasonal_naive
+    source: M1 baselines (results/predictions/baselines.csv)
+    q_rule: "point forecast + quantile of validation residuals at tau (fit on validation only)"
+  - id: P2_quantile_no_weather
+    source: M4 quantile model, feature set M0
+    q_rule: "Q = predicted quantile at tau"
+  - id: P3_quantile_core_weather
+    source: M4 quantile model, feature set M3
+    q_rule: "Q = predicted quantile at tau"
+  - id: P4_point_model_to_q
+    source: M3 best point model per feature set (results/predictions/point_models.csv)
+    q_rule: "point forecast + quantile of validation residuals at tau (fit on validation only)"
+  # Development shortcut: P1 can be built as soon as M1 baselines exist, so the
+  # cost code can be tested before M3's final predictions are available.
+
+evaluation:
+  report_by: [fold_id, family, city, scenario]
+  metrics:
+    - mean_cost_per_row
+    - cost_index                       # policy cost / P1 cost on the same rows (P1 = 1.00)
+    - overstock_units
+    - stockout_units
+    - pinball_loss                     # for quantile policies, per tau
+    - quantile_coverage                # share of rows with D <= Q
+  weather_value: "cost_index(P3) - cost_index(P2) per scenario"
+  uncertainty: paired_block_bootstrap_95ci   # same block design as M3
+  per_fold_results_required: true      # F3 is an extreme wet period
+
+rules:
+  tuning_uses_test_labels: false       # tau, residual quantiles and calibration fit on train/validation only
+  quantile_crossing: "check and report; fix by sorting predictions per row, documented"
+  not_money: "cost index is a simulated relative index, not ROI or profit"
+  break_even: "report the cost_index gain weather would need to justify an integration cost; no USD guess"

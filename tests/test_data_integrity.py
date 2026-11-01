@@ -8,6 +8,7 @@ Tests are skipped when the curated parquet has not been built yet.
 """
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -74,6 +75,15 @@ def test_shared_grid_cell_detected(df):
 def test_sales_not_imputed(df):
     assert df["sales"].notna().all()
     assert (df["sales"] >= 0).all()
+
+
+def test_sales_and_promotion_match_raw_by_key(df):
+    # Regression test suggested in M3's review of PR #1: values must be copied unchanged
+    raw = load_train().sort_values(KEY, ignore_index=True)
+    cur = df[KEY + ["sales", "onpromotion"]].sort_values(KEY, ignore_index=True)
+    assert (raw[KEY].astype(str).to_numpy() == cur[KEY].astype(str).to_numpy()).all()
+    assert np.array_equal(raw["sales"].to_numpy(), cur["sales"].to_numpy())
+    assert np.array_equal(raw["onpromotion"].to_numpy(), cur["onpromotion"].to_numpy())
 
 
 def test_store_active_flag(df):

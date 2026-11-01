@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 Download Favorita files using the Kaggle competition page and weather using the documented Open-Meteo pipeline. Place local files under `data/raw/favorita/` and `data/raw/weather/`. **Do not commit large raw datasets or secrets.** Consult `data/README.md` for required filenames, licenses, checksums and regeneration instructions once documented by M1.
 
-**Pipeline status:** `python scripts/run_pipeline.py --test` builds `data/processed/curated_sales_weather.parquet` from local raw files and runs data integrity tests (M1, curated v1). Feature, baseline and model stages are not implemented yet.
+**Pipeline status:** `python scripts/run_pipeline.py --test` builds `data/processed/curated_sales_weather.parquet` and `data/processed/model_features.parquet` from local raw files, then runs data and feature tests (M1). M3's M0 point-model runner is in `src/forecasting/` (see `docs/m3_m0_walkthrough.md`). Baselines, SARIMAX, quantile and decision stages are not implemented yet.
 
 ## Experimental protocol and evaluation
 

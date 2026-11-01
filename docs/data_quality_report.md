@@ -1,6 +1,6 @@
 # Data Quality Report
 
-**Owner:** M1 — Data & Baselines · **Version:** v0.3 (27/10/2026)
+**Owner:** M1 — Data & Baselines · **Version:** v0.4 (01/11/2026)
 **Scripts:** `scripts/build_source_catalog.py`, `scripts/qa_quick_checks.py`, `scripts/qa_weather_checks.py`, `src/data/merge_data.py`
 **Inputs:** raw files listed in `data/README.md` (hashes verified)
 
@@ -20,6 +20,7 @@ Mỗi phát hiện được trình bày theo 4 ý: **Quan sát → Bằng chứn
 | QA-08 | Một số thành phố ven biển nhận ô lưới không phải ô gần nhất | Thấp | Ghi chú giới hạn |
 | QA-09 | `wind_speed_10m_max` có giá trị phi lý (tới 783 km/h) | **Cao** | M3 (M5), M2 |
 | QA-10 | Các biến weather còn lại nằm trong khoảng hợp lý | Đạt | M2, M3, M4 |
+| QA-11 | Cửa hàng đóng cửa dài giữa chuỗi; store 18 và 25 rơi vào F1, F2 | **Cao** | M1, M3, M4 (chấm điểm) |
 
 ## Phát hiện ban đầu (27/10)
 
@@ -149,6 +150,29 @@ Bảng `curated_sales_weather.parquet` (3.000.888 dòng × 35 cột) được t�
 - **Ngày đóng cửa giữa chuỗi:** có 601 store-ngày cửa hàng đã hoạt động nhưng bán 0 toàn cửa hàng; 196 trong số đó là ngày 01/01, còn 405 rải rác (đóng cửa tạm thời). Tất cả được gắn `store_zero_day = 1`.
 - **Giai đoạn động đất:** lấy từ các sự kiện "Terremoto Manabi" trong holidays_events, từ 16/04/2016 đến 16/05/2016, gắn cờ `is_earthquake_period`.
 - **Gió:** 627 dòng (store-family-ngày) có `wind_qa_flag = 1`, tương ứng 11 city-ngày ở QA-09.
+
+### QA-11. Cửa hàng đóng cửa dài giữa chuỗi (phát hiện khi chốt fold, 01/11)
+
+- **Quan sát:** Một số cửa hàng đã mở (`store_active = 1`) nhưng bán 0 toàn cửa hàng nhiều ngày liên tiếp, nên cờ `store_active` không loại được.
+- **Bằng chứng:** 405 store-ngày đóng cửa ngoài ngày 01/01 (mục "Kết quả sau khi build curated v1") gồm các đợt sau:
+
+  | Store | Đóng cửa | Số ngày | Rơi vào fold |
+  |---|---|---|---|
+  | 30 | 08/07/2013 – 30/07/2013 | 23 | Chỉ train |
+  | 24 | 14/04/2014 – 23/07/2014 | 101 | Chỉ train |
+  | 14 | 04/08/2014 – 10/09/2014 | 38 | Chỉ train |
+  | 12 | 30/03/2015 – 28/05/2015 | 60 | Chỉ train |
+  | **18** | **15/08/2016 – 02/12/2016** | **110** | **Validation và test F1, F2** |
+  | **25** | **22/08/2016 – 26/10/2016** | **66** | **Validation và test F1, F2** |
+  | 43 | 14/11/2016 – 17/11/2016 | 4 | Validation và test F2 |
+  | 1, 17 | 1–2 ngày lẻ (2015, 2016) | 3 | Chỉ train |
+
+- **Giải thích:** Đóng cửa tạm thời; nguồn dữ liệu không ghi lý do. Sales = 0 lúc này không phải nhu cầu bằng 0.
+- **Quyết định / Ảnh hưởng (đã thống nhất với M3, `configs/ablation_M0_M5.yaml` → `scoring_exclusions`):**
+  - Bỏ các dòng `store_zero_day = 1` khỏi tập train của mọi mô hình (riêng train F4: 19.833 dòng, gồm cả các ngày 01/01), nhưng giữ trong bảng để tính lag theo ngày lịch.
+  - Không chấm điểm dòng `store_zero_day = 1`. Sau một đợt đóng cửa ≥ 7 ngày, không chấm điểm 28 ngày đầu sau khi mở lại, vì lag dài nhất (28 ngày) vẫn trỏ vào giai đoạn đóng cửa. Store 43 (4 ngày) chỉ bị loại các ngày đóng.
+  - Số dòng bị loại khỏi chấm điểm (validation / test): F1 891 / 1.848; F2 1.254 + 627 / 693 + 627; F3, F4: 0. Quy tắc được hiện thực bằng cột `score_mask` trong `model_features.parquet` và kiểm chứng bằng `tests/test_lag_features.py`.
+  - Hạn chế còn lại: trong tập train, các dòng ngay sau khi mở lại vẫn được dùng để fit dù lag của chúng trỏ vào giai đoạn đóng cửa (quy tắc 28 ngày chỉ áp dụng khi chấm điểm). Có thể kiểm tra độ nhạy nếu còn thời gian.
 
 ## Việc còn mở
 

@@ -1,0 +1,34 @@
+family,zero_rate,mean_daily_sales,share_total_sales,first_nonzero_date,cities_with_sales,candidate,pass_zero_rate,pass_history,pass_cities,pass_scale,selected,sector
+GROCERY I,0.0,3921.2297,0.3297,2013-01-01,22.0,True,True,True,True,True,True,dry staples
+BEVERAGES,0.0,2303.3142,0.1937,2013-01-01,22.0,True,True,True,True,True,True,drinks
+PRODUCE,0.2893,1184.1953,0.0996,2013-03-16,22.0,True,False,False,True,True,False,fresh produce
+CLEANING,0.0,1139.0366,0.0958,2013-01-01,22.0,True,True,True,True,True,True,household non-food
+DAIRY,0.0,720.4297,0.0606,2013-01-01,22.0,True,True,True,True,True,True,fresh perishables
+BREAD/BAKERY,0.0,487.1898,0.041,2013-01-01,22.0,True,True,True,True,True,True,fresh perishables
+POULTRY,0.0002,375.8557,0.0316,2013-01-01,22.0,False,True,True,True,True,False,
+MEATS,0.0,370.1222,0.0311,2013-01-01,22.0,False,True,True,True,True,False,
+PERSONAL CARE,0.0,283.9807,0.0239,2013-01-01,22.0,True,True,True,True,True,True,personal non-food
+DELI,0.0,279.3138,0.0235,2013-01-01,22.0,False,True,True,True,True,False,
+EGGS,0.0,182.0154,0.0153,2013-01-01,22.0,False,True,True,True,True,False,
+FROZEN FOODS,0.0004,163.8871,0.0138,2013-01-01,22.0,True,True,True,True,True,True,frozen
+HOME CARE,0.4682,155.6601,0.0131,2014-01-01,22.0,False,False,False,True,True,False,
+PREPARED FOODS,0.0003,105.458,0.0089,2013-01-01,22.0,False,True,True,True,False,False,
+"LIQUOR,WINE,BEER",0.1362,90.276,0.0076,2013-01-01,22.0,False,False,True,True,False,False,
+SEAFOOD,0.1351,24.478,0.0021,2013-01-02,22.0,False,False,True,True,False,False,
+GROCERY II,0.0435,23.0165,0.0019,2013-01-01,22.0,False,True,True,True,False,False,
+HOME AND KITCHEN I,0.3786,18.655,0.0016,2014-01-01,22.0,False,False,False,True,False,False,
+HOME AND KITCHEN II,0.379,14.8764,0.0013,2014-01-01,22.0,False,False,False,True,False,False,
+LINGERIE,0.0831,8.1219,0.0007,2013-01-01,22.0,False,False,True,True,False,False,
+CELEBRATION,0.5006,7.4932,0.0006,2014-01-01,22.0,False,False,False,True,False,False,
+LADIESWEAR,0.6421,6.4866,0.0005,2014-01-02,16.0,False,False,False,False,False,False,
+AUTOMOTIVE,0.0572,6.4458,0.0005,2013-01-02,22.0,False,False,True,True,False,False,
+PLAYERS AND ELECTRONICS,0.5153,5.1796,0.0004,2014-01-01,22.0,False,False,False,True,False,False,
+LAWN AND GARDEN,0.4464,4.4469,0.0004,2013-01-01,20.0,False,False,True,False,False,False,
+BEAUTY,0.2139,3.5361,0.0003,2013-01-01,22.0,False,False,True,True,False,False,
+PET SUPPLIES,0.6229,3.0076,0.0003,2014-01-01,22.0,False,False,False,True,False,False,
+MAGAZINES,0.6452,2.1069,0.0002,2014-01-01,22.0,False,False,False,True,False,False,
+SCHOOL AND OFFICE SUPPLIES,0.7852,1.6978,0.0001,2014-01-02,22.0,False,False,False,True,False,False,
+HARDWARE,0.4417,1.2003,0.0001,2013-01-02,22.0,False,False,True,True,False,False,
+HOME APPLIANCES,0.7029,0.514,0.0,2013-01-02,22.0,False,False,True,True,False,False,
+BABY CARE,0.9628,0.0784,0.0,2014-03-01,18.0,False,False,False,False,False,False,
+BOOKS,1.0,0.0,0.0,,0.0,False,False,False,False,False,False,
