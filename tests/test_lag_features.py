@@ -19,7 +19,7 @@ import pytest
 from src.data.clean_data import load_weather
 from src.forecasting.feature_spec import FEATURES
 from src.forecasting.rolling_validation import (
-    add_scoring_mask, calendar_rolling_mean, calendar_sales_lag, read_yaml,
+    add_scoring_mask, calendar_rolling_mean, calendar_sales_lag, iter_folds, read_yaml,
 )
 from src.features.lag_features import FORBIDDEN
 
@@ -116,6 +116,16 @@ def test_score_mask_agrees_with_m3_rules(df):
     add_scoring_mask(df[KEY + ["sales", "city", "store_active", "store_zero_day", "score_mask"]], rules)
 
 
+def test_m3_fold_iterator_accepts_feature_table(df):
+    # Integration test: M3's iter_folds must run on this table without column clashes
+    protocol = read_yaml(REPO_ROOT / "configs" / "research_protocol.yaml")
+    ablation = read_yaml(REPO_ROOT / "configs" / "ablation_M0_M5.yaml")
+    families = ["BEVERAGES", "DAIRY"]  # small subset keeps the test fast
+    folds = list(iter_folds(df, protocol, ablation, families))
+    assert [f.fold_id for f in folds] == ["F1", "F2", "F3", "F4"]
+    assert all(f.test["score_mask"].any() for f in folds)
+
+
 @pytest.mark.parametrize("fold,split,start,end,closure,post_only", [
     ("F1", "validation", "2016-08-04", "2016-08-31", 891, 0),
     ("F1", "test", "2016-09-01", "2016-09-28", 1848, 0),
@@ -127,5 +137,6 @@ def test_score_mask_agrees_with_m3_rules(df):
 def test_exclusion_counts_per_fold(df, fold, split, start, end, closure, post_only):
     block = df[df["date"].between(start, end) & (df["store_active"] == 1)]
     assert int((block["store_zero_day"] == 1).sum()) == closure
-    assert int((block["excluded_post_reopening"] & (block["store_zero_day"] == 0)).sum()) == post_only
+    # Open store-days that are still masked = the 28-day post-reopening exclusion
+    assert int((~block["score_mask"] & (block["store_zero_day"] == 0)).sum()) == post_only
     assert int((~block["score_mask"]).sum()) == closure + post_only

@@ -87,7 +87,7 @@
 
 ## Grain and size
 
-Same grain and rows as the curated table: one row per `(date, store_nbr, family)`, 3,000,888 rows × 35 columns. Every feature for target date *t* is available at the forecast origin (end of day *t−1*).
+Same grain and rows as the curated table: one row per `(date, store_nbr, family)`, 3,000,888 rows × 34 columns. Every feature for target date *t* is available at the forecast origin (end of day *t−1*).
 
 ## Columns added
 
@@ -97,7 +97,6 @@ Same grain and rows as the curated table: one row per `(date, store_nbr, family)
 | `sales_roll7_mean`, `sales_roll28_mean` | Mean sales over calendar days `t−k … t−1` (window `[t−k, t)`), skipping absent dates; day *t* excluded | End of *t−1* |
 | `precipitation_sum_lag1`, `temperature_2m_max_lag1`, `relative_humidity_2m_mean_lag1`, `sunshine_hours_lag1` | City weather of day *t−1*, taken from the raw weather files (so 26 December still has the weather of 25 December). NaN only on 2013-01-01 | Retrospective ERA5 (publication lag ignored → label results *retrospective weather-aware*) |
 | `score_mask` | bool. **True = row may be scored.** False if `store_active == 0`, `store_zero_day == 1`, or within the first 28 calendar days after a closure of ≥ 7 consecutive days | Rule from `configs/ablation_M0_M5.yaml` → `scoring_exclusions` |
-| `excluded_post_reopening` | bool. The 28-day post-reopening part of the rule (for reporting exclusion counts) | — |
 
 ## Columns kept from the curated table
 
@@ -109,4 +108,4 @@ Same-day weather (`precipitation_sum`, `temperature_2m_max`, `temperature_2m_mea
 
 ## Verification
 
-`tests/test_lag_features.py` (14 tests) checks: contract column names; forbidden columns absent; lags equal M3's `calendar_sales_lag` on all rows; lags across Christmas are NaN; rolling equals M3's `calendar_rolling_mean`; rolling excludes day *t* (brute force); weather lag equals the raw value of the previous day; `score_mask` agrees with M3's `add_scoring_mask`; exclusion counts per fold match the frozen numbers (F1 val 891/0, F1 test 1,848/0, F2 val 1,254/627, F2 test 693/627, F3 and F4 0/0). M3's `prepare_features(ready=True)` audit also accepts the full table.
+`tests/test_lag_features.py` (15 tests) checks: contract column names; forbidden columns absent; lags equal M3's `calendar_sales_lag` on all rows; lags across Christmas are NaN; rolling equals M3's `calendar_rolling_mean`; rolling excludes day *t* (brute force); weather lag equals the raw value of the previous day; `score_mask` agrees with M3's `add_scoring_mask`; M3's `iter_folds` runs on the table without column clashes; exclusion counts per fold match the frozen numbers (F1 val 891/0, F1 test 1,848/0, F2 val 1,254/627, F2 test 693/627, F3 and F4 0/0). M3's `prepare_features(ready=True)` audit also accepts the full table.

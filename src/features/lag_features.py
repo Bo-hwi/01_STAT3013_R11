@@ -149,7 +149,9 @@ def build_score_mask(df: pd.DataFrame) -> pd.DataFrame:
     days["score_mask"] = (
         (days["store_active"] == 1) & (days["store_zero_day"] == 0) & ~days["excluded_post_reopening"]
     )
-    return days[["store_nbr", "date", "excluded_post_reopening", "score_mask"]]
+    # Only score_mask leaves this function: M3's add_scoring_mask creates its own
+    # helper columns, so extra columns here would collide when the table is reused.
+    return days[["store_nbr", "date", "score_mask"]]
 
 
 # ---------------------------------------------------------------------------
@@ -211,7 +213,10 @@ def write_metadata(df: pd.DataFrame) -> dict:
             "excluded_when": ["store_active == 0", "store_zero_day == 1",
                               f"first {POST_REOPENING_DAYS} days after a closure of >= {MIN_CLOSURE_DAYS} days"],
             "rows_scored": int(df["score_mask"].sum()),
-            "rows_excluded_post_reopening": int(df["excluded_post_reopening"].sum()),
+            # Post-reopening rows = open store-days that the mask still excludes
+            "rows_excluded_post_reopening": int(
+                (~df["score_mask"] & (df["store_active"] == 1) & (df["store_zero_day"] == 0)).sum()
+            ),
         },
         "forbidden_columns_absent": FORBIDDEN,
     }
