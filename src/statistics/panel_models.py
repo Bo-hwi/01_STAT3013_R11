@@ -14,7 +14,7 @@ def estimate_pooled_ols(
     df: pd.DataFrame,
     weather_vars: List[str],
     controls: List[str],
-    cluster_col: Optional[str] = "city",
+    cluster_col: Optional[str] = "weather_grid_id",
     outcome_col: str = "sales",
 ) -> Dict[str, Any]:
     """Estimates a Pooled OLS model: log1p(sales) ~ const + weather + controls,
@@ -57,7 +57,7 @@ def estimate_fixed_effects(
     weather_vars: List[str],
     controls: List[str],
     entity_col: str = "entity_id",
-    cluster_col: Optional[str] = "city",
+    cluster_col: Optional[str] = "weather_grid_id",
     outcome_col: str = "sales",
 ) -> Dict[str, Any]:
     """Estimates an Entity Fixed Effects model: log1p(sales) ~ weather + controls + Entity_Effects,
@@ -87,7 +87,7 @@ def estimate_fixed_effects(
     model = PanelOLS(y, X, entity_effects=True, check_rank=False)
     
     if cluster_col and cluster_col in sub.columns:
-        # Cluster standard errors by city
+        # Cluster standard errors by weather_grid_id
         clusters = sub[cluster_col]
         res = model.fit(cov_type="clustered", clusters=clusters)
     else:
@@ -117,14 +117,17 @@ def estimate_random_effects(
     weather_vars: List[str],
     controls: List[str],
     entity_col: str = "entity_id",
+    cluster_col: Optional[str] = "weather_grid_id",
     outcome_col: str = "sales",
 ) -> Dict[str, Any]:
-    """Estimates a Random Effects model: log1p(sales) ~ const + weather + controls."""
+    """Estimates a Random Effects model: log1p(sales) ~ const + weather + controls,
+    with clustered standard errors.
+    """
     data = df.copy()
     data["log_sales"] = np.log1p(data[outcome_col].clip(lower=0))
     
     x_cols = weather_vars + controls
-    needed = ["log_sales", entity_col] + x_cols
+    needed = ["log_sales", entity_col] + x_cols + ([cluster_col] if cluster_col else [])
     if "date" in data.columns:
         needed.append("date")
     sub = data[needed].dropna()
@@ -140,7 +143,11 @@ def estimate_random_effects(
     X = sm.add_constant(sub[active_x])
     
     model = RandomEffects(y, X, check_rank=False)
-    res = model.fit(cov_type="robust")
+    if cluster_col and cluster_col in sub.columns:
+        clusters = sub[cluster_col]
+        res = model.fit(cov_type="clustered", clusters=clusters)
+    else:
+        res = model.fit(cov_type="robust")
     ci = res.conf_int(level=0.95)
     
     return {
@@ -152,6 +159,7 @@ def estimate_random_effects(
         "p_values": res.pvalues.to_dict(),
         "ci_lower": ci["lower"].to_dict(),
         "ci_upper": ci["upper"].to_dict(),
+        "cov_type": "clustered" if (cluster_col and cluster_col in sub.columns) else "robust",
         "cov_matrix": res.cov,
         "raw_result": res,
     }
@@ -233,7 +241,7 @@ def run_family_heterogeneity_models(
     weather_vars: List[str],
     controls: List[str],
     entity_col: str = "entity_id",
-    cluster_col: Optional[str] = "city"
+    cluster_col: Optional[str] = "weather_grid_id"
 ) -> pd.DataFrame:
     """Estimates Fixed Effects models for each family separately to examine heterogeneity,
     then applies Benjamini-Hochberg FDR across all estimated weather coefficients.
@@ -281,7 +289,7 @@ def run_earthquake_sensitivity_check(
     weather_vars: List[str],
     controls: List[str],
     entity_col: str = "entity_id",
-    cluster_col: Optional[str] = "city"
+    cluster_col: Optional[str] = "weather_grid_id"
 ) -> Dict[str, Any]:
     """Compares Fixed Effects estimates with and without the 2016 Ecuador earthquake period
     (2016-04-16 to 2016-05-16).
@@ -326,7 +334,7 @@ def estimate_regional_heterogeneity(
     weather_vars: List[str],
     controls: List[str],
     entity_col: str = "entity_id",
-    cluster_col: Optional[str] = "city"
+    cluster_col: Optional[str] = "weather_grid_id"
 ) -> pd.DataFrame:
     """Estimates Fixed Effects models separately for Sierra (highlands) and Costa (coastal lowlands)
     to evaluate geographical climate heterogeneity, with BH-FDR adjustment.

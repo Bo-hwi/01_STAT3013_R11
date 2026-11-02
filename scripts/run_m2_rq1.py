@@ -44,7 +44,6 @@ FROZEN_FAMILIES = [
 WEATHER_VARS = [
     "precipitation_sum",
     "temperature_2m_max",
-    "temperature_2m_mean",
     "relative_humidity_2m_mean",
     "sunshine_hours",
 ]
@@ -69,20 +68,33 @@ def main():
     data["entity_id"] = data["store_nbr"].astype(str) + "_" + data["family"].astype(str)
     data["date"] = pd.to_datetime(data["date"])
     
+    # Calendar controls: day_of_week, month, year dummies per Proposal 7.1
+    print("Generating calendar controls (day_of_week, month, year dummies)...")
+    dow_dummies = pd.get_dummies(data["day_of_week"], prefix="dow", drop_first=True, dtype=float)
+    month_dummies = pd.get_dummies(data["month"], prefix="month", drop_first=True, dtype=float)
+    year_dummies = pd.get_dummies(data["year"], prefix="year", drop_first=True, dtype=float)
+    cal_cols = list(dow_dummies.columns) + list(month_dummies.columns) + list(year_dummies.columns)
+    data = pd.concat([data, dow_dummies, month_dummies, year_dummies], axis=1)
+    
+    all_controls = CONTROLS + cal_cols
+    
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     
     print(f"Data filtered: {len(data):,} observations across 7 families.")
+    print(f"Cluster unit: weather_grid_id ({data['weather_grid_id'].nunique()} clusters).")
+    print(f"Weather regressors ({len(WEATHER_VARS)}): {WEATHER_VARS}")
+    print(f"Controls with calendar ({len(all_controls)}): {all_controls}")
     
     # 1. Overall Model Comparison: Pooled OLS, Fixed Effects, Random Effects
-    print("1. Estimating Pooled OLS (Clustered by City)...")
-    ols_res = estimate_pooled_ols(data, WEATHER_VARS, CONTROLS, cluster_col="city")
+    print("1. Estimating Pooled OLS (Clustered by weather_grid_id)...")
+    ols_res = estimate_pooled_ols(data, WEATHER_VARS, all_controls, cluster_col="weather_grid_id")
     
-    print("2. Estimating Entity Fixed Effects (store_nbr x family, Clustered by City)...")
-    fe_res = estimate_fixed_effects(data, WEATHER_VARS, CONTROLS, entity_col="entity_id", cluster_col="city")
+    print("2. Estimating Entity Fixed Effects (store_nbr x family, Clustered by weather_grid_id)...")
+    fe_res = estimate_fixed_effects(data, WEATHER_VARS, all_controls, entity_col="entity_id", cluster_col="weather_grid_id")
     
-    print("3. Estimating Random Effects...")
-    re_res = estimate_random_effects(data, WEATHER_VARS, CONTROLS, entity_col="entity_id")
+    print("3. Estimating Random Effects (Clustered by weather_grid_id)...")
+    re_res = estimate_random_effects(data, WEATHER_VARS, all_controls, entity_col="entity_id", cluster_col="weather_grid_id")
     
     h_test = hausman_test(fe_res, re_res)
     print(f"Hausman test: chi2 = {h_test['stat']:.2f}, p-value = {h_test['p_value']:.4e} -> Preferred: {h_test['preferred']}")
@@ -112,9 +124,9 @@ def main():
         data,
         families=FROZEN_FAMILIES,
         weather_vars=WEATHER_VARS,
-        controls=CONTROLS,
+        controls=all_controls,
         entity_col="entity_id",
-        cluster_col="city"
+        cluster_col="weather_grid_id"
     )
     
     # Add overall Pooled FE rows to the coefficients table
@@ -147,9 +159,9 @@ def main():
     reg_df = estimate_regional_heterogeneity(
         data,
         weather_vars=WEATHER_VARS,
-        controls=CONTROLS,
+        controls=all_controls,
         entity_col="entity_id",
-        cluster_col="city"
+        cluster_col="weather_grid_id"
     )
     reg_path = RESULTS_DIR / "rq1_regional_heterogeneity.csv"
     reg_df.to_csv(reg_path, index=False)
@@ -182,9 +194,9 @@ def main():
     sens_res = run_earthquake_sensitivity_check(
         data,
         weather_vars=WEATHER_VARS,
-        controls=CONTROLS,
+        controls=all_controls,
         entity_col="entity_id",
-        cluster_col="city"
+        cluster_col="weather_grid_id"
     )
     sens_rows = []
     for var in WEATHER_VARS:
@@ -255,40 +267,45 @@ def main():
         fam_res = het_df[het_df["family"] == fam]
         sig_preds = fam_res[fam_res["significant_fdr"]]["predictor"].tolist()
         
-        # Describe signature in human-readable and decision terms
-        if "temperature_2m_mean" in sig_preds and "sunshine_hours" in sig_preds:
-            desc = "High Sensitivity (Temp Mean + Sunshine)"
-            uncertainty_flag = False
-            rec_tag = "Prioritize pilot candidate"
-        elif "temperature_2m_mean" in sig_preds or "sunshine_hours" in sig_preds:
-            desc = "Moderate Sensitivity (Temp or Sunshine)"
-            uncertainty_flag = False
-            rec_tag = "Further validation candidate"
+        # Empirical econometric signature (purely descriptive)
+        if sig_preds:
+            sig_details = []
+            for sp in sig_preds:
+                c = fam_res.loc[fam_res["predictor"] == sp, "coef"].iloc[0]
+                q = fam_res.loc[fam_res["predictor"] == sp, "q_fdr"].iloc[0]
+                direction = "+" if c > 0 else "-"
+                sig_details.append(f"{sp} ({direction}{abs(c)*100:.2f}%, q={q:.4f})")
+            desc = "Statistically Sensitive: " + "; ".join(sig_details)
         else:
-            desc = "Weather Insensitive (Staple/Controls dominate)"
-            uncertainty_flag = True
-            rec_tag = "Do not deploy (Hold baseline)"
+            desc = "Weather Insensitive (All weather q >= 0.05 after calendar & entity FE)"
             
-        temp_mean_coef = fam_res.loc[fam_res["predictor"] == "temperature_2m_mean", "coef"].iloc[0]
-        sun_coef = fam_res.loc[fam_res["predictor"] == "sunshine_hours", "coef"].iloc[0]
-        rain_p = fam_res.loc[fam_res["predictor"] == "precipitation_sum", "p_value"].iloc[0]
+        temp_max_row = fam_res.loc[fam_res["predictor"] == "temperature_2m_max"]
+        precip_row = fam_res.loc[fam_res["predictor"] == "precipitation_sum"]
+        sun_row = fam_res.loc[fam_res["predictor"] == "sunshine_hours"]
+        humid_row = fam_res.loc[fam_res["predictor"] == "relative_humidity_2m_mean"]
         
         signatures.append({
             "family": fam,
-            "weather_signature": desc,
+            "statistically_sensitive_fdr": len(sig_preds) > 0,
             "significant_predictors": ", ".join(sig_preds) if sig_preds else "None",
-            "temp_mean_elasticity_pct": round(temp_mean_coef * 100, 2),
-            "sunshine_elasticity_pct_per_hr": round(sun_coef * 100, 3),
-            "rain_significant_fdr": "precipitation_sum" in sig_preds,
-            "uncertainty_flag": uncertainty_flag,
-            "preliminary_m4_recommendation": rec_tag
+            "econometric_signature": desc,
+            "temp_max_coef": round(temp_max_row["coef"].iloc[0], 6),
+            "temp_max_pct_per_degC": round(temp_max_row["coef"].iloc[0] * 100, 3),
+            "temp_max_q_fdr": round(temp_max_row["q_fdr"].iloc[0], 4),
+            "precipitation_coef": round(precip_row["coef"].iloc[0], 6),
+            "precipitation_q_fdr": round(precip_row["q_fdr"].iloc[0], 4),
+            "sunshine_coef": round(sun_row["coef"].iloc[0], 6),
+            "sunshine_q_fdr": round(sun_row["q_fdr"].iloc[0], 4),
+            "relative_humidity_coef": round(humid_row["coef"].iloc[0], 6),
+            "relative_humidity_q_fdr": round(humid_row["q_fdr"].iloc[0], 4),
+            "m4_handoff_disclaimer": "Informational statistical handoff only. Decision Matrix deployment / pilot recommendations require RQ2 forecast lift (delta-RMSE/WAPE) and Newsvendor asymmetric cost-loss evaluation by Member 4."
         })
         
     sig_df = pd.DataFrame(signatures)
     sig_path = RESULTS_DIR / "weather_signatures_for_m4.csv"
     sig_df.to_csv(sig_path, index=False)
     print(f"Saved: {sig_path}")
-    print(sig_df[["family", "weather_signature", "uncertainty_flag"]])
+    print(sig_df[["family", "statistically_sensitive_fdr", "significant_predictors", "econometric_signature"]])
     
     print("\nAll Advanced Inferences & Handoff Tables Completed Successfully!")
 
