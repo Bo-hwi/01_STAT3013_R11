@@ -6,7 +6,11 @@ from src.statistics.panel_models import (
     estimate_fixed_effects,
     estimate_random_effects,
     hausman_test,
+    apply_benjamini_hochberg,
+    run_family_heterogeneity_models,
+    run_earthquake_sensitivity_check,
 )
+
 
 
 @pytest.fixture
@@ -71,3 +75,35 @@ def test_estimate_random_effects_and_hausman(synthetic_panel):
     assert re_res["model_type"] == "Random Effects"
     h_test = hausman_test(fe_res, re_res)
     assert "stat" in h_test and "p_value" in h_test
+
+
+def test_benjamini_hochberg():
+    p_vals = pd.Series([0.001, 0.01, 0.04, 0.10, 0.80])
+    reject, q_vals = apply_benjamini_hochberg(p_vals, alpha=0.05)
+    assert q_vals[0] < 0.01
+    assert q_vals[-1] >= 0.80
+    assert reject[0] == True
+
+
+def test_heterogeneity_and_earthquake_sensitivity(synthetic_panel):
+    het_df = run_family_heterogeneity_models(
+        synthetic_panel,
+        families=["BEVERAGES", "CLEANING"],
+        weather_vars=["temperature_2m_max"],
+        controls=["onpromotion"],
+        entity_col="entity_id",
+        cluster_col="city"
+    )
+    assert len(het_df) == 2
+    assert "q_fdr" in het_df.columns
+    assert "coef" in het_df.columns
+
+    sens = run_earthquake_sensitivity_check(
+        synthetic_panel,
+        weather_vars=["temperature_2m_max"],
+        controls=["onpromotion"],
+        entity_col="entity_id",
+        cluster_col="city"
+    )
+    assert "baseline_fe" in sens and "no_earthquake_fe" in sens
+

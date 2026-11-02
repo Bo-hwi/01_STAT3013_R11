@@ -188,3 +188,122 @@ def hausman_test(fe_res: Dict[str, Any], re_res: Dict[str, Any]) -> Dict[str, An
         "p_value": p_val,
         "preferred": "Fixed Effects" if (np.isnan(p_val) or p_val < 0.05) else "Random Effects",
     }
+
+
+def apply_benjamini_hochberg(
+    p_values: pd.Series | np.ndarray,
+    alpha: float = 0.05
+) -> tuple[np.ndarray, np.ndarray]:
+    """Applies Benjamini-Hochberg (BH) False Discovery Rate (FDR) control.
+    
+    Returns
+    -------
+    reject : np.ndarray of bool
+        True if hypothesis is rejected at FDR level alpha.
+    q_values : np.ndarray of float
+        Adjusted p-values (q-values).
+    """
+    p_arr = np.asarray(p_values, dtype=float)
+    n = len(p_arr)
+    if n == 0:
+        return np.array([], dtype=bool), np.array([], dtype=float)
+        
+    order = np.argsort(p_arr)
+    sorted_p = p_arr[order]
+    
+    # Calculate BH adjusted p-values
+    q_sorted = np.zeros(n, dtype=float)
+    q_sorted[-1] = sorted_p[-1]
+    
+    for i in range(n - 2, -1, -1):
+        rank = i + 1
+        q_sorted[i] = min(q_sorted[i + 1], sorted_p[i] * n / rank)
+        
+    q_values = np.zeros(n, dtype=float)
+    q_values[order] = np.clip(q_sorted, 0.0, 1.0)
+    reject = q_values <= alpha
+    
+    return reject, q_values
+
+
+def run_family_heterogeneity_models(
+    df: pd.DataFrame,
+    families: List[str],
+    weather_vars: List[str],
+    controls: List[str],
+    entity_col: str = "entity_id",
+    cluster_col: Optional[str] = "city"
+) -> pd.DataFrame:
+    """Estimates Fixed Effects models for each family separately to examine heterogeneity,
+    then applies Benjamini-Hochberg FDR across all estimated weather coefficients.
+    """
+    rows = []
+    
+    for fam in families:
+        fam_df = df.loc[df["family"] == fam]
+        if len(fam_df) < 50:
+            continue
+            
+        fe_res = estimate_fixed_effects(
+            fam_df,
+            weather_vars=weather_vars,
+            controls=controls,
+            entity_col=entity_col,
+            cluster_col=cluster_col
+        )
+        
+        for var in weather_vars:
+            if var in fe_res["params"]:
+                rows.append({
+                    "family": fam,
+                    "predictor": var,
+                    "model_spec": "Fixed Effects",
+                    "coef": fe_res["params"][var],
+                    "se_robust": fe_res["std_errors"][var],
+                    "ci_lower_95": fe_res["ci_lower"][var],
+                    "ci_upper_95": fe_res["ci_upper"][var],
+                    "p_value": fe_res["p_values"][var],
+                    "n_obs": fe_res["nobs"],
+                    "r_squared": fe_res["r_squared"]
+                })
+                
+    res_df = pd.DataFrame(rows)
+    if not res_df.empty:
+        reject, q_vals = apply_benjamini_hochberg(res_df["p_value"])
+        res_df["q_fdr"] = q_vals
+        res_df["significant_fdr"] = reject
+    return res_df
+
+
+def run_earthquake_sensitivity_check(
+    df: pd.DataFrame,
+    weather_vars: List[str],
+    controls: List[str],
+    entity_col: str = "entity_id",
+    cluster_col: Optional[str] = "city"
+) -> Dict[str, Any]:
+    """Compares Fixed Effects estimates with and without the 2016 Ecuador earthquake period
+    (2016-04-16 to 2016-05-16).
+    """
+    # Baseline with full period
+    base_fe = estimate_fixed_effects(
+        df, weather_vars=weather_vars, controls=controls, entity_col=entity_col, cluster_col=cluster_col
+    )
+    
+    # Filter out earthquake period
+    if "date" in df.columns:
+        no_eq_df = df.loc[~df["date"].between("2016-04-16", "2016-05-16")]
+    elif "is_earthquake_period" in df.columns:
+        no_eq_df = df.loc[df["is_earthquake_period"].eq(0)]
+    else:
+        no_eq_df = df
+        
+    no_eq_fe = estimate_fixed_effects(
+        no_eq_df, weather_vars=weather_vars, controls=controls, entity_col=entity_col, cluster_col=cluster_col
+    )
+    
+    return {
+        "baseline_fe": base_fe,
+        "no_earthquake_fe": no_eq_fe
+    }
+
