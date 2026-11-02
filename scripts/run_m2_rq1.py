@@ -1,5 +1,6 @@
 """Execute full RQ1 panel econometric regressions, family heterogeneity,
-FDR correction, sensitivity analysis, and produce coefficient tables and figures.
+regional climate comparison, FDR correction, sensitivity analysis,
+and produce coefficient tables and figures.
 """
 
 from pathlib import Path
@@ -23,6 +24,7 @@ from src.statistics.panel_models import (
     apply_benjamini_hochberg,
     run_family_heterogeneity_models,
     run_earthquake_sensitivity_check,
+    estimate_regional_heterogeneity,
 )
 
 DATA_PATH = REPO_ROOT / "data" / "processed" / "curated_sales_weather.parquet"
@@ -65,7 +67,6 @@ def main():
     mask = df["family"].isin(FROZEN_FAMILIES) & df["store_active"].eq(1) & df["store_zero_day"].eq(0)
     data = df.loc[mask].copy()
     data["entity_id"] = data["store_nbr"].astype(str) + "_" + data["family"].astype(str)
-
     data["date"] = pd.to_datetime(data["date"])
     
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -116,7 +117,7 @@ def main():
         cluster_col="city"
     )
     
-    # Also add overall Pooled FE rows to the coefficients table
+    # Add overall Pooled FE rows to the coefficients table
     overall_rows = []
     for var in WEATHER_VARS:
         overall_rows.append({
@@ -141,8 +142,43 @@ def main():
     rq1_coefs.to_csv(coef_path, index=False)
     print(f"Saved: {coef_path}")
     
-    # 3. Earthquake Sensitivity Check
-    print("5. Running Earthquake Sensitivity Check...")
+    # 3. Regional Heterogeneity: Sierra vs Costa
+    print("5. Estimating Regional Climate Heterogeneity (Sierra vs Costa)...")
+    reg_df = estimate_regional_heterogeneity(
+        data,
+        weather_vars=WEATHER_VARS,
+        controls=CONTROLS,
+        entity_col="entity_id",
+        cluster_col="city"
+    )
+    reg_path = RESULTS_DIR / "rq1_regional_heterogeneity.csv"
+    reg_df.to_csv(reg_path, index=False)
+    print(f"Saved: {reg_path}")
+    
+    # Plot Regional Comparison
+    print("6. Plotting Regional Comparison (Sierra vs Costa)...")
+    fig, ax = plt.subplots(figsize=(9, 5))
+    x_pos = np.arange(len(WEATHER_VARS))
+    width = 0.35
+    
+    sierra_vals = reg_df[reg_df["region"] == "Sierra"].set_index("predictor").loc[WEATHER_VARS, "coef"].values
+    costa_vals = reg_df[reg_df["region"] == "Costa"].set_index("predictor").loc[WEATHER_VARS, "coef"].values
+    
+    ax.bar(x_pos - width/2, sierra_vals, width, label="Sierra (Andes Highlands)", color="#2ca02c")
+    ax.bar(x_pos + width/2, costa_vals, width, label="Costa (Coastal Lowlands)", color="#ff7f0e")
+    
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([v.replace("_2m_", " ").replace("_", " ").title() for v in WEATHER_VARS], rotation=15, ha="right")
+    ax.set_ylabel("Semi-Elasticity on log(1 + sales)")
+    ax.set_title("Geographic Weather Sensitivity: Sierra vs Costa Fixed Effects")
+    ax.axhline(0, color="black", linestyle="--", alpha=0.5)
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / "rq1_regional_comparison.png", dpi=200)
+    plt.close()
+    
+    # 4. Earthquake Sensitivity Check
+    print("7. Running Earthquake Sensitivity Check...")
     sens_res = run_earthquake_sensitivity_check(
         data,
         weather_vars=WEATHER_VARS,
@@ -169,16 +205,12 @@ def main():
     sens_df.to_csv(RESULTS_DIR / "rq1_sensitivity_earthquake.csv", index=False)
     print(f"Saved: {RESULTS_DIR / 'rq1_sensitivity_earthquake.csv'}")
     
-    # 4. Generate Figures
-    print("6. Plotting Forest Plot of Weather Elasticities...")
-    # Plot Forest Plot for Temperature Max and Precipitation across families
-    plt.figure(figsize=(10, 6))
-    sub_het = het_df[het_df["predictor"].isin(["temperature_2m_max", "precipitation_sum"])].copy()
-    
-    palette = {"temperature_2m_max": "#d62728", "precipitation_sum": "#1f77b4"}
-    y_pos = np.arange(len(FROZEN_FAMILIES))
-    
+    # 5. Generate Figures
+    print("8. Plotting Forest Plot of Weather Elasticities...")
     fig, ax = plt.subplots(figsize=(10, 7))
+    y_pos = np.arange(len(FROZEN_FAMILIES))
+    palette = {"temperature_2m_max": "#d62728", "precipitation_sum": "#1f77b4"}
+    
     for i, var in enumerate(["temperature_2m_max", "precipitation_sum"]):
         v_df = het_df[het_df["predictor"] == var].set_index("family").loc[FROZEN_FAMILIES]
         offset = -0.15 if i == 0 else 0.15
@@ -199,12 +231,10 @@ def main():
     plt.savefig(FIGURES_DIR / "rq1_weather_coefficients_forest.png", dpi=200)
     plt.close()
     
-    # Heatmap of coefficient magnitudes by family
-    print("7. Plotting Family Heterogeneity Heatmap...")
+    print("9. Plotting Family Heterogeneity Heatmap...")
     pivot_coef = het_df.pivot(index="family", columns="predictor", values="coef")
     pivot_sig = het_df.pivot(index="family", columns="predictor", values="significant_fdr")
     
-    # Annotate with asterisks for FDR significance
     annot = pivot_coef.round(4).astype(str)
     for fam in pivot_coef.index:
         for pred in pivot_coef.columns:
@@ -218,7 +248,49 @@ def main():
     plt.savefig(FIGURES_DIR / "rq1_family_heterogeneity.png", dpi=200)
     plt.close()
     
-    print("\nAll RQ1 Inferences and Visualizations Completed Successfully!")
+    # 6. Generate Handoff Table for Member 4 (Decision Matrix Weather Signatures)
+    print("10. Generating Handoff Table: weather_signatures_for_m4.csv...")
+    signatures = []
+    for fam in FROZEN_FAMILIES:
+        fam_res = het_df[het_df["family"] == fam]
+        sig_preds = fam_res[fam_res["significant_fdr"]]["predictor"].tolist()
+        
+        # Describe signature in human-readable and decision terms
+        if "temperature_2m_mean" in sig_preds and "sunshine_hours" in sig_preds:
+            desc = "High Sensitivity (Temp Mean + Sunshine)"
+            uncertainty_flag = False
+            rec_tag = "Prioritize pilot candidate"
+        elif "temperature_2m_mean" in sig_preds or "sunshine_hours" in sig_preds:
+            desc = "Moderate Sensitivity (Temp or Sunshine)"
+            uncertainty_flag = False
+            rec_tag = "Further validation candidate"
+        else:
+            desc = "Weather Insensitive (Staple/Controls dominate)"
+            uncertainty_flag = True
+            rec_tag = "Do not deploy (Hold baseline)"
+            
+        temp_mean_coef = fam_res.loc[fam_res["predictor"] == "temperature_2m_mean", "coef"].iloc[0]
+        sun_coef = fam_res.loc[fam_res["predictor"] == "sunshine_hours", "coef"].iloc[0]
+        rain_p = fam_res.loc[fam_res["predictor"] == "precipitation_sum", "p_value"].iloc[0]
+        
+        signatures.append({
+            "family": fam,
+            "weather_signature": desc,
+            "significant_predictors": ", ".join(sig_preds) if sig_preds else "None",
+            "temp_mean_elasticity_pct": round(temp_mean_coef * 100, 2),
+            "sunshine_elasticity_pct_per_hr": round(sun_coef * 100, 3),
+            "rain_significant_fdr": "precipitation_sum" in sig_preds,
+            "uncertainty_flag": uncertainty_flag,
+            "preliminary_m4_recommendation": rec_tag
+        })
+        
+    sig_df = pd.DataFrame(signatures)
+    sig_path = RESULTS_DIR / "weather_signatures_for_m4.csv"
+    sig_df.to_csv(sig_path, index=False)
+    print(f"Saved: {sig_path}")
+    print(sig_df[["family", "weather_signature", "uncertainty_flag"]])
+    
+    print("\nAll Advanced Inferences & Handoff Tables Completed Successfully!")
 
 
 if __name__ == "__main__":

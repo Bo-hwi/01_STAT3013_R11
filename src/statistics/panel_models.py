@@ -1,5 +1,5 @@
 """M2 Panel Econometric Models: Pooled OLS, Entity Fixed Effects, Random Effects,
-Clustered Standard Errors, and Specification Diagnostics for RQ1.
+Clustered Standard Errors, Regional Heterogeneity, and Specification Diagnostics for RQ1.
 """
 
 from typing import Any, Dict, List, Optional
@@ -85,7 +85,6 @@ def estimate_fixed_effects(
     X = sub[active_x]
     
     model = PanelOLS(y, X, entity_effects=True, check_rank=False)
-
     
     if cluster_col and cluster_col in sub.columns:
         # Cluster standard errors by city
@@ -110,7 +109,6 @@ def estimate_fixed_effects(
         "cov_type": "clustered" if (cluster_col and cluster_col in sub.columns) else "robust",
         "cov_matrix": res.cov,
         "raw_result": res,
-
     }
 
 
@@ -142,7 +140,6 @@ def estimate_random_effects(
     X = sm.add_constant(sub[active_x])
     
     model = RandomEffects(y, X, check_rank=False)
-
     res = model.fit(cov_type="robust")
     ci = res.conf_int(level=0.95)
     
@@ -306,10 +303,67 @@ def run_earthquake_sensitivity_check(
     no_eq_fe = estimate_fixed_effects(
         no_eq_df, weather_vars=weather_vars, controls=no_eq_controls, entity_col=entity_col, cluster_col=cluster_col
     )
-
     
     return {
         "baseline_fe": base_fe,
         "no_earthquake_fe": no_eq_fe
     }
 
+
+SIERRA_CITIES = {
+    "Quito", "Cayambe", "Cuenca", "Ambato", "Riobamba",
+    "Latacunga", "Ibarra", "Loja", "Guaranda"
+}
+COSTA_CITIES = {
+    "Guayaquil", "Daule", "Playas", "Libertad", "Salinas",
+    "Manta", "El Carmen", "Machala", "Babahoyo", "Quevedo",
+    "Esmeraldas", "Santo Domingo"
+}
+
+
+def estimate_regional_heterogeneity(
+    df: pd.DataFrame,
+    weather_vars: List[str],
+    controls: List[str],
+    entity_col: str = "entity_id",
+    cluster_col: Optional[str] = "city"
+) -> pd.DataFrame:
+    """Estimates Fixed Effects models separately for Sierra (highlands) and Costa (coastal lowlands)
+    to evaluate geographical climate heterogeneity, with BH-FDR adjustment.
+    """
+    data = df.copy()
+    data["region"] = np.where(
+        data["city"].isin(SIERRA_CITIES), "Sierra",
+        np.where(data["city"].isin(COSTA_CITIES), "Costa", "Other")
+    )
+    
+    rows = []
+    for region in ["Sierra", "Costa"]:
+        reg_df = data.loc[data["region"] == region]
+        if len(reg_df) < 50:
+            continue
+        fe_res = estimate_fixed_effects(
+            reg_df, weather_vars=weather_vars, controls=controls,
+            entity_col=entity_col, cluster_col=cluster_col
+        )
+        for var in weather_vars:
+            if var in fe_res["params"]:
+                rows.append({
+                    "region": region,
+                    "predictor": var,
+                    "model_spec": f"Fixed Effects ({region})",
+                    "coef": fe_res["params"][var],
+                    "se_robust": fe_res["std_errors"][var],
+                    "ci_lower_95": fe_res["ci_lower"][var],
+                    "ci_upper_95": fe_res["ci_upper"][var],
+                    "p_value": fe_res["p_values"][var],
+                    "n_obs": fe_res["nobs"],
+                    "r_squared": fe_res["r_squared"]
+                })
+                
+    res_df = pd.DataFrame(rows)
+    if not res_df.empty:
+        reject, q_vals = apply_benjamini_hochberg(res_df["p_value"])
+        res_df["q_fdr"] = q_vals
+        res_df["significant_fdr"] = reject
+    return res_df
