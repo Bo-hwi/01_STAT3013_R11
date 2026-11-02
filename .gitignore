@@ -37,3 +37,5 @@ logs/
 *.log
 
 # Do not ignore all CSV globally: small documented tables can be versioned.
+.superpowers/
+
