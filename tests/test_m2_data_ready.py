@@ -11,3 +11,4 @@ def test_curated_sales_weather_exists_and_valid():
     assert df["store_nbr"].nunique() == 54
     required_cols = {"date", "store_nbr", "family", "sales", "city", "precipitation_sum", "temperature_2m_max"}
     assert required_cols.issubset(df.columns)
+

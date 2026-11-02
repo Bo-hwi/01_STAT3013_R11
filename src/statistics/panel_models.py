@@ -81,9 +81,11 @@ def estimate_fixed_effects(
         sub = sub.set_index([entity_col, "time_idx"])
         
     y = sub["log_sales"]
-    X = sub[x_cols]
+    active_x = [c for c in x_cols if sub[c].nunique() > 1]
+    X = sub[active_x]
     
-    model = PanelOLS(y, X, entity_effects=True)
+    model = PanelOLS(y, X, entity_effects=True, check_rank=False)
+
     
     if cluster_col and cluster_col in sub.columns:
         # Cluster standard errors by city
@@ -136,9 +138,11 @@ def estimate_random_effects(
         sub = sub.set_index([entity_col, "time_idx"])
         
     y = sub["log_sales"]
-    X = sm.add_constant(sub[x_cols])
+    active_x = [c for c in x_cols if sub[c].nunique() > 1]
+    X = sm.add_constant(sub[active_x])
     
-    model = RandomEffects(y, X)
+    model = RandomEffects(y, X, check_rank=False)
+
     res = model.fit(cov_type="robust")
     ci = res.conf_int(level=0.95)
     
@@ -298,9 +302,11 @@ def run_earthquake_sensitivity_check(
     else:
         no_eq_df = df
         
+    no_eq_controls = [c for c in controls if c != "is_earthquake_period"]
     no_eq_fe = estimate_fixed_effects(
-        no_eq_df, weather_vars=weather_vars, controls=controls, entity_col=entity_col, cluster_col=cluster_col
+        no_eq_df, weather_vars=weather_vars, controls=no_eq_controls, entity_col=entity_col, cluster_col=cluster_col
     )
+
     
     return {
         "baseline_fe": base_fe,

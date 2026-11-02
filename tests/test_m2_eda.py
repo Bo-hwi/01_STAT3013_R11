@@ -57,3 +57,4 @@ def test_screen_deep_study_candidates():
     screening = screen_deep_study_candidates(sample)
     assert "BEVERAGES" in screening.index
     assert screening.loc["BEVERAGES", "zero_rate"] == 0.0
+
