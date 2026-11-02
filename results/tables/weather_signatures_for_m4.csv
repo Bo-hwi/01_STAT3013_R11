@@ -1,0 +1,8 @@
+family,weather_signature,significant_predictors,temp_mean_elasticity_pct,sunshine_elasticity_pct_per_hr,rain_significant_fdr,uncertainty_flag,preliminary_m4_recommendation
+GROCERY I,High Sensitivity (Temp Mean + Sunshine),"temperature_2m_max, temperature_2m_mean, sunshine_hours",2.44,0.203,False,False,Prioritize pilot candidate
+BEVERAGES,High Sensitivity (Temp Mean + Sunshine),"temperature_2m_mean, sunshine_hours",9.09,0.575,False,False,Prioritize pilot candidate
+CLEANING,High Sensitivity (Temp Mean + Sunshine),"temperature_2m_max, temperature_2m_mean, sunshine_hours",4.17,0.249,False,False,Prioritize pilot candidate
+DAIRY,High Sensitivity (Temp Mean + Sunshine),"temperature_2m_max, temperature_2m_mean, relative_humidity_2m_mean, sunshine_hours",10.33,1.11,False,False,Prioritize pilot candidate
+BREAD/BAKERY,Weather Insensitive (Staple/Controls dominate),temperature_2m_max,1.38,0.182,False,True,Do not deploy (Hold baseline)
+PERSONAL CARE,High Sensitivity (Temp Mean + Sunshine),"precipitation_sum, temperature_2m_max, temperature_2m_mean, sunshine_hours",6.7,0.475,True,False,Prioritize pilot candidate
+FROZEN FOODS,High Sensitivity (Temp Mean + Sunshine),"temperature_2m_mean, sunshine_hours",9.07,1.151,False,False,Prioritize pilot candidate
