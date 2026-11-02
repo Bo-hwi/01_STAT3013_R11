@@ -1,4 +1,6 @@
+from pathlib import Path
 import pandas as pd
+
 import numpy as np
 import pytest
 from src.statistics.panel_models import (
@@ -106,4 +108,17 @@ def test_heterogeneity_and_earthquake_sensitivity(synthetic_panel):
         cluster_col="city"
     )
     assert "baseline_fe" in sens and "no_earthquake_fe" in sens
+
+
+def test_rq1_coefficients_table_schema():
+    path = Path("results/tables/rq1_coefficients.csv")
+    assert path.exists(), "rq1_coefficients.csv must be produced"
+    df = pd.read_csv(path)
+    required = {
+        "family", "predictor", "model_spec", "coef", "se_robust",
+        "ci_lower_95", "ci_upper_95", "p_value", "q_fdr", "significant_fdr", "n_obs"
+    }
+    assert required.issubset(df.columns)
+    assert len(df) >= 40  # 5 pooled + 35 family-specific (7 families * 5 vars)
+
 

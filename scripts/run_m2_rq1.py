@@ -1,0 +1,225 @@
+"""Execute full RQ1 panel econometric regressions, family heterogeneity,
+FDR correction, sensitivity analysis, and produce coefficient tables and figures.
+"""
+
+from pathlib import Path
+import sys
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+from src.statistics.panel_models import (
+    estimate_pooled_ols,
+    estimate_fixed_effects,
+    estimate_random_effects,
+    hausman_test,
+    apply_benjamini_hochberg,
+    run_family_heterogeneity_models,
+    run_earthquake_sensitivity_check,
+)
+
+DATA_PATH = REPO_ROOT / "data" / "processed" / "curated_sales_weather.parquet"
+RESULTS_DIR = REPO_ROOT / "results" / "tables"
+FIGURES_DIR = REPO_ROOT / "reports" / "figures"
+
+FROZEN_FAMILIES = [
+    "GROCERY I",
+    "BEVERAGES",
+    "CLEANING",
+    "DAIRY",
+    "BREAD/BAKERY",
+    "PERSONAL CARE",
+    "FROZEN FOODS",
+]
+
+WEATHER_VARS = [
+    "precipitation_sum",
+    "temperature_2m_max",
+    "temperature_2m_mean",
+    "relative_humidity_2m_mean",
+    "sunshine_hours",
+]
+
+CONTROLS = [
+    "onpromotion",
+    "is_day_off",
+    "is_payday",
+    "is_event",
+    "is_national_holiday",
+    "is_earthquake_period",
+]
+
+
+def main():
+    print("Loading curated dataset for RQ1 inference...")
+    df = pd.read_parquet(DATA_PATH)
+    
+    # Filter for the 7 frozen deep-study families on open store days
+    mask = df["family"].isin(FROZEN_FAMILIES) & df["store_active"].eq(1) & df["store_zero_day"].eq(0)
+    data = df.loc[mask].copy()
+    data["entity_id"] = data["store_nbr"].astype(str) + "_" + data["family"].astype(str)
+
+    data["date"] = pd.to_datetime(data["date"])
+    
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+    
+    print(f"Data filtered: {len(data):,} observations across 7 families.")
+    
+    # 1. Overall Model Comparison: Pooled OLS, Fixed Effects, Random Effects
+    print("1. Estimating Pooled OLS (Clustered by City)...")
+    ols_res = estimate_pooled_ols(data, WEATHER_VARS, CONTROLS, cluster_col="city")
+    
+    print("2. Estimating Entity Fixed Effects (store_nbr x family, Clustered by City)...")
+    fe_res = estimate_fixed_effects(data, WEATHER_VARS, CONTROLS, entity_col="entity_id", cluster_col="city")
+    
+    print("3. Estimating Random Effects...")
+    re_res = estimate_random_effects(data, WEATHER_VARS, CONTROLS, entity_col="entity_id")
+    
+    h_test = hausman_test(fe_res, re_res)
+    print(f"Hausman test: chi2 = {h_test['stat']:.2f}, p-value = {h_test['p_value']:.4e} -> Preferred: {h_test['preferred']}")
+    
+    # Export Model Comparison Table
+    comp_rows = []
+    for var in WEATHER_VARS:
+        comp_rows.append({
+            "predictor": var,
+            "pooled_ols_coef": ols_res["params"].get(var),
+            "pooled_ols_se": ols_res["std_errors"].get(var),
+            "pooled_ols_pval": ols_res["p_values"].get(var),
+            "fixed_effects_coef": fe_res["params"].get(var),
+            "fixed_effects_se": fe_res["std_errors"].get(var),
+            "fixed_effects_pval": fe_res["p_values"].get(var),
+            "random_effects_coef": re_res["params"].get(var),
+            "random_effects_se": re_res["std_errors"].get(var),
+            "random_effects_pval": re_res["p_values"].get(var),
+        })
+    comp_df = pd.DataFrame(comp_rows)
+    comp_df.to_csv(RESULTS_DIR / "rq1_model_comparison_ols_fe_re.csv", index=False)
+    print(f"Saved: {RESULTS_DIR / 'rq1_model_comparison_ols_fe_re.csv'}")
+    
+    # 2. Family Heterogeneity: Run Fixed Effects per Family
+    print("4. Estimating Family Heterogeneity Models (7 Families)...")
+    het_df = run_family_heterogeneity_models(
+        data,
+        families=FROZEN_FAMILIES,
+        weather_vars=WEATHER_VARS,
+        controls=CONTROLS,
+        entity_col="entity_id",
+        cluster_col="city"
+    )
+    
+    # Also add overall Pooled FE rows to the coefficients table
+    overall_rows = []
+    for var in WEATHER_VARS:
+        overall_rows.append({
+            "family": "ALL_7_FAMILIES",
+            "predictor": var,
+            "model_spec": "Fixed Effects (Pooled)",
+            "coef": fe_res["params"][var],
+            "se_robust": fe_res["std_errors"][var],
+            "ci_lower_95": fe_res["ci_lower"][var],
+            "ci_upper_95": fe_res["ci_upper"][var],
+            "p_value": fe_res["p_values"][var],
+            "n_obs": fe_res["nobs"],
+            "r_squared": fe_res["r_squared"]
+        })
+    overall_df = pd.DataFrame(overall_rows)
+    reject_all, q_all = apply_benjamini_hochberg(overall_df["p_value"])
+    overall_df["q_fdr"] = q_all
+    overall_df["significant_fdr"] = reject_all
+    
+    rq1_coefs = pd.concat([overall_df, het_df], ignore_index=True)
+    coef_path = RESULTS_DIR / "rq1_coefficients.csv"
+    rq1_coefs.to_csv(coef_path, index=False)
+    print(f"Saved: {coef_path}")
+    
+    # 3. Earthquake Sensitivity Check
+    print("5. Running Earthquake Sensitivity Check...")
+    sens_res = run_earthquake_sensitivity_check(
+        data,
+        weather_vars=WEATHER_VARS,
+        controls=CONTROLS,
+        entity_col="entity_id",
+        cluster_col="city"
+    )
+    sens_rows = []
+    for var in WEATHER_VARS:
+        base_c = sens_res["baseline_fe"]["params"][var]
+        base_se = sens_res["baseline_fe"]["std_errors"][var]
+        no_eq_c = sens_res["no_earthquake_fe"]["params"][var]
+        no_eq_se = sens_res["no_earthquake_fe"]["std_errors"][var]
+        sens_rows.append({
+            "predictor": var,
+            "baseline_coef": base_c,
+            "baseline_se": base_se,
+            "no_earthquake_coef": no_eq_c,
+            "no_earthquake_se": no_eq_se,
+            "delta_coef": no_eq_c - base_c,
+            "pct_change": ((no_eq_c - base_c) / abs(base_c)) * 100 if base_c != 0 else 0.0
+        })
+    sens_df = pd.DataFrame(sens_rows)
+    sens_df.to_csv(RESULTS_DIR / "rq1_sensitivity_earthquake.csv", index=False)
+    print(f"Saved: {RESULTS_DIR / 'rq1_sensitivity_earthquake.csv'}")
+    
+    # 4. Generate Figures
+    print("6. Plotting Forest Plot of Weather Elasticities...")
+    # Plot Forest Plot for Temperature Max and Precipitation across families
+    plt.figure(figsize=(10, 6))
+    sub_het = het_df[het_df["predictor"].isin(["temperature_2m_max", "precipitation_sum"])].copy()
+    
+    palette = {"temperature_2m_max": "#d62728", "precipitation_sum": "#1f77b4"}
+    y_pos = np.arange(len(FROZEN_FAMILIES))
+    
+    fig, ax = plt.subplots(figsize=(10, 7))
+    for i, var in enumerate(["temperature_2m_max", "precipitation_sum"]):
+        v_df = het_df[het_df["predictor"] == var].set_index("family").loc[FROZEN_FAMILIES]
+        offset = -0.15 if i == 0 else 0.15
+        label = "Max Temperature (°C)" if var == "temperature_2m_max" else "Precipitation (mm)"
+        ax.errorbar(
+            v_df["coef"], y_pos + offset,
+            xerr=[v_df["coef"] - v_df["ci_lower_95"], v_df["ci_upper_95"] - v_df["coef"]],
+            fmt='o', color=palette[var], label=label, capsize=4, markersize=7
+        )
+        
+    ax.axvline(0, color="black", linestyle="--", alpha=0.6)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(FROZEN_FAMILIES)
+    ax.set_xlabel("Estimated Semi-Elasticity on log(1 + sales) with 95% Clustered CI")
+    ax.set_title("RQ1 Weather Sensitivity: Fixed Effects Estimates by Product Family")
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / "rq1_weather_coefficients_forest.png", dpi=200)
+    plt.close()
+    
+    # Heatmap of coefficient magnitudes by family
+    print("7. Plotting Family Heterogeneity Heatmap...")
+    pivot_coef = het_df.pivot(index="family", columns="predictor", values="coef")
+    pivot_sig = het_df.pivot(index="family", columns="predictor", values="significant_fdr")
+    
+    # Annotate with asterisks for FDR significance
+    annot = pivot_coef.round(4).astype(str)
+    for fam in pivot_coef.index:
+        for pred in pivot_coef.columns:
+            if pivot_sig.loc[fam, pred]:
+                annot.loc[fam, pred] += "*"
+                
+    plt.figure(figsize=(9, 6))
+    sns.heatmap(pivot_coef, cmap="coolwarm", center=0, annot=annot, fmt="", cbar_kws={"label": "Coefficient (Semi-Elasticity)"})
+    plt.title("Weather Heterogeneity across 7 Families (* = FDR q < 0.05)")
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / "rq1_family_heterogeneity.png", dpi=200)
+    plt.close()
+    
+    print("\nAll RQ1 Inferences and Visualizations Completed Successfully!")
+
+
+if __name__ == "__main__":
+    main()
