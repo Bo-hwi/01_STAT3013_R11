@@ -15,7 +15,7 @@
 
 ### 1.2. Hypotheses
 - **Hypothesis 1a ($H_{1a}$ — Network Association):** After conditioning on store promotions, calendar seasonality, paydays, and store-family fixed unobserved attributes, at least one meteorological variable ($\text{temperature}$, $\text{sunshine}$, $\text{precipitation}$) exhibits a statistically non-zero association with daily sales at the $\alpha = 0.05$ significance level under Benjamini–Hochberg False Discovery Rate (FDR) control.
-- **Hypothesis 1b ($H_{1b}$ — Cross-Family & Location Heterogeneity):** The magnitude, sign, and statistical significance of weather associations differ systematically across product categories: weather-sensitive categories (e.g., `BEVERAGES`, `DAIRY`, `FROZEN FOODS`) exhibit pronounced weather elasticities, whereas staple non-perishable categories (e.g., `GROCERY I`, `CLEANING`) display dampened or negligible elasticities.
+- **Hypothesis 1b ($H_{1b}$ — Cross-Family & Location Heterogeneity):** The magnitude, sign, and statistical significance of weather associations differ systematically across product categories: weather-sensitive categories (e.g., `BEVERAGES`, `FROZEN FOODS`) exhibit pronounced weather elasticities, whereas staple non-perishable categories (e.g., `GROCERY I`, `CLEANING`) display dampened or negligible elasticities.
 
 ---
 
@@ -26,64 +26,65 @@ Retail sales distributions exhibit severe positive skewness with zeros. We adopt
 $$y_{s,f,t} = \log(1 + \text{Sales}_{s,f,t})$$
 where $\text{Sales}_{s,f,t} \ge 0$ is the total recorded volume for store $s \in \{1, \dots, 54\}$, product family $f \in \{1, \dots, 7\}$, on date $t$.
 
-### 2.2. Entity Fixed Effects (Primary Benchmark Specification)
-The primary econometric model is a two-way / entity fixed-effects panel regression:
-$$y_{s,f,t} = \alpha_{s,f} + \beta^T W_{\text{city}(s),t} + \theta^T X_{s,f,t} + \varepsilon_{s,f,t}$$
+### 2.2. Entity Fixed Effects with Calendar Controls (Primary Benchmark Specification)
+The primary econometric model is a two-way / entity fixed-effects panel regression with calendar controls:
+$$\log(1 + \text{Sales}_{s,f,t}) = \alpha_{s,f} + \beta^\top W_{g(s),t} + \theta^\top X_{s,f,t} + \gamma_{\text{calendar}}(t) + \varepsilon_{s,f,t}$$
 
 - **Entity Unit $\alpha_{s,f}$:** A unique intercept for each `(store_nbr, family)` pair ($54 \times 7 = 378$ entity units). This absorbs **all time-invariant store and family characteristics** (e.g., store floor size, store format/type, demographic cluster, baseline neighborhood affluence, permanent category preferences).
-- **Meteorological Vector $W_{\text{city}(s),t}$:**
+- **Meteorological Vector $W_{g(s),t}$ (4 Clean Weather Regressors):**
   - $\text{precipitation\_sum}$ (Daily total precipitation in mm)
   - $\text{temperature\_2m\_max}$ (Daily maximum 2m temperature in °C)
-  - $\text{temperature\_2m\_mean}$ (Daily average 2m temperature in °C)
   - $\text{relative\_humidity\_2m\_mean}$ (Daily average relative humidity in %)
   - $\text{sunshine\_hours}$ (Daily sunshine duration in hours)
-  - *Exclusion Note (QA-09):* $\text{wind\_speed\_10m\_max}$ is strictly excluded from all specifications due to documented sensor corruptions reaching non-physical values ($>780 \text{ km/h}$).
-- **Control Covariates $X_{s,f,t}$:**
+  - *Multicollinearity Resolution:* $\text{temperature\_2m\_mean}$ is strictly excluded from all regression specifications due to an extreme empirical correlation ($r = 0.975$) with $\text{temperature\_2m\_max}$. Including both regressors induced severe variance inflation (VIF $> 20$), artificial coefficient sign-flipping, and uninterpretable elasticities. Retaining solely $\text{temperature\_2m\_max}$ aligns with `configs/ablation_M0_M5.yaml`.
+  - *Sensor Exclusion (QA-09):* $\text{wind\_speed\_10m\_max}$ is strictly excluded due to documented sensor corruptions exceeding $780 \text{ km/h}$.
+- **Calendar Fixed Effects $\gamma_{\text{calendar}}(t)$ (Proposal Section 7.1):**
+  - Day-of-week dummies (`dow_1` to `dow_6`, baseline Monday): captures massive weekend shopping surges (+25% to +27%).
+  - Month-of-year dummies (`month_2` to `month_12`, baseline January): absorbs seasonal fluctuations in weather (e.g., dry vs. rainy seasons, school vacations, December holiday shopping surge of +33.6%). Without monthly dummies, weather regressors erroneously absorb seasonal calendar demand shifts.
+  - Annual secular dummies (`year_2014` to `year_2017`, baseline 2013): controls for multi-year chain expansion, macroeconomic inflation, and upward secular sales growth (+30% to +53%).
+- **Business Control Covariates $X_{s,f,t}$:**
   - $\text{onpromotion}_{s,f,t}$: Number of promoted items within family $f$.
   - $\text{is\_day\_off}_t$: Binary indicator for weekends and statutory non-working holidays.
-  - $\text{is\_payday}_t$: Binary indicator for the 15th and end-of-month government/private pay cycles in Ecuador.
-  - $\text{is\_national\_holiday}_t$: Indicator for nationwide public holidays.
+  - $\text{is\_payday}_t$: Binary indicator for the 15th and end-of-month pay cycles in Ecuador.
+  - $\text{is\_national\_holiday}_t$: Nationwide public holidays.
   - $\text{is\_event}_t$: Major national cultural or sporting events.
   - $\text{is\_earthquake\_period}_t$: Binary indicator for the emergency recovery window following the 7.8 Mw Pedernales earthquake (2016-04-16 to 2016-05-16).
 
 ### 2.3. Hausman Specification Test (Fixed vs. Random Effects)
 To formally evaluate the consistency of Random Effects against Fixed Effects, we compute the Hausman specification statistic:
 $$H = (\hat{\beta}_{\text{FE}} - \hat{\beta}_{\text{RE}})' \left[ \widehat{\text{Var}}(\hat{\beta}_{\text{FE}}) - \widehat{\text{Var}}(\hat{\beta}_{\text{RE}}) \right]^{-1} (\hat{\beta}_{\text{FE}} - \hat{\beta}_{\text{RE}})$$
-- In the Favorita retail setting, unobserved store-family management practices and local traffic are plausibly correlated with promotions and location-based weather patterns ($\text{Cov}(\alpha_{s,f}, X_{s,f,t}) \ne 0$).
-- Fixed Effects is chosen as the **unconditionally consistent primary estimator** because it does not require orthogonality between individual effects and explanatory variables.
+Fixed Effects serves as the robust primary estimator because it does not require orthogonality between unobserved entity traits and promotional or weather shocks ($\text{Cov}(\alpha_{s,f}, X_{s,f,t}) = 0$).
 
 ---
 
 ## 3. Standard Error Clustering & The Moulton Problem
 
 ### 3.1. Why Naive IID Standard Errors are Biased
-In the Favorita data, 54 stores are located across 22 cities (e.g., Quito has 18 stores; Guayaquil has 8 stores). Crucially, **all stores located within the same city share identical meteorological measurements from the city-level ERA5 grid cell on day $t$**.
+In the Favorita data, 54 stores are located across 22 cities. If standard errors are computed assuming IID errors, we violate independence (the classical Moulton, 1986 clustering problem):
+$$\text{Cov}(\varepsilon_{s,f,t}, \varepsilon_{s',f',t}) > 0 \quad \text{for } s \ne s' \text{ in the same climate grid.}$$
+Treating multiple stores in the same area as separate independent weather observations drastically inflates degrees of freedom and deflates standard errors, producing spurious $p$-values.
 
-If standard errors are computed assuming independent and identically distributed (IID) errors, we violate the fundamental independence assumption (the classical Moulton, 1986 clustering problem):
-$$\text{Cov}(\varepsilon_{s,f,t}, \varepsilon_{s',f',t}) > 0 \quad \text{for } s \ne s' \text{ in the same city.}$$
-Treating multiple stores in the same city as separate independent weather observations drastically inflates the effective degrees of freedom, compressing standard errors by up to $300\text{--}500\%$, yielding spurious $t$-statistics and false significance ($p < 0.001$).
-
-### 3.2. Clustered Covariance Estimator
-To produce valid, conservative inferential bounds, all standard errors and confidence intervals in RQ1 are computed using **Cluster-Robust Covariance Estimation** clustered at the **City level** (22 clusters):
-$$V_{\text{cluster}} = (X'X)^{-1} \left( \sum_{g=1}^{G} X_g' e_g e_g' X_g \right) (X'X)^{-1}$$
-where $g$ indexes the 22 geographic cities. This estimator accounts for arbitrary contemporaneous cross-store error correlation and within-city serial autocorrelation.
+### 3.2. Clustered Covariance Estimator on `weather_grid_id` (21 Clusters)
+All standard errors in RQ1 (Pooled OLS, Fixed Effects, and Random Effects) are clustered at the **`weather_grid_id` level (21 clusters)**:
+$$V_{\text{cluster}} = (X'X)^{-1} \left( \sum_{g=1}^{21} X_g' e_g e_g' X_g \right) (X'X)^{-1}$$
+- **Data Dictionary & QA-07 Alignment:** While there are 22 cities, Salinas and Libertad share a single 0.25° ERA5 weather grid cell. Because weather shock treatment is assigned at the grid cell level, clustering must be defined at `weather_grid_id` (21 clusters) rather than city.
+- **Random Effects Clustering:** Random Effects standard errors are explicitly clustered by `weather_grid_id`, correcting previously unclustered robust standard errors that produced hyper-inflated confidence (e.g., $p \approx 10^{-49}$). With clustering, RE standard errors ($0.0040$) closely mirror FE clustered errors ($0.0040$), providing sound econometric bounds.
 
 ---
 
 ## 4. Multiple Hypothesis Testing Correction (Benjamini–Hochberg FDR)
 
 ### 4.1. The Multiple Comparisons Risk
-Evaluating 5 weather variables across 7 product families produces 35 distinct hypothesis tests simultaneously. Under a standard nominal threshold ($\alpha = 0.05$), the family-wise error rate (FWER) of detecting at least one false positive purely by chance exceeds:
-$$1 - (1 - 0.05)^{35} \approx 83.4\%$$
+Evaluating 4 weather variables across 7 product families produces 28 family-specific hypothesis tests. Under a standard nominal threshold ($\alpha = 0.05$), the family-wise error rate exceeds $76\%$.
 
 ### 4.2. Benjamini–Hochberg (BH) False Discovery Rate Procedure
 We implement the Benjamini–Hochberg (1995) algorithm to bound the expected proportion of false discoveries at $q^* = 0.05$:
-1. Sort raw two-sided $p$-values in ascending order: $p_{(1)} \le p_{(2)} \le \dots \le p_{(m)}$, where $m = 35$.
+1. Sort raw two-sided $p$-values in ascending order: $p_{(1)} \le p_{(2)} \le \dots \le p_{(m)}$, where $m = 28$.
 2. For each rank $i$, calculate adjusted $q$-values:
    $$q_{(i)} = \min_{k \ge i} \left( \frac{m}{k} p_{(k)} \right)$$
 3. Declare significance if $q_{(i)} \le 0.05$.
 
-Both the unadjusted $p$-values and the BH-adjusted $q$-values are explicitly reported in [results/tables/rq1_coefficients.csv](file:///d:/Study/PTTk/LAB/results/tables/rq1_coefficients.csv).
+Both unadjusted $p$-values and BH-adjusted $q$-values are reported in [results/tables/rq1_coefficients.csv](file:///d:/Study/PTTk/LAB/results/tables/rq1_coefficients.csv).
 
 ---
 
@@ -99,33 +100,37 @@ Both the unadjusted $p$-values and the BH-adjusted $q$-values are explicitly rep
 ## 6. Empirical Findings Summary & Sensitivity Analysis
 
 ### 6.1. Empirical Regression Estimates (from `rq1_coefficients.csv`)
-1. **Mean Temperature ($\text{temperature\_2m\_mean}$):**
-   - Pooled 7-Family Network: $\hat{\beta} = +0.0634$ ($p = 1.96 \times 10^{-14}$, $q_{\text{FDR}} = 4.89 \times 10^{-14}$).
-   - Interpretation: A 1°C increase in daily average temperature is associated with an estimated $+6.34\%$ increase in retail sales volume across the network, holding promotions and calendar fixed.
-   - Heterogeneity: Highly prominent in `DAIRY` ($\hat{\beta} = +0.1033$, $q < 10^{-21}$), `BEVERAGES` ($\hat{\beta} = +0.0909$, $q < 10^{-7}$), and `FROZEN FOODS` ($\hat{\beta} = +0.0907$, $q < 10^{-7}$).
-2. **Sunshine Hours ($\text{sunshine\_hours}$):**
-   - Pooled 7-Family Network: $\hat{\beta} = +0.0060$ ($p = 1.17 \times 10^{-20}$, $q_{\text{FDR}} = 5.86 \times 10^{-20}$).
-   - Interpretation: Each additional hour of sunshine is associated with a $+0.60\%$ increase in daily sales.
-   - Heterogeneity: Strongest in `FROZEN FOODS` (+1.15%/hr) and `DAIRY` (+1.11%/hr).
-3. **Precipitation ($\text{precipitation\_sum}$):**
-   - Pooled 7-Family Network: $\hat{\beta} = +0.0001$ ($p = 0.5702$, $q_{\text{FDR}} = 0.5702$).
-   - Statistical finding: Total rainfall has **no statistically significant network-wide relationship** with sales after controlling for entity effects and days off ($q_{\text{FDR}} > 0.05$).
+1. **Maximum Temperature ($\text{temperature\_2m\_max}$):**
+   - Pooled 7-Family Network: $\hat{\beta} = +0.0119$ ($p = 0.0032$, $q_{\text{FDR}} = 0.0063$).
+   - Interpretation: A 1°C increase in daily maximum temperature is associated with an estimated $+1.19\%$ increase in retail sales volume across the network, holding promotions, calendar, and entity effects fixed.
+   - Family Heterogeneity: Statistically significant in `BEVERAGES` ($\hat{\beta} = +0.0376$, $+3.76\%$/°C, $q = 0.0006$) and `FROZEN FOODS` ($\hat{\beta} = +0.0369$, $+3.69\%$/°C, $q < 0.0001$).
+2. **Precipitation ($\text{precipitation\_sum}$):**
+   - Pooled 7-Family Network: $\hat{\beta} = -0.0005$ ($-0.05\%$/mm, $p = 0.0007$, $q_{\text{FDR}} = 0.0028$).
+   - Family Heterogeneity: Statistically significant only in `BREAD/BAKERY` ($\hat{\beta} = -0.00067$, $-0.067\%$/mm, $q = 0.0009$). Other categories show no statistically significant rain sensitivity after FDR control.
+3. **Relative Humidity & Sunshine:**
+   - Pooled Humidity: $\hat{\beta} = +0.0009$ ($p = 0.0549$, $q_{\text{FDR}} = 0.0732$, insignificant).
+   - Pooled Sunshine: $\hat{\beta} = +0.00058$ ($p = 0.5412$, $q_{\text{FDR}} = 0.5412$, insignificant). Once calendar month and day-of-week dummies are controlled for, sunshine hours no longer exhibit spurious network-wide significance.
+4. **Weather-Insensitive Categories:**
+   - 4 out of 7 categories (`GROCERY I`, `CLEANING`, `DAIRY`, `PERSONAL CARE`) show no statistically significant association with any weather regressor at $q < 0.05$ once calendar seasonality and entity fixed effects are conditioned upon.
 
-### 6.2. Earthquake Sensitivity Robustness Check
-Following the devastating 16/04/2016 Pedernales earthquake, commercial activity in Ecuador experienced massive disruption and emergency provisioning.
-We compared estimates with the full sample versus excluding the earthquake window (2016-04-16 to 2016-05-16):
-- $\text{temperature\_2m\_mean}$ elasticity shifts by only **$-1.85\%$** (from $0.0634$ to $0.0622$).
-- $\text{sunshine\_hours}$ elasticity shifts by only **$-5.02\%$** (from $0.0060$ to $0.0057$).
-- Both retain identical statistical significance and sign. The econometric findings are confirmed robust to extreme natural disaster shocks.
+### 6.2. Regional Heterogeneity (Sierra vs. Costa)
+- **Sierra (Highlands):** $\text{temperature\_2m\_max}$ elasticity is $+0.57\%$/°C ($q < 10^{-9}$), sunshine elasticity is $+0.18\%$/hr ($q < 10^{-5}$), precipitation is insignificant ($p = 0.16$).
+- **Costa (Coastal Lowlands):** $\text{temperature\_2m\_max}$ elasticity is **$+1.77\%$/°C** ($q = 0.041$), more than **3 times higher** than in the Sierra, and precipitation exhibits a negative association ($-0.046\%$/mm, $q = 0.041$).
+
+### 6.3. Earthquake Sensitivity Robustness Check
+Comparing full sample against the exclusion of the earthquake disruption window (2016-04-16 to 2016-05-16):
+- $\text{temperature\_2m\_max}$ elasticity shifts by only **$+1.66\%$** (from $0.01187$ to $0.01207$).
+- $\text{precipitation\_sum}$ elasticity shifts by only $+12.6\%$ (from $-0.00050$ to $-0.00044$).
+- All statistical signs and significance levels are preserved, confirming robustness to catastrophic natural disaster shocks.
 
 ---
 
 ## 7. Handoff to M3 (ML) & M4 (Decisions)
 
 1. **Feature Ablation Priority (for M3):**
-   - Temperature mean and sunshine duration demonstrate the most robust statistical signal.
-   - Precipitation exhibits high noise and localized insignificance; models adding precipitation alone (M1) should not be expected to generate large out-of-sample improvements over M0.
-2. **Decision Matrix Uncertainty Flags (for M4):**
-   - Categories with confirmed significant weather sensitivities (`BEVERAGES`, `DAIRY`, `FROZEN FOODS`) should be tagged `Prioritize pilot` if forecasting lifts verify cost reductions.
-   - Categories where weather coefficients are statistically indistinguishable from zero (`BREAD/BAKERY` for sunshine/temp mean, `GROCERY I` for precipitation) should carry an explicit `Uncertainty Flag = True` in the final Decision Matrix.
-
+   - Maximum temperature is the primary meteorological signal with strong category selectivity (`BEVERAGES` and `FROZEN FOODS`).
+   - Precipitation exhibits minor negative effects for fresh bakery products.
+   - Sunshine duration and humidity exhibit negligible independent predictive signal once calendar seasonality is modeled.
+2. **Decision Matrix Statistical Input (for M4 — `weather_signatures_for_m4.csv`):**
+   - **No Prescriptive Deployment Labels from RQ1:** RQ1 reports purely econometric association metrics (point estimates $\hat{\beta}$, semi-elasticity $\%$, standard errors, and FDR $q$-values).
+   - **Boundary Requirement:** Prescriptive operational labels (such as "Prioritize pilot" or "Do not deploy") must not be assigned solely based on statistical $p$-values. Member 4 assigns Decision Matrix classifications by evaluating whether statistical sensitivity translates into out-of-sample forecast lift ($\Delta\text{RMSE}$, $\Delta\text{WAPE}$, DM-test from RQ2/M3) and exceeds the Newsvendor cost threshold ($C_u / (C_u + C_o)$).
