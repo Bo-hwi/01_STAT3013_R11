@@ -1,0 +1,26 @@
+{
+  "python": "3.13.17",
+  "seed": 42,
+  "cpu_threads": 2,
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "pyarrow": "26.0.0",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2"
+  },
+  "source_sha256": {
+    "data/processed/model_features.parquet": "c2f2642d2fdba72f4ebfed8acc2b095dacd1395944ce8f74719026999069f812",
+    "configs/research_protocol.yaml": "0f37cfd952250bcfa2b47d399498e9f44be9d2770617d1177f5c49b36f9d31e4",
+    "configs/ablation_M0_M5.yaml": "e6fa7288cdc0064418959506328852052773766edb9042b655aea9e60092315e",
+    "src/forecasting/feature_spec.py": "ef8e338388aad1a5f26f28fb883534d58de20f2f9bc06e13cbe3ca2e617c424a",
+    "src/features/lag_features.py": "a8c107b641f48df205579867474a499091d528c178541b452c7775444062cc08",
+    "src/forecasting/rolling_validation.py": "49c2e7c5272137f28495d5998139c645530de6e6e05721833b52ae052ae9af2f",
+    "src/forecasting/evaluation.py": "fd65a61853aaa271ec03d4937f3964b861cc15c896d616a3c0194493a9aceccc"
+  },
+  "experiments": 60,
+  "scored_predictions": 616140,
+  "experiment_minutes": 31.8
+}
