@@ -1,0 +1,61 @@
+fold,model,ablation,n_train,n_refit,n_scored,best_parameters,validation_MAE,test_MAE,seconds
+F1,Ridge,M0,446544,456743,9996,"{""alpha"": 1.0}",170.79547119567482,217.87209022240773,12.144575904000007
+F1,Ridge,M1,446544,456743,9996,"{""alpha"": 1.0}",170.67094389520418,217.9321293888067,12.452771048000017
+F1,Ridge,M2,446544,456743,9996,"{""alpha"": 1.0}",171.0256881482885,217.93723181791313,12.185533399000008
+F1,Ridge,M3,446544,456743,9996,"{""alpha"": 100.0}",170.8759126864766,218.16056142866367,13.951600463999995
+F1,Ridge,M4,446544,456743,9996,"{""alpha"": 1.0}",170.3272640314932,217.94808256089584,15.973143558000004
+F1,ExtraTrees,M0,446544,456743,9996,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",141.94398266200758,173.71854218014187,51.83991074300002
+F1,ExtraTrees,M1,446544,456743,9996,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",141.67904200084905,174.27723956478124,55.011526342000025
+F1,ExtraTrees,M2,446544,456743,9996,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",141.77450962295802,173.29753198431763,56.763587030999986
+F1,ExtraTrees,M3,446544,456743,9996,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",142.18025217573577,173.49570644521506,57.46495359700003
+F1,ExtraTrees,M4,446544,456743,9996,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",141.31253622212176,174.36599779586575,66.78475801100001
+F1,HistGradientBoosting,M0,446544,456743,9996,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",145.04002864749722,164.6598307800314,15.38023526400002
+F1,HistGradientBoosting,M1,446544,456743,9996,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",144.905126896074,164.11074250465757,15.694731830000023
+F1,HistGradientBoosting,M2,446544,456743,9996,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",145.31679457155568,165.54942564162047,15.65956756199995
+F1,HistGradientBoosting,M3,446544,456743,9996,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",144.57271314349614,163.85827530601796,16.22305385800007
+F1,HistGradientBoosting,M4,446544,456743,9996,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",145.69060251181816,166.5388625635974,18.063124990000006
+F2,Ridge,M0,473522,483644,10108,"{""alpha"": 1.0}",230.72016848827892,268.9369669782977,11.62960887700001
+F2,Ridge,M1,473522,483644,10108,"{""alpha"": 1.0}",230.65901039831547,269.0139144806724,12.354933920000008
+F2,Ridge,M2,473522,483644,10108,"{""alpha"": 1.0}",230.44624972602907,269.09906128379174,13.18117371400001
+F2,Ridge,M3,473522,483644,10108,"{""alpha"": 1.0}",230.33936827117483,269.21213704186465,14.529402460000028
+F2,Ridge,M4,473522,483644,10108,"{""alpha"": 1.0}",230.66095135011247,270.3154752438245,17.04252635299997
+F2,ExtraTrees,M0,473522,483644,10108,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",192.00918968303802,234.29565369333926,55.11733313700006
+F2,ExtraTrees,M1,473522,483644,10108,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",191.81713932953764,232.1584513633981,57.747526716999914
+F2,ExtraTrees,M2,473522,483644,10108,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",191.92310073381051,234.74581281907638,59.49049448899996
+F2,ExtraTrees,M3,473522,483644,10108,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",193.06505100162607,234.22987905013238,61.65769314299996
+F2,ExtraTrees,M4,473522,483644,10108,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",192.73367587500547,232.29682171808503,70.56689034499993
+F2,HistGradientBoosting,M0,473522,483644,10108,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",187.4972179343937,240.41337896343632,15.695108121999965
+F2,HistGradientBoosting,M1,473522,483644,10108,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",190.33813284610684,241.4348878331681,16.167070805000094
+F2,HistGradientBoosting,M2,473522,483644,10108,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",187.10094250475152,239.62093138162487,16.64067455700001
+F2,HistGradientBoosting,M3,473522,483644,10108,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",187.96485732686696,242.02006682071882,16.656993659000022
+F2,HistGradientBoosting,M4,473522,483644,10108,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",188.70430277786446,238.89060318595196,17.598388311000008
+F3,Ridge,M0,511700,522088,10388,"{""alpha"": 100.0}",243.24130807492193,257.2824612714765,10.134086495999895
+F3,Ridge,M1,511700,522088,10388,"{""alpha"": 100.0}",243.03729334234666,257.77382321747376,11.201269244999821
+F3,Ridge,M2,511700,522088,10388,"{""alpha"": 100.0}",243.16349719459802,257.1711739801657,11.897792305999928
+F3,Ridge,M3,511700,522088,10388,"{""alpha"": 100.0}",242.9157645283474,257.7088821410244,12.738425953999922
+F3,Ridge,M4,511700,522088,10388,"{""alpha"": 100.0}",242.4336594129761,256.77904549609076,18.742818899999975
+F3,ExtraTrees,M0,511700,522088,10388,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 30, ""n_estimators"": 48}",221.67931862084848,208.64597737559137,57.92380653500004
+F3,ExtraTrees,M1,511700,522088,10388,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",220.70133687552948,199.39503231087514,62.76911151699983
+F3,ExtraTrees,M2,511700,522088,10388,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",221.32188072119774,200.18348638144573,64.78081479100001
+F3,ExtraTrees,M3,511700,522088,10388,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 30, ""n_estimators"": 48}",221.6656954744541,208.22091262858453,65.73169389000009
+F3,ExtraTrees,M4,511700,522088,10388,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",221.6982503403646,199.74764073970613,74.90827923199981
+F3,HistGradientBoosting,M0,511700,522088,10388,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",221.3951424690347,201.45481237673206,16.754302568999947
+F3,HistGradientBoosting,M1,511700,522088,10388,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",221.70069008909542,200.47487528139374,17.24372426900004
+F3,HistGradientBoosting,M2,511700,522088,10388,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",217.40890262430833,199.33759369108049,17.657044367000026
+F3,HistGradientBoosting,M3,511700,522088,10388,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",217.07170726199598,199.51070980454153,18.40337631599982
+F3,HistGradientBoosting,M4,511700,522088,10388,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",214.82499355734438,199.14770485127812,19.753539981999893
+F4,Ridge,M0,564074,574658,10584,"{""alpha"": 100.0}",221.44465885455529,242.69813201023987,12.994384890999982
+F4,Ridge,M1,564074,574658,10584,"{""alpha"": 100.0}",221.331098117544,242.49788934234755,14.108338637000088
+F4,Ridge,M2,564074,574658,10584,"{""alpha"": 100.0}",221.45565587190612,242.73792951935044,12.987965571000132
+F4,Ridge,M3,564074,574658,10584,"{""alpha"": 100.0}",221.33969706439004,242.53569604040925,15.653294709999955
+F4,Ridge,M4,564074,574658,10584,"{""alpha"": 100.0}",221.10860106658896,242.20075488489147,19.163460643999997
+F4,ExtraTrees,M0,564074,574658,10584,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",186.08813102979644,215.68845472768479,65.29906123
+F4,ExtraTrees,M1,564074,574658,10584,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",185.91389396364445,215.43090450146588,68.96487656599993
+F4,ExtraTrees,M2,564074,574658,10584,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",185.93583732893543,215.09568077261392,71.77105395399985
+F4,ExtraTrees,M3,564074,574658,10584,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",185.92870115454218,215.472615743006,73.31650558000001
+F4,ExtraTrees,M4,564074,574658,10584,"{""max_depth"": 16, ""max_features"": 0.75, ""min_samples_leaf"": 10, ""n_estimators"": 48}",186.67618318837503,214.2599059945303,85.08175248799989
+F4,HistGradientBoosting,M0,564074,574658,10584,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",184.96304786629213,214.70957859344193,17.958217374000014
+F4,HistGradientBoosting,M1,564074,574658,10584,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",185.08747814744908,215.99222648447028,19.37618477000001
+F4,HistGradientBoosting,M2,564074,574658,10584,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",185.98149333845546,215.62527072318582,19.505852032999883
+F4,HistGradientBoosting,M3,564074,574658,10584,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",185.85556088353556,215.70454937439163,20.072489668000117
+F4,HistGradientBoosting,M4,564074,574658,10584,"{""l2_regularization"": 1.0, ""learning_rate"": 0.08, ""max_iter"": 120, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 30}",186.15450021067892,215.32117752824442,21.317509595000047
