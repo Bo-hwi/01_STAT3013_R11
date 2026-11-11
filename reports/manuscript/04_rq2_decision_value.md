@@ -32,7 +32,7 @@ Validate because operational availability and exposure are unresolved; do not
 force examples of each label or infer deployment from pointwise intervals.
 
 ## Robustness and uncertainty
-Hybrid P4 CIs are UNAVAILABLE/PENDING downstream approval. Historical reproduced-P4 intervals are not attached to official P4. A concrete frozen downstream request is supplied; do not infer that tiny point differences preserve CIs.
+Approved fixed-week CIs use this hybrid P4 cost source, four fixed weekly blocks/fold, 1,000 paired shared draws, seed42, 95% percentile. Only 140 complete 112-date cells receive their OWN CIs; 14 incomplete Esmeraldas/Salinas cells remain unavailable.
 
 ## Limitations
 Only four weekly blocks/fold; no selection/refit/calibration uncertainty or multiple-

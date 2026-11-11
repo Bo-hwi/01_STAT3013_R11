@@ -3,7 +3,8 @@
 > Historical code-only delivery note. The current G4 handoff is documented in
 > [m4_README.md](m4_README.md): live protocol/receipt/entry-point migration is now
 > explicitly authorized by Huy, and official-test P4 point outputs are exported.
-> Hybrid downstream CI still requires its own recorded approval. Statements below
+> Hybrid downstream CI was later self-approved by Huy on 2026-11-12
+> (`docs/m4_official_downstream.approved.json`) and exported. Statements below
 > about a zero-byte entry point and unchanged live exports describe the earlier
 > delivery, not the current handoff.
 

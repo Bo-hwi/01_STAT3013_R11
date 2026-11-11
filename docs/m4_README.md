@@ -36,8 +36,12 @@ labels are retained. No retrospective preregistration/multiplicity claim.
 - M2 `weather_signatures_for_m4.csv` (family annotations only).
 - Historical migration archive `m4_handoff_migration_archive_20261111T155113Z`:
   exact original code/config/receipt bytes before authorized post-run edits.
-- If approved and run, the downstream bootstrap bundle tied to THIS official P4
-  source. Old reproduced-P4 CIs remain historical sensitivity evidence only.
+- Official-P4 downstream bootstrap bundle
+  `m4_p4_official_bootstrap_20261111T170146Z` (receipt
+  `docs/m4_official_downstream.approved.json`, request semantic SHA-256
+  `343325e3dfe94d4bc08652192b33d50eb0d78724b09b4930600ec41efdec6931`, M4 (Huy)
+  self-approved 2026-11-12). Old reproduced-P4 CIs remain historical sensitivity
+  evidence only.
 
 These are Drive artifacts. Large predictions, raw datasets and experiment bundles
 must not be put into Git. Frozen checksums identify exact evidence, not portable
@@ -61,13 +65,43 @@ NOT exist; live canonical migration is explicit and recorded separately.
   --official-predictions data/processed/point_models.csv.gz `
   --annotations results/tables/weather_signatures_for_m4.csv `
   --historical-archive results/experiments/m4_handoff_migration_archive_20261111T155113Z `
+  --bootstrap-bundle results/experiments/m4_p4_official_bootstrap_20261111T170146Z `
   --output-dir results/experiments/m4_g4_handoff_reproduction
 ```
 
-If a verified downstream CI bundle is available, additionally specify
-`--bootstrap-bundle <its exact path>`; the CLI rejects a bundle tied to historical
-reproduced P4. Without it the matrix explicitly marks official-P4 CI pending;
-no pooled/reproduced-P4 bounds are borrowed for cells. No hidden local defaults.
+The CLI rejects a bootstrap bundle tied to historical reproduced P4. Omitting
+`--bootstrap-bundle` reproduces the earlier points-only export, where the matrix
+marks official-P4 CI pending; no pooled/reproduced-P4 bounds are borrowed for
+cells. No hidden local defaults.
+
+The bootstrap bundle itself was produced (seed 42, 1,000 shared fixed-week draws,
+95% percentile; no model fits or cost recalculation) with:
+
+```powershell
+& '.\.venv\Scripts\python.exe' -B -m src.decision.final_handoff <same six input flags + --historical-archive> `
+  --bootstrap-approval docs/m4_official_downstream.approved.json `
+  --bootstrap-output results/experiments/m4_p4_official_bootstrap_<UTC timestamp>
+```
+
+Current canonical tables/figures/manuscript come from
+`m4_g4_official_handoff_ci_20261111T170146Z`; the promotion and prior canonical
+copies are recorded in `m4_g4_canonical_migration_ci_20261111T170146Z`.
+
+### Official-P4 CI summary (pooled F1–F4, corrected, % vs comparison policy)
+
+| Scenario | P2 vs P1 | P3 vs P1 | P4_M0 vs P1 | P4_M3 vs P1 | P3 vs P2 | P4_M3 vs P4_M0 |
+| --- | --- | --- | --- | --- | --- | --- |
+| S1 | −26.6 [−31.9, −19.4] | −26.6 [−31.9, −19.4] | −32.2 [−37.9, −24.9] | −32.2 [−37.8, −24.8] | −0.03 [−0.04, −0.02] | +0.07 [−0.61, +0.77] |
+| S3 | −28.5 [−35.3, −19.2] | −28.5 [−35.3, −19.3] | −28.9 [−35.6, −20.4] | −29.0 [−35.6, −20.1] | −0.02 [−0.10, +0.06] | −0.07 [−1.18, +1.04] |
+| S5 | −29.6 [−38.3, −18.7] | −29.5 [−38.2, −18.6] | −27.9 [−35.5, −18.6] | −27.9 [−35.4, −18.3] | +0.14 [−0.01, +0.30] | −0.07 [−1.47, +1.31] |
+
+Every quantile policy beats Seasonal Naive (P1) on simulated cost, with intervals
+excluding zero. Adding weather (M3 vs M0) makes no material difference: P3−P2 is
+tiny (excludes zero only at S1), and P4_M3−P4_M0 includes zero in all scenarios.
+At cell level, 140 complete cells have their own CIs and 14 incomplete
+Esmeraldas/Salinas cells remain NA. All 154 labels stay Validate because
+operational availability and F2–F4 exposure are unverified. Intervals rest on
+only four weekly blocks per fold and carry no multiplicity control.
 
 ## Historical and current evidence
 
