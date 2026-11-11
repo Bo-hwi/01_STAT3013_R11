@@ -95,7 +95,7 @@ rq2:
 
 quantile_and_decision:
   quantiles: [0.50, 0.75, 0.8333333333]
-  primary_quantile_model: TODO_choose_quantile_regressor
+  primary_quantile_model: HistGradientBoostingRegressor  # decided 2026-11-08 (team chat), committed later
   compare_weather: [M0, M3]
   weather_extension_if_qa_passes: M4
   costs:

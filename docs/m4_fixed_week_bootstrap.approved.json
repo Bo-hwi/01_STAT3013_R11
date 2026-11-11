@@ -1718,8 +1718,9 @@
     "test_observations": 41076
   },
   "request_sha256": "81a6ebbe8dd0f9571702df04a7e8225f88ccd930af53cb4d774c1ad02c9d2ce5",
-  "approved_by": "User; explicit authorization in this conversation",
+  "approved_by": "M4 (Huy) self-approved",
   "approval_evidence": "User explicitly authorized M4 Phase 4E.2 on 2026-11-10 for docs/m4_fixed_week_bootstrap.request.json with semantic SHA-256 81a6ebbe8dd0f9571702df04a7e8225f88ccd930af53cb4d774c1ad02c9d2ce5. No team approval, signatures or meeting records claimed.",
   "approval_communicated_date": "2026-11-10",
-  "approved_at_utc": "2026-11-09T17:05:22.652950+00:00"
+  "approved_at_utc": "2026-11-09T17:05:22.652950+00:00",
+  "approval_scope_note": "M4 (Huy) self-approval only. Team review/sign-off has not been recorded. Historical dates, request scope and semantic hashes are unchanged."
 }

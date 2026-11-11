@@ -1,5 +1,12 @@
 # M4 code handoff — 2026-11-11
 
+> Historical code-only delivery note. The current G4 handoff is documented in
+> [m4_README.md](m4_README.md): live protocol/receipt/entry-point migration is now
+> explicitly authorized by Huy, and official-test P4 point outputs are exported.
+> Hybrid downstream CI still requires its own recorded approval. Statements below
+> about a zero-byte entry point and unchanged live exports describe the earlier
+> delivery, not the current handoff.
+
 Branch: `feature/m4-quantile-decision`. This is code/methodology/evidence delivery,
 not a merge to main, canonical migration or claim that all research integration
 is complete. Member 2's unrelated notebook working-copy change is excluded.

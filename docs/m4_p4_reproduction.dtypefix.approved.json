@@ -87,7 +87,8 @@
     "status": "PENDING_APPROVAL"
   },
   "request_sha256": "959141d22e12aa8906f12e1534beae8f6c4e6d5ed2978b0e58123a3b6b63b18b",
-  "approved_by": "User; individual name not supplied",
+  "approved_by": "M4 (Huy) self-approved",
   "approval_evidence": "Explicit user authorization in this conversation on 2026-11-09 approving docs/m4_p4_reproduction.dtypefix.request.json, semantic SHA-256 959141d22e12aa8906f12e1534beae8f6c4e6d5ed2978b0e58123a3b6b63b18b, authorizing 56 candidate selection fits plus 8 fresh refits under the documented M4 reproduction approach. No additional team approval or signatures claimed. P4 calibration/economic evaluation not authorized.",
-  "approval_communicated_date": "2026-11-09"
+  "approval_communicated_date": "2026-11-09",
+  "approval_scope_note": "M4 (Huy) self-approval only. Team review/sign-off has not been recorded. Historical dates, request scope and semantic hashes are unchanged."
 }

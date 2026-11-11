@@ -573,20 +573,20 @@
     }
   },
   "snapshot_sha256": "a1a71c586f1f567a97467b9a93bb8b4b6dc47406e563eddb9df0aa525b452430",
-  "approved_by": "User, communicating team approval; individual approver names not supplied",
+  "approved_by": "M4 (Huy) self-approved",
   "approved_at_utc": "2026-11-08T12:31:03.983831+00:00",
-  "approval_evidence_reference": "User message in this conversation on 2026-11-08 approving the M4 Final Quantile Experiment Protocol and requesting execution of the existing approval-gated runner.",
+  "approval_evidence_reference": "M4 (Huy) self-approval communicated on 2026-11-08 for the M4 Final Quantile Experiment Protocol and requesting execution of the existing approval-gated runner.",
   "f1_exposure_acknowledged": true,
   "f2_f4_exposure_status": "pending",
   "f2_f4_exposure_evidence": "",
   "decisions": {
     "estimator_grid": {
       "status": "approved",
-      "resolution": "User communicated team approval of HGB estimator/preprocessing, original 15/31-leaf grid, seed 42, F1-F4, M0/M3, canonical taus and validation-only raw pinball selection."
+      "resolution": "M4 (Huy) self-approved HGB estimator/preprocessing, original 15/31-leaf grid, seed 42, F1-F4, M0/M3, canonical taus and validation-only raw pinball selection."
     },
     "direct_quantile_calibration_refit": {
       "status": "approved",
-      "resolution": "User approved direct quantile protocol: no calibration, fresh eligible train+validation refit, fixed test parameters, raw and clip/sorted corrected reporting."
+      "resolution": "M4 (Huy) self-approved direct quantile protocol: no calibration, fresh eligible train+validation refit, fixed test parameters, raw and clip/sorted corrected reporting."
     },
     "p1_p4_calibration": {
       "status": "deferred_out_of_scope",
@@ -602,10 +602,11 @@
     },
     "claims_and_exposure": {
       "status": "approved",
-      "resolution": "User approved reporting limitations: F1 exploratory/post-pilot; F2-F4 prior exposure pending verification; retrospective weather-aware results, no untouched confirmation or operational/causal/profit claims."
+      "resolution": "M4 (Huy) self-approved reporting limitations: F1 exploratory/post-pilot; F2-F4 prior exposure pending verification; retrospective weather-aware results, no untouched confirmation or operational/causal/profit claims."
     }
   },
   "approval_communicated_date": "2026-11-08",
-  "approval_timestamp_semantics": "approved_at_utc records receipt of the user-communicated approval, not a claimed team meeting or signature time",
-  "approval_identity_limit": "No individual approver names, meeting record, signatures, or separate approvals were supplied or invented"
+  "approval_timestamp_semantics": "approved_at_utc records receipt of the M4 self-approval, not a claimed team meeting or signature time",
+  "approval_identity_limit": "No individual approver names, meeting record, signatures, or separate approvals were supplied or invented",
+  "approval_scope_note": "M4 (Huy) self-approval only. Team review/sign-off has not been recorded. Historical dates, request scope and semantic hashes are unchanged."
 }

@@ -84,7 +84,14 @@ def test_existing_target_is_inspected_but_never_overwritten(tmp_path):
     assert c.publish_exclusive(a,target)=='BLOCKED_EXISTING_DIFFERENT_FILE' and target.read_text()=='user content'
 
 
-def test_required_frozen_placeholder_unchanged_and_integrity_detection(tmp_path):
+def test_required_entry_point_and_integrity_detection(tmp_path,monkeypatch):
+    import sys
+    from src.decision import decision_matrix as entry
     p=c.ROOT/'src/decision/decision_matrix.py'
-    assert p.read_bytes()==b'' and c.handoff.file_hash(p)=='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+    before=p.read_bytes();monkeypatch.setattr(sys,'argv',['decision_matrix','--help'])
+    with pytest.raises(SystemExit) as result:entry.main()
+    assert result.value.code==0 and p.read_bytes()==before
+    monkeypatch.setattr(sys,'argv',['decision_matrix'])
+    with pytest.raises(SystemExit) as result:entry.main()
+    assert result.value.code==2 and p.read_bytes()==before
     assert c.inspect_audit(tmp_path)=='incomplete'

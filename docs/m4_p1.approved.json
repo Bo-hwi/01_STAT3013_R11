@@ -84,7 +84,8 @@
     }
   },
   "request_sha256": "3f32eb4cc229570e4a7e019827841a7a8388427ad3bb66f63fbe24ea742e47ee",
-  "approved_by": "User, communicating M4 team approval; individual approver names not supplied",
+  "approved_by": "M4 (Huy) self-approved",
   "approval_evidence": "User message in this conversation on 2026-11-09 approving docs/m4_phase3d_p1_methodology.md and authorizing frozen request, approval receipt and real-data P1 evaluation.",
-  "approval_communicated_date": "2026-11-09"
+  "approval_communicated_date": "2026-11-09",
+  "approval_scope_note": "M4 (Huy) self-approval only. Team review/sign-off has not been recorded. Historical dates, request scope and semantic hashes are unchanged."
 }
