@@ -1,0 +1,1725 @@
+{
+  "status": "APPROVED",
+  "request": {
+    "aligned_rows": 246456,
+    "branch": "feature/m4-quantile-decision",
+    "calendar_support": [
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "BEVERAGES",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "BREAD/BAKERY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "CLEANING",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "DAIRY",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "FROZEN FOODS",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "GROCERY I",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ambato",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Babahoyo",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cayambe",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Cuenca",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Daule",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "El Carmen",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Esmeraldas",
+        "eligible": false,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 25, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 109,
+        "sample_size": 109
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guaranda",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Guayaquil",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 896
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Ibarra",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Latacunga",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Libertad",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Loja",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Machala",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 224
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Manta",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 140
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Playas",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Puyo",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quevedo",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Quito",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 1960
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Riobamba",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 112
+      },
+      {
+        "calendar_flag": "INCOMPLETE_CALENDAR_CI_UNAVAILABLE",
+        "city": "Salinas",
+        "eligible": false,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 0, \"F2\": 19, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 75,
+        "sample_size": 75
+      },
+      {
+        "calendar_flag": "COMPLETE_112_DATES",
+        "city": "Santo Domingo",
+        "eligible": true,
+        "family": "PERSONAL CARE",
+        "fold_dates": "{\"F1\": 28, \"F2\": 28, \"F3\": 28, \"F4\": 28}",
+        "n_dates": 112,
+        "sample_size": 336
+      }
+    ],
+    "environment": {
+      "packages": {
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.17.1"
+      },
+      "python": "3.11.9"
+    },
+    "execution_authorized": false,
+    "file_sha256": {
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\ablation_M0_M5.yaml": "8e6d58bccdb7eba9da74447131f2e1695c4268ab0439ba4e612ccea827fbf48b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\cost_scenarios.yaml": "2c5ed7561bf3c7d59a574b41b0de25f1837ee57c921c3c32f5e03e7fd2a3a9d8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\research_protocol.yaml": "0f2a3634e588968022d5d466c64f592fc3627f0306ce9a62b8d4926cbe197f52",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\baselines.csv": "963ebcf7e4e4126c785490c01dca7e5d68bc84432b5fafc73f3d958ae0261997",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\CANDIDATE_COMPLETE.json": "5c57187b0c7d9d4fe16d4787f2caf13c7a1a640243f35a1636343c73b2867740",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.meta.json": "9fe377a89f4466f85d26645370dbb32ccc406ec1a1f603449052c8afa4411cdf",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.parquet": "e0322cc2a12fff9a46a8dfd5f88453db5329c1ab09e35c5c2bd311cbec6f977f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.meta.json": "d2b8d3d4664b4fbc8fc0098ed291ba8509fb5c8255538ce73f9e81256bb7ca2b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.parquet": "e4186aeb3a2da9996dcb9deec164cc70ca11c0a869b932720c9786c64a3ab17d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\reconciliation_report.json": "fff540406bd601d1a20ee4e690847d84f96295236052abfc998b24c46f39bd4c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\holidays_events.csv": "81a183d6c4d691b57f84a0fde6bbf734a5b3c36a74b97378bf33a592648e2999",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\oil.csv": "944b23b857580f9d804399346fd3ed69bffcb7facfd98c55fdb408b8d057cca7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\sample_submission.csv": "17505ec561d9bc64a3c10c3eb00474becf162d9053cebf014a58a6c82ed530c4",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\stores.csv": "af503b2bce11d7906d249f81cc0598f10e2addcc9f6c59aa2d95c9f2652c296b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\test.csv": "087ec1ecec76dbba9ea2adb48b8b2fd527c7c59adb82b0dfb9f6f82739400d26",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\train.csv": "99a1b7f4241821df10fa71f23abdd71c634f71f901e3cab1400c0f0c583f862c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\favorita\\transactions.csv": "e116384a6981af74932832436aa2f6a43121f77ca81accc44e3a5160158ca03c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_ambato.csv": "8910f314aeeee0603191390bfd5a8ad0b10e1982732bb0d8efa071d628071fa8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_babahoyo.csv": "38ad1a27be8c3b95025da934846b4fc8d1512068fa25b7977eb5424ff98a8437",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_cayambe.csv": "992323a73d4efaa4127ac11c5603eef1ac8e9539efe8dc910306e36a62d187eb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_cuenca.csv": "8102165628eeb4e71800aa7556b0ebd5865f84d996a9fe352bf5d20a6103357d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_daule.csv": "fb5479e418030fe5c9ace21cc7f37a143a40c5227d7738f9cd66af73af8ae1ae",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_el_carmen.csv": "eda4c1639aab1ffe615f43404dc63186b50e71ceca10a82043fff7094a9f1311",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_esmeraldas.csv": "4df211f77c8df15b1fd8ee3e2cf31cf5d0c3940c0238693d11cc8d9eca89e1d9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_guaranda.csv": "31bf2492cd4a3116870617418e5adea7a9b7c189bea27d95e7f3cb9929fa9095",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_guayaquil.csv": "6a4b0fa2e25a3079268c179005ecb1ebe2c95dec1868d7cd0559ec1c3a54a841",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_ibarra.csv": "7b4a858e297bf10d36fc586088f43a5cb34b6c6e26caf8c95389d93ea19dbd07",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_latacunga.csv": "08d925067db5ef7a6e778388063395ca6a3c064f5032411a84137afe54924558",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_libertad.csv": "405c5983bd812f35974de360e28a1f76c90b65f03e5445137df2273a05dcaba9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_loja.csv": "e9131c0c39044bfb07fc7c45d99a5518af4d481dd417f387b5626f345ed0e8cb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_machala.csv": "bddae0666f73e0a5aaffc66fcf673d71236bac4664e528534625634d0aaa3f74",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_manta.csv": "a15841e5fe694e277112f37f09371615f684294eb8119240398c5f6766a6f720",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_playas.csv": "bb8dfb96a2c64678e4ad73c494cb574cd16db78ce4a3f633de0b9663a4cb7413",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_puyo.csv": "6c1939f0298c1e5500e25d1e7bceea2632dfcba9e3cac5fe3a1e29eaf671d6c2",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_quevedo.csv": "c26af4cc0abc9bc5de2660baf5db37b8fbf6d98904d46ca07573a6d7bd837265",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_quito.csv": "69a44592478756e3dffa29e4d206dfe0713c541b77aadb4c42e730147c0963f6",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_riobamba.csv": "0251a23c9def70016cd891cc2e8c646894e6292f7794de3e071e00d143befaa9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_salinas.csv": "d018d587da4cd32f72989c8e81c4d4cda84cc7f872d9ceaddca230730327bb6d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\raw\\weather\\weather_santo_domingo.csv": "7a3d2ea6004d9fbe80a4631d42f024572719e76831b112595780a9b689e55e0d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_final_protocol.md": "603532b1bf579abcdcc8292670d621c33b3251d02afeeab7bebd4f9360342306",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_final_signoff.approved.json": "3f25c7e3d75bbfcbc03ddce2890ce4dc0318b6cab5a051b9e3b4b6da4a1514d8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_final_signoff.md": "6804c5ae93bfe6f1028ab8156322edeba6dc52df277318ca93fbb7c4a4a6e708",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_p4_reproduction.dtypefix.approved.json": "af5ea13dff4b51fc24a6230dd8b028231bd4b7c73228fee752b53219e9283d80",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3a_costs.md": "cec8d49e30a407b1b74a539403afcbb2e9d65dc16b5a32b426ab855ff101867b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3b_bootstrap.md": "b7a2606f83b97a3c81d5d67135eb2d17cfb888f6edb4503de91d3b87557dba33",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3d_p1_infrastructure.md": "4a2ba71237149654f918bde62155e15fdbad2020f41ca9d015a67dbf2618d2e9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3d_p1_methodology.md": "fd66c57dbddeda6a7eb7f66de779a84f18d2cf20e0c59df7307f66591dd08f07",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3e3_p4_proposal.md": "f927d81e4ce64686251c23c3ac8ec56e24aa4a871bc2c84586928d34c3a6a17c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3e_reproduction.md": "1610d2016cc4b9a9335bccf8a6ca4ab46ecade5e08703e27722b46be31a0379f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase4a_matrix.md": "21d65be4422b4960c7e6f8d1aad657eb1742256f5082fcf0ee65a8c836df091d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase4e_fixed_week.md": "d6507ce8e725a82b94c1b0e95b08a8fcb47d42b2dc3b3a3cc60aa218043ff5dc",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\source_catalog.csv": "09b61233bb4d34c98e65ec1f5857e5d69453d2e2837ba4829c1e1ca78bd0c133",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\COMPLETE.json": "55d9ffc29d569575c82e77e955bbcbee853cdae0c82bae902e2a32b6aa17a9f7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\STARTED.json": "9663e85e08babb71770861e04bdc367004cbe36aa21167bc36d447e951a8d884",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\daily_costs.csv": "be196cfa4cdef319f71bd2777e62a6f2d4b37254dafdae4fdc302225ffbe84ad",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\date_layout.csv": "4876f608a147f50abe0d1d47ef26d602ca26bf5f3435e7cbd537b09401f4791e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\intervals.csv": "7f680cd331cd8998d7eede0ff646312c0eadd5f027ed6658487ac9304d9ee346",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\manifest.json": "d8630e08b1d2efe45b2e63842762f263df9c4a22c0cfb8e00973a048a1d42b94",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\replicates.csv": "dc04f2cf63c0d9115531e56257766631cd3a8e13acf811031d2f76fff5455fe0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_bootstrap_p2_p3_20261108T142054Z_cf6d0fc30677\\resampling_indices.npz": "e97a29729f9abfc2d5b13aa10e7bed31b3a8aa2225d0d83dbf295f5fd2e84bdf",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\COMPLETE.json": "5667a8f53fd2047037aeb965a59cba6e3782c72b5d2affc01926297ef227a09a",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\STARTED.json": "f98f02395d0bffaf835d528b28ddcfb84f73bb036d87007faeae5aa497fd5bfe",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\comparisons.csv": "3827c672dbebfe56a892f81f7946abc9d42cf50ce0c7ed1b7a2c470c1e8ea419",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\manifest.json": "4d63ecb368045dc5d6c5a87d50ad8f81e095cadc6bb53bcbdf2f3b7ba3e8cf57",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\row_costs.csv": "43fc545c1808b72ce2bce6cb0de20ec833168c85ff97e7eaea7fdaa8722eea05",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\COMPLETE.json": "a376feffef7899b87fe058513cd41482954ce7b7fc587f4d2beb216ac6038b76",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\M4_RESULTS.md": "31d537dfe8bce6438cd4b566b9cda0253d0638e7369786f5ce05a542bf044eb5",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\STARTED.json": "9906584d0b97b1f666ac98e6d2db1764784e2d12ead188b4fe9f993c6a794d84",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\family_city_summary.csv": "0b296f11135a9e6844c214c8f81ff22c391f0e94e174568ff3468cf5a6b15af1",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\family_city_summary.html": "6c80984f147bbfee09043d9d7feaa3bccf294b66f1531e2f506e70f6b1034493",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\fold_consistency.csv": "12a38b1e59ad9786d0061a11b020a235c083bbb7c5cb73a7ad8409d859ce83f9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\forecast_diagnostics.csv": "ecb9d215223c690069c18bf45142937909e6230de7b5ef59a772f855360d25bb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\manifest.json": "ec7573dd06d3c5085656a4d397ecf8fd1b412b9d05af25d6d294bba974d50c0b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\matrix.csv": "bf6babdc972cc7c616c4b987a86a21e1e5e5856d28391477c497be6cb7a3ccd8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\matrix_raw_sensitivity.csv": "565820e433f3e2cba46028b703a2fcd13377b547d5733fecfb8b101fe9d092ab",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\point_forecast_diagnostics.csv": "58f9df7d20762b602a97c9601aa77c4d4a88f1276c4df5def356dcdfc13e1eeb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\policy_comparison.png": "5b37c9eaec461ac42a9d1bbd36a934aab1267b411cb5dfc6e8ed0ac6c9be6bf7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\policy_comparison.svg": "c011e5884a5d814b2a89e43ea6e3f3712eb49c4e0d2aa78b1fda429d5ac1c908",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\policy_summary.csv": "8e497ca3b63fb81cef5b3708784825468390a5afeca35239955321b883f41152",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\policy_summary.md": "feeecf252f46539a07d5302195a1d8e8def71409aac84f5f2b0f6a3b009233cb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\source_QA.json": "64778c08b1a034622e6266c453c16a0b93317189c40a08b2f0029cf572bfcbfb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\supported_bootstrap.csv": "7f680cd331cd8998d7eede0ff646312c0eadd5f027ed6658487ac9304d9ee346",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\weather_P3_minus_P2.png": "4889c68683fd6fc041ae0816de9c1b694fb61928f4d20fc51d2e4e3625fa5e22",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\weather_P3_minus_P2.svg": "5280969f2f7f494a11290dca04af7f84ea06263cc97eac9b5a5f8faed9c055d6",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\weather_P4_M3_minus_M0.png": "6164f61cff910559efec2803ad7e0c572471993cda27ac563a5c573cb39dc18e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\weather_P4_M3_minus_M0.svg": "6799e8ff1351af295f11ef2de07cd6695175bb65c73f6fee1c62e64bcf5625ba",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_decision_matrix_20261109T062535Z_d3224a2a64ea4331a76bdaeebf706d5e\\weather_summary.csv": "9438712069930b032b639da23cf53dba2a6f66259d33c85683de55f9cd42be8c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_final_audit_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\approval_record.json": "3f25c7e3d75bbfcbc03ddce2890ce4dc0318b6cab5a051b9e3b4b6da4a1514d8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\COMPLETE.json": "cf6fe273ac78543eaa843bad780423912d93cd201d104e603c045e73c6845621",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\README.md": "98f35e4ca733d4599823bceb1b21e1f48a7185db7ac1df8d94294c222af8d67b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\manifest.json": "b344e86e295bd4d7867b84b028ee9e8ff7097cc0df232ffe9724e55fd57b9902",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\policy_comparison.png": "37c269edd78e7e8a25569307af66381e6a08f066402beed79de4c844101392e4",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\policy_comparison.svg": "f2821026d0e62dd937445444a52982613bec8978eb02c661ca283d29ce2a7d64",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\weather_P3_minus_P2.png": "9363e690b9dfaf9d33d34c15df15aa3a57953b50704987841bca959cba732382",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\weather_P3_minus_P2.svg": "ae85697532215d0ebe240ab1628125831d08ae34f97f12af473abd8a85cf8773",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\weather_P4_M3_minus_M0.png": "550cd561f13386933cb0ae0a21fe19c511c7fd795d82470e75e94c8b48c23b15",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_matrix_report_figures_20261109T062910Z_43b9c746faf748348d6e1a09b7712d59\\weather_P4_M3_minus_M0.svg": "47b4a5edd2365f38d419fa9641aa29884a96fabe5e2952b3669cbe8bcedda9cc",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\COMPLETE.json": "a83b610822ddad0aab6d535c12c50f4becbbfecd2ee27937dbc363b0df807efb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\calibration.csv": "19f00d76e04a011f475cb64ad5b53b0a7d96248d20afed02d124cc5b505e7d4d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\cost_indices.csv": "333b4c8a0f61fc31e6cba8b305e41da57ebe78accc067c73d3a43f30b67e0bee",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\manifest.json": "b814f6afd57aa3c82299d09e57c9f36e819b9c0934e1816ad222166a55d8e223",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\p1_rows.csv": "4919ca712b0915e6183e08aa44f95b1801eaf4e738a652aa99df65feb246028a",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\paired_rows.csv": "403a9365fe5ccd655ce3c48d16f958346b4610f1ea82607625d95f355d70d136",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\COMPLETE.json": "c0076941d971527e7340a7ca69d29b91c45b57cb8eec697bde5fce67e6765ad4",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\STARTED.json": "b50d7f2c5f2cc1163b5d4dcc457e865d14b9163426e26179d3f71080a1d90e19",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\calibration.csv": "8a912dcefdc4c1487e6133cf9692c5ee7a4e5f8d125b11ca2d4fd561d8ecd518",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\comparisons.csv": "4f0b30562c359a0cde7cc7b64c55ec6566b1082595002c901dbf3635a4a22ea7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\manifest.json": "83111daca3f4ea8425a8e472730ef186ec112b31370e68885f5a3e82a0acbee9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\matched_costs.csv": "aab96540348b9a15fbe9983d12792f519576e67e525bf0b843a2c84717cfaceb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_costs_20261109T060634Z_b0b91a16722f4130bfd89a887a8cc19f\\p4_rows.csv": "96728c078410063209a20cdf261968cae7068b16e4c3dc882dced2338c75b487",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\COMPLETE.json": "63c20a49317a2201a6662216d3aaa777f82840b45b349d4c4e39bcaf97054195",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\exclusions.csv": "d309d70b5db233288f27c3a003fda79c19f855e44ccd911a920145c93031a850",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a.csv": "8e3b4634bcc36e356855d6f0aa036c1e6882d9b4e140c5343ab5d23727a3b427",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\manifest.json": "52af9f59fcba69255393423c5990fb445bac743d32b13555d09b1be3ee5ca199",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\metrics.csv": "c56f2fde9ad41ce2a7673425d12bec6d31642916d65bd532270db591216dcca0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\splits.csv": "e0987a58ea1bff742dcb68d9e0d32014e706fc201639a99d0fa0207055d962a3",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\tuning.csv": "962279a11eb25b7391cc492a65dbb6e83fb92078d19d9478ae293a48d8d19eb7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\COMPLETE.json": "dc3d440b252aac137a17fb738b4e7e86c93c0d4d5a152c865f332bd1b3b40737",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\STARTED.json": "6a3fe9e38dad5ccd855a2b7a3a9b87caea3b67bed91d11e6e75695442b6f5686",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\expected_rows.csv": "57185b33fd05e63974f49c65b3c4aa067f54e8e1898cb2a3840ce3b1bc1f4975",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\manifest.json": "8a37ee97b4661448e298e36d780cb2935514c7b8cadc1a06bf2e5959385a7ac5",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\predictions.csv": "c9a297218b4ffc681c62687cb7a779192e2f683e05729091414429699f6c810d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\published_test_comparison.csv": "3e066b46265254d74624bc330964cbc379c201f568644e8ce4fba0ea57a14bfe",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\published_validation_comparison.csv": "3f29af30d33ffafed689a7d11228745fdd80b395732886f17ed4a831e2b0d5a9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_reproduced_m3_20261108T200231Z_d1e59483f28f4c01a76f02f972367216\\tuning.csv": "31003614af18ec3db74fe5262b978951b3272a36e14c3fd6b38341486f6f1844",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\tables\\baselines_metrics.csv": "ad089edb37ddaf4baddea0f4d06fe5ae408b0c1c76e1638eb1b5fc3f55a39e1f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\tables\\weather_signatures_for_m4.csv": "d61abeb960d8dd38be96ce564c2435ae2cd59c0b0f358f832adfef271a49cfb8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\scripts\\m4_final_run.py": "20a4147a468b7c744e9c9216a80978ddc337d6af617909b31a6e1faed139ad92",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\scripts\\m4_pilot.py": "88bd9ed3fa2717b56e2012dba67c8f853ed220e3e3ed8a9d5a9cc15646129005",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\clean_data.py": "43e901eb05a955dd70143750c2a26a4176f56fb996d8435544c2b6a3b450f1bb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\fetch_weather.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\load_favorita.py": "46b89f5aeafd6d1711610c7c35a23e4d97b3c4cb4d2b976348f298db23bc55de",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\merge_data.py": "45cc3a47ca94e42ef57b31c1cbfc1197bb8697d61505137916a94e3efce57011",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\consolidated_matrix.py": "2f621f73296c7eaafbe0c5e551a995f3708f2a898c6d1670e1748dea31463c3e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\cost_simulation.py": "3a76afa3e0c3bcdab17d3e52a241112d2800ec065a09c04de6c55b79f0057f6c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\decision_matrix.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\feature_staging.py": "727a41a46c406138b6f466dd0bc0ec2a56ef61cdfe127918e9bf6ada3e3bb62b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\fixed_week_bootstrap.py": "eeab6a25e8cc981ad4454e1f3c77142dc254ac9eb1360a3a02cde0c0ce6f5d55",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\matrix_report_figures.py": "8cbdeda3f6ec2ad66bbbb914f91d122ab1829ed9a1da51eb6980b374082baa76",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p1_execution.py": "b27e1977feb415f981c809a1ffe3d57f607365f42810dc2a9af0ddbd4d6c5610",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p1_residual_policy.py": "a7c6944b251963d5457a4821e2bf87b3429b3a4e5530d80cf1a906eef49901c1",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p4_calibration.py": "6cd1bc6764b3ff8c2026afb0beee50bb7a8451462c2837da5e0e053d4552090b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p4_policy_evaluation.py": "97123eab26ff3e8419a30e25225ecbb0d4f6190f34e5c7602565ef6cbb38b2b6",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p4_reproduction.py": "3c0be866fe767676e34a37cc31e5511c7cf6b9d637d32b3fedf5894e29bdcc84",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\paired_bootstrap.py": "b29e9bf2cb2e22554c6b30fabc3fbfc48c22628bce34792698550416c5290b5a",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\policy_evaluation.py": "d7294ae326fd3311dc79cefbe7f4a7657d186356593cda44d04a5e260a7da8b0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_artifacts.py": "4d4e757634388672f84c3f4b66807ff6b1b3f039b958c5e6ca55385edc7f8456",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_contracts.py": "49e0a96a4482b6bc380408942d21fb2e689c349bd559a8d193484465823b039c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_models.py": "0250bfe24c79b8c289aaa42914b8bc05cd0d73376b67c7a379f1eb0298928bce",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_pipeline.py": "2d301df204a6f5643f36ab3bc39c49d6649d099a06a66819e70374fdf2911843",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_preflight.py": "a7892b287a928e470ef8723d75350ef93b28a6fd0ab604ad841a196ac2e55a32",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\build_features.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\lag_features.py": "76b201d5938565b9f88d1e69ac0a16334e3ffe13f33051eefd24060c123ed583",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\baselines.py": "bdd1a8cb3e62f614ca9890fe6fb797bd8ddabdc0f464225b145fee5420e931c8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\evaluation.py": "e0a5cb4c38d2fa26a135f2fe5a093c60008d59ceb6150bfd0153c9296c9c5f0c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\feature_spec.py": "24e259491ea48459907bf37607c0ee50543989278a135176aa388cb6bbffce3e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\point_models.py": "c397f4330a7eaf627c801f8c32bdbd5bb18b0d518c996449bf22c165120aa21d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\rolling_validation.py": "1d43d7caa360c45bd5388924287061bc25c46d80f9d5bbbe7ee47b382130f45d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\sarimax.py": "ae78356fdb7b23e7aa6f129011e61cd72b637761fa831204cf539b196f98f679",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\tests\\test_m4_fixed_week_bootstrap.py": "f2e0e94f47168a94cda1bf48a4f05b6c2921dd02b976089335ee740814de34b2",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\tests\\test_m4_p4_policy.py": "4c9dd6c5c5e20b2555e9161fa18f79a6ff4f1929eadcffb6d1e567f8d04fb851"
+    },
+    "folds": [
+      {
+        "fold_id": "F1",
+        "test": [
+          "2016-09-01",
+          "2016-09-28"
+        ],
+        "train": [
+          "2013-01-01",
+          "2016-08-03"
+        ],
+        "validation": [
+          "2016-08-04",
+          "2016-08-31"
+        ]
+      },
+      {
+        "fold_id": "F2",
+        "test": [
+          "2016-11-15",
+          "2016-12-12"
+        ],
+        "train": [
+          "2013-01-01",
+          "2016-10-17"
+        ],
+        "validation": [
+          "2016-10-18",
+          "2016-11-14"
+        ]
+      },
+      {
+        "fold_id": "F3",
+        "test": [
+          "2017-03-01",
+          "2017-03-28"
+        ],
+        "train": [
+          "2013-01-01",
+          "2017-01-31"
+        ],
+        "validation": [
+          "2017-02-01",
+          "2017-02-28"
+        ]
+      },
+      {
+        "fold_id": "F4",
+        "test": [
+          "2017-07-19",
+          "2017-08-15"
+        ],
+        "train": [
+          "2013-01-01",
+          "2017-06-20"
+        ],
+        "validation": [
+          "2017-06-21",
+          "2017-07-18"
+        ]
+      }
+    ],
+    "m3_reference": {
+      "cell": 17,
+      "commit": "b35f5cc8f5dd2d07b0a545b6e5a60963afdff6bc",
+      "path": "notebooks/03_forecasting_ml/train_ml.ipynb",
+      "sha256": "40564f6805d90470269490574bd2b0262896063887defbe02e9a9d3328aca422"
+    },
+    "scored_keys_sha256": "a87f1aff829c4c67f91b019edc0da83111f574a190df0a6ab24542dcbebf256a",
+    "specification": {
+      "block": "floor((date - shared fold test_start).days / 7); four fixed calendar blocks",
+      "cell_primary": "all 112 scored dates, all four complete folds; 140 eligible cells",
+      "confidence": 0.95,
+      "contrasts": [
+        [
+          "P3",
+          "P2"
+        ],
+        [
+          "P4_M3",
+          "P4_M0"
+        ],
+        [
+          "P2",
+          "P1"
+        ],
+        [
+          "P3",
+          "P1"
+        ],
+        [
+          "P4_M0",
+          "P1"
+        ],
+        [
+          "P4_M3",
+          "P1"
+        ]
+      ],
+      "denominator": "P1 resampled jointly; zero denominator -> NA, report valid/undefined counts",
+      "draws": "default_rng(42).integers(0,4,size=(1000,4,4)); shared across all comparisons",
+      "folds": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "incomplete_cells": "retain point estimates, CI NA; no imputation or partial-week reindexing",
+      "interval": "percentile_linear",
+      "label": "M4_FIXED_WEEK_ROBUSTNESS_COMPLIANCE_SUPPLEMENT",
+      "limitations": [
+        "only four weekly blocks per fold; no guaranteed nominal coverage",
+        "fixed policies; excludes model-selection, calibration and refit uncertainty",
+        "F1 exploratory/post-pilot; F2-F4 prior exposure verification pending",
+        "no multiple-testing control, causal or operational guarantee",
+        "M4_REPRODUCED_M3 is not official M3 or exact numerical reproduction",
+        "cell/cost estimands extend M3 pooled MAE design; not preregistered before tests",
+        "observed sales is a censored demand proxy; simulated costs are not money/profit/ROI",
+        "old moving-block results remain separate; no relabeling or recommendation changes"
+      ],
+      "metrics": [
+        "six mean-cost differences",
+        "six P1-normalized differences",
+        "six relative differences versus comparison policy",
+        "four P1 policy indices"
+      ],
+      "pooling": "sum sampled costs and counts within each fold, then across fixed folds",
+      "raw_sensitivity": "ONLY P2/P3 change; P1 and clipped-residual P4 remain fixed",
+      "replicates": 1000,
+      "scenarios": [
+        "S1",
+        "S3",
+        "S5"
+      ],
+      "scopes": [
+        "pooled_F1_F4",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "family_city_pooled"
+      ],
+      "seed": 42,
+      "variants": [
+        "corrected",
+        "raw_clipped_sensitivity"
+      ]
+    },
+    "status": "PROPOSED_NOT_APPROVED",
+    "test_observations": 41076
+  },
+  "request_sha256": "81a6ebbe8dd0f9571702df04a7e8225f88ccd930af53cb4d774c1ad02c9d2ce5",
+  "approved_by": "User; explicit authorization in this conversation",
+  "approval_evidence": "User explicitly authorized M4 Phase 4E.2 on 2026-11-10 for docs/m4_fixed_week_bootstrap.request.json with semantic SHA-256 81a6ebbe8dd0f9571702df04a7e8225f88ccd930af53cb4d774c1ad02c9d2ce5. No team approval, signatures or meeting records claimed.",
+  "approval_communicated_date": "2026-11-10",
+  "approved_at_utc": "2026-11-09T17:05:22.652950+00:00"
+}

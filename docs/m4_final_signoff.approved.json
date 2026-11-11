@@ -1,0 +1,611 @@
+{
+  "schema": "m4_final_signoff_v1",
+  "status": "APPROVED_FOR_DIRECT_QUANTILE_EXECUTION",
+  "approved": true,
+  "snapshot": {
+    "code_config_sha256": {
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\ablation_M0_M5.yaml": "8e6d58bccdb7eba9da74447131f2e1695c4268ab0439ba4e612ccea827fbf48b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\cost_scenarios.yaml": "2c5ed7561bf3c7d59a574b41b0de25f1837ee57c921c3c32f5e03e7fd2a3a9d8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\research_protocol.yaml": "0f2a3634e588968022d5d466c64f592fc3627f0306ce9a62b8d4926cbe197f52",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_final_protocol.md": "603532b1bf579abcdcc8292670d621c33b3251d02afeeab7bebd4f9360342306",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_final_signoff.md": "6804c5ae93bfe6f1028ab8156322edeba6dc52df277318ca93fbb7c4a4a6e708",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\scripts\\m4_final_run.py": "20a4147a468b7c744e9c9216a80978ddc337d6af617909b31a6e1faed139ad92",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\scripts\\m4_pilot.py": "88bd9ed3fa2717b56e2012dba67c8f853ed220e3e3ed8a9d5a9cc15646129005",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\clean_data.py": "43e901eb05a955dd70143750c2a26a4176f56fb996d8435544c2b6a3b450f1bb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\merge_data.py": "45cc3a47ca94e42ef57b31c1cbfc1197bb8697d61505137916a94e3efce57011",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\cost_simulation.py": "3a76afa3e0c3bcdab17d3e52a241112d2800ec065a09c04de6c55b79f0057f6c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_artifacts.py": "4d4e757634388672f84c3f4b66807ff6b1b3f039b958c5e6ca55385edc7f8456",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_contracts.py": "49e0a96a4482b6bc380408942d21fb2e689c349bd559a8d193484465823b039c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_models.py": "0250bfe24c79b8c289aaa42914b8bc05cd0d73376b67c7a379f1eb0298928bce",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_pipeline.py": "2d301df204a6f5643f36ab3bc39c49d6649d099a06a66819e70374fdf2911843",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_preflight.py": "a7892b287a928e470ef8723d75350ef93b28a6fd0ab604ad841a196ac2e55a32",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\lag_features.py": "76b201d5938565b9f88d1e69ac0a16334e3ffe13f33051eefd24060c123ed583",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\feature_spec.py": "24e259491ea48459907bf37607c0ee50543989278a135176aa388cb6bbffce3e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\point_models.py": "c397f4330a7eaf627c801f8c32bdbd5bb18b0d518c996449bf22c165120aa21d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\rolling_validation.py": "1d43d7caa360c45bd5388924287061bc25c46d80f9d5bbbe7ee47b382130f45d"
+    },
+    "input_sha256": {
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\CANDIDATE_COMPLETE.json": "5c57187b0c7d9d4fe16d4787f2caf13c7a1a640243f35a1636343c73b2867740",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.meta.json": "9fe377a89f4466f85d26645370dbb32ccc406ec1a1f603449052c8afa4411cdf",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.parquet": "e0322cc2a12fff9a46a8dfd5f88453db5329c1ab09e35c5c2bd311cbec6f977f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.meta.json": "d2b8d3d4664b4fbc8fc0098ed291ba8509fb5c8255538ce73f9e81256bb7ca2b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.parquet": "e4186aeb3a2da9996dcb9deec164cc70ca11c0a869b932720c9786c64a3ab17d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\reconciliation_report.json": "fff540406bd601d1a20ee4e690847d84f96295236052abfc998b24c46f39bd4c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\source_catalog.csv": "09b61233bb4d34c98e65ec1f5857e5d69453d2e2837ba4829c1e1ca78bd0c133"
+    },
+    "spec": {
+      "F1_status": "exploratory_previously_inspected",
+      "F2_F4_confirmatory_status": "pending_team_exposure_verification",
+      "ablation": {
+        "comparison_controls": {
+          "applies_to": [
+            "Ridge",
+            "ExtraTrees",
+            "HistGradientBoosting",
+            "MovingAverage",
+            "SARIMAX"
+          ],
+          "model_parameters_during_test": "fixed",
+          "moving_average_k_selection": "validation_only",
+          "observed_past_test_data_for_lags": "allowed",
+          "preprocessing_during_refit": "fit_on_train_plus_validation",
+          "preprocessing_during_tuning": "fit_on_training_only",
+          "preprocessing_recipe": "shared_across_ablations_within_model",
+          "refit_before_test": "train_plus_validation",
+          "test_guided_selection": false,
+          "tuning_budget_per_model": "equal_across_ablations",
+          "tuning_data": "validation_only",
+          "weather_missingness_must_not_change_scored_rows": true
+        },
+        "evaluation": {
+          "extra_report_by": [
+            "store_nbr"
+          ],
+          "folds_key": "rq2.validation.test_folds",
+          "forecast_horizon_days": 1,
+          "mase_invalid_scale": "report_NA_and_coverage",
+          "mase_scale_definition": "mean(abs(sales_t - sales_t_minus_7))",
+          "mase_scale_grain": [
+            "store_nbr",
+            "family"
+          ],
+          "mase_scale_source": "training_only",
+          "mase_seasonality_days": 7,
+          "per_fold_results_required": true,
+          "primary_metric": "MAE",
+          "protocol": "configs/research_protocol.yaml",
+          "report_by": [
+            "fold_id",
+            "family",
+            "city"
+          ],
+          "same_scored_rows_across_ablations": true,
+          "secondary_metrics": [
+            "WAPE",
+            "MASE"
+          ],
+          "wape_requires": "sum(abs(y_true)) > 0"
+        },
+        "experiments": {
+          "M0": {
+            "enabled": true,
+            "weather_features": []
+          },
+          "M1": {
+            "enabled": true,
+            "weather_features": [
+              "precipitation_sum_lag1"
+            ]
+          },
+          "M2": {
+            "enabled": true,
+            "weather_features": [
+              "temperature_2m_max_lag1"
+            ]
+          },
+          "M3": {
+            "enabled": true,
+            "weather_features": [
+              "precipitation_sum_lag1",
+              "temperature_2m_max_lag1"
+            ]
+          },
+          "M4": {
+            "enabled": true,
+            "weather_features": [
+              "precipitation_sum_lag1",
+              "temperature_2m_max_lag1",
+              "relative_humidity_2m_mean_lag1",
+              "sunshine_hours_lag1"
+            ]
+          },
+          "M5": {
+            "enabled": false,
+            "reason": "wind_failed_QA",
+            "status": "dropped"
+          }
+        },
+        "feature_policy": {
+          "earthquake_flag": {
+            "end": "2016-05-16",
+            "start": "2016-04-16"
+          },
+          "fill_missing_dec25_sales_with_zero": false,
+          "forbidden": [
+            "sales_t",
+            "transactions_t",
+            "weather_t",
+            "wind"
+          ],
+          "jan1_policy": "retain_only_store_active_rows",
+          "lag_alignment": "calendar_date",
+          "missing_lag_policy": "preserve_missing_then_fit_handling_on_training",
+          "shared_nonweather_features": "identical_across_ablations",
+          "weather_lag_days": [
+            1
+          ]
+        },
+        "grain": [
+          "date",
+          "store_nbr",
+          "family"
+        ],
+        "model_scope": "global",
+        "models": [
+          "Ridge",
+          "ExtraTrees",
+          "HistGradientBoosting"
+        ],
+        "optional_extension": {
+          "cloud": {
+            "additional_weather_features": [],
+            "base_experiment": "M4",
+            "enabled": false,
+            "requires": [
+              "time_available",
+              "cloud_QA_passed",
+              "column_name_confirmed"
+            ]
+          }
+        },
+        "result_label": "retrospective weather-aware",
+        "row_filter": "store_active == 1",
+        "scoring_exclusions": {
+          "applies_to": "all_models",
+          "modify_lag_inputs": false,
+          "modify_training_rows": "exclude_store_zero_day",
+          "post_reopening": {
+            "closure_condition": "store_active == 1 and store_zero_day == 1",
+            "closure_grain": "store_nbr",
+            "detect_across_split_boundaries": true,
+            "excluded_calendar_days": 28,
+            "minimum_consecutive_closure_days": 7,
+            "reopening_condition": "store_active == 1 and store_zero_day == 0",
+            "reopening_day_counts_as_day": 1
+          },
+          "reporting": {
+            "count_grain": [
+              "date",
+              "store_nbr",
+              "family"
+            ],
+            "counts": [
+              "rows_before_exclusions",
+              "rows_excluded_closure",
+              "rows_excluded_post_reopening_only",
+              "rows_excluded_total_unique",
+              "rows_scored"
+            ],
+            "group_by": [
+              "fold_id",
+              "split"
+            ]
+          },
+          "scoring_splits": [
+            "validation",
+            "test"
+          ],
+          "shared_scoring_mask": true,
+          "temporary_closure": {
+            "exclude_when": "store_zero_day == 1"
+          }
+        },
+        "status": "frozen_2026-11-04",
+        "store_52": {
+          "eligible_test_folds": [
+            "F4"
+          ],
+          "f4_history_status": "limited_history",
+          "include_after_opening": true,
+          "opened_on": "2017-04-20",
+          "report_separately": true,
+          "synthesize_preopening_sales": false,
+          "unseen_store_encoding": "supported"
+        },
+        "target": "sales"
+      },
+      "calibration": "none",
+      "correction": "clip_zero_then_sort_per_row",
+      "expected_counts": {
+        "F1": {
+          "refit": 456743,
+          "test": 9996,
+          "train": 446544,
+          "validation": 10199
+        },
+        "F2": {
+          "refit": 483644,
+          "test": 10108,
+          "train": 473522,
+          "validation": 9989
+        },
+        "F3": {
+          "refit": 522088,
+          "test": 10388,
+          "train": 511700,
+          "validation": 10388
+        },
+        "F4": {
+          "refit": 574658,
+          "test": 10584,
+          "train": 564074,
+          "validation": 10584
+        }
+      },
+      "expected_fits": {
+        "refit": 24,
+        "selection": 48
+      },
+      "feature_path": "data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.parquet",
+      "feature_sha256": "e4186aeb3a2da9996dcb9deec164cc70ca11c0a869b932720c9786c64a3ab17d",
+      "grid": [
+        {
+          "learning_rate": 0.05,
+          "max_iter": 100,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        {
+          "learning_rate": 0.05,
+          "max_iter": 100,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 20
+        }
+      ],
+      "model": "HistGradientBoostingQuantile",
+      "packages": {
+        "PyYAML": "6.0.3",
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "pyarrow": "26.0.1",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.17.1"
+      },
+      "prediction_rows": 493416,
+      "protocol": {
+        "outputs": {
+          "curated_table": "data/processed/curated_sales_weather.parquet",
+          "decision_matrix_required_columns": [
+            "family",
+            "city",
+            "sample_size",
+            "zero_rate",
+            "weather_signature",
+            "baseline_error",
+            "weather_error",
+            "delta_error_pct",
+            "confidence_interval",
+            "fold_consistency",
+            "cost_scenarios",
+            "uncertainty_flag",
+            "source_QA_flag",
+            "recommendation",
+            "interpretation"
+          ],
+          "feature_table": "data/processed/model_features.parquet",
+          "figures_directory": "results/figures",
+          "prediction_directory": "results/predictions",
+          "tables_directory": "results/tables"
+        },
+        "project": {
+          "duration_weeks": 4,
+          "name": "weather_favorita",
+          "seed": 42
+        },
+        "quantile_and_decision": {
+          "compare_weather": [
+            "M0",
+            "M3"
+          ],
+          "costs": [
+            {
+              "over": 1,
+              "under": 1
+            },
+            {
+              "over": 1,
+              "under": 3
+            },
+            {
+              "over": 1,
+              "under": 5
+            }
+          ],
+          "demand_proxy": "observed_sales",
+          "nonnegative_order_quantity": true,
+          "policy_selection_uses_test_labels": false,
+          "primary_quantile_model": "TODO_choose_quantile_regressor",
+          "quantiles": [
+            0.5,
+            0.75,
+            0.8333333333
+          ],
+          "report_metrics": [
+            "pinball_loss",
+            "quantile_coverage",
+            "simulated_cost_index"
+          ],
+          "weather_extension_if_qa_passes": "M4"
+        },
+        "reproducibility": {
+          "check_temporal_leakage": true,
+          "record_available_at": true,
+          "record_fold_id_and_experiment_id": true,
+          "record_package_versions": true,
+          "record_source_sha256": true,
+          "record_weather_coordinates_and_units": true,
+          "verify_many_to_one_weather_join": true,
+          "verify_unique_sales_keys": true
+        },
+        "rq1": {
+          "causal_claims": false,
+          "explanatory_weather_t_allowed": true,
+          "models": [
+            "pooled_ols",
+            "fixed_effects",
+            "random_effects"
+          ],
+          "multiple_testing": "fdr",
+          "outcome_transform": "log1p",
+          "panel_entity": [
+            "store_nbr",
+            "family"
+          ],
+          "primary_specification": "fixed_effects",
+          "report_confidence_level": 0.95,
+          "uncertainty_method": "TODO_cluster_or_block_bootstrap_with_justification"
+        },
+        "rq2": {
+          "ablation_config_file": "configs/ablation_M0_M5.yaml",
+          "allowed_features": {
+            "calendar_known_for_target_date": true,
+            "onpromotion_t": "conditional_on_verified_advance_schedule",
+            "rolling_statistics": "shift by >=1 day before rolling",
+            "sales_lags_days": [
+              1,
+              7,
+              14,
+              28
+            ],
+            "store_family_city_identifiers": true,
+            "weather_lags": "conditional_on_retrospective_or_verified_availability"
+          },
+          "baselines": {
+            "seasonal_naive_lag_days": 7,
+            "trailing_moving_average_windows_candidate": [
+              7,
+              28
+            ]
+          },
+          "forbidden_features": [
+            "sales_t",
+            "transactions_t",
+            "measured_rain_t",
+            "measured_temperature_t"
+          ],
+          "forecast_grain": [
+            "date",
+            "store_nbr",
+            "family"
+          ],
+          "forecast_horizon_days": 1,
+          "forecast_origin": "end_of_day_t_minus_1",
+          "global_boosted_alternative": "lightgbm",
+          "point_models": [
+            "ridge",
+            "extra_trees",
+            "global_hist_gradient_boosting"
+          ],
+          "primary_metric": "MAE",
+          "report_by": [
+            "family",
+            "city",
+            "fold_id"
+          ],
+          "secondary_metrics": [
+            "WAPE_if_denominator_positive",
+            "MASE_if_valid"
+          ],
+          "uncertainty": "paired_block_bootstrap_95ci",
+          "validation": {
+            "applies_to": [
+              "Ridge",
+              "ExtraTrees",
+              "HistGradientBoosting",
+              "MovingAverage",
+              "SARIMAX"
+            ],
+            "expanding_train": true,
+            "forecast_horizon_days": 1,
+            "freeze_design_before_test_evaluation": true,
+            "inner_validation_for_tuning": true,
+            "model_parameters_during_test": "fixed",
+            "nonoverlapping_test_folds": true,
+            "observed_past_test_data_for_lags": "allowed",
+            "refit_before_test": "train_plus_validation",
+            "scheme": "rolling_origin",
+            "shared_rules_file": "configs/ablation_M0_M5.yaml",
+            "test_folds": [
+              {
+                "fold_id": "F1",
+                "test": [
+                  "2016-09-01",
+                  "2016-09-28"
+                ],
+                "train": [
+                  "2013-01-01",
+                  "2016-08-03"
+                ],
+                "validation": [
+                  "2016-08-04",
+                  "2016-08-31"
+                ]
+              },
+              {
+                "fold_id": "F2",
+                "test": [
+                  "2016-11-15",
+                  "2016-12-12"
+                ],
+                "train": [
+                  "2013-01-01",
+                  "2016-10-17"
+                ],
+                "validation": [
+                  "2016-10-18",
+                  "2016-11-14"
+                ]
+              },
+              {
+                "fold_id": "F3",
+                "test": [
+                  "2017-03-01",
+                  "2017-03-28"
+                ],
+                "train": [
+                  "2013-01-01",
+                  "2017-01-31"
+                ],
+                "validation": [
+                  "2017-02-01",
+                  "2017-02-28"
+                ]
+              },
+              {
+                "fold_id": "F4",
+                "test": [
+                  "2017-07-19",
+                  "2017-08-15"
+                ],
+                "train": [
+                  "2013-01-01",
+                  "2017-06-20"
+                ],
+                "validation": [
+                  "2017-06-21",
+                  "2017-07-18"
+                ]
+              }
+            ],
+            "training_precedes_test": true,
+            "training_precedes_validation": true,
+            "tuning_data": "validation_only"
+          }
+        },
+        "scope": {
+          "cities_expected": 22,
+          "deep_study_families": [
+            "GROCERY I",
+            "BEVERAGES",
+            "CLEANING",
+            "DAIRY",
+            "BREAD/BAKERY",
+            "PERSONAL CARE",
+            "FROZEN FOODS"
+          ],
+          "deep_study_family_count_max": 8,
+          "deep_study_family_count_min": 6,
+          "families_eda_expected": 33,
+          "source_period": [
+            "2013-01-01",
+            "2017-08-15"
+          ],
+          "stores_expected": 54,
+          "target": "sales",
+          "unit_of_analysis": [
+            "date",
+            "store_nbr",
+            "family"
+          ]
+        },
+        "sources": {
+          "sales": "Kaggle Store Sales - Time Series Forecasting / Corporacion Favorita",
+          "weather": "Open-Meteo Historical Weather API / ERA5 reanalysis",
+          "weather_availability": "retrospective_reanalysis",
+          "weather_join_key": [
+            "city",
+            "date"
+          ],
+          "weather_warning": "ERA5 weather lags are not necessarily available at forecast origin. Do not claim strict operational performance without timestamp evidence."
+        }
+      },
+      "quantiles": [
+        0.5,
+        0.75,
+        0.8333333333333334
+      ],
+      "refit": "fresh_eligible_train_plus_validation",
+      "result_label": "retrospective weather-aware; F1 exploratory; F2-F4 status per sign-off",
+      "scope": {
+        "configs": [
+          "M0",
+          "M3"
+        ],
+        "fold_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      "seed": 42,
+      "selection": "raw_scored_validation_pinball_first_candidate_tie_break"
+    }
+  },
+  "snapshot_sha256": "a1a71c586f1f567a97467b9a93bb8b4b6dc47406e563eddb9df0aa525b452430",
+  "approved_by": "User, communicating team approval; individual approver names not supplied",
+  "approved_at_utc": "2026-11-08T12:31:03.983831+00:00",
+  "approval_evidence_reference": "User message in this conversation on 2026-11-08 approving the M4 Final Quantile Experiment Protocol and requesting execution of the existing approval-gated runner.",
+  "f1_exposure_acknowledged": true,
+  "f2_f4_exposure_status": "pending",
+  "f2_f4_exposure_evidence": "",
+  "decisions": {
+    "estimator_grid": {
+      "status": "approved",
+      "resolution": "User communicated team approval of HGB estimator/preprocessing, original 15/31-leaf grid, seed 42, F1-F4, M0/M3, canonical taus and validation-only raw pinball selection."
+    },
+    "direct_quantile_calibration_refit": {
+      "status": "approved",
+      "resolution": "User approved direct quantile protocol: no calibration, fresh eligible train+validation refit, fixed test parameters, raw and clip/sorted corrected reporting."
+    },
+    "p1_p4_calibration": {
+      "status": "deferred_out_of_scope",
+      "resolution": "This approval executes direct quantiles only. No separate P1/P4 calibration/refit method approval is claimed; no P1/P4 policy or cost results will be generated."
+    },
+    "paired_block_bootstrap": {
+      "status": "deferred_out_of_scope",
+      "resolution": "Not part of the requested direct-quantile execution. No bootstrap design approval is claimed and no CI or significance claims will be made."
+    },
+    "artifact_handoff": {
+      "status": "approved",
+      "resolution": "Use the existing approval-gated runner and non-overwriting experiment bundle as requested by the user. No exporter or modification to shared prediction handoff files is authorised or claimed."
+    },
+    "claims_and_exposure": {
+      "status": "approved",
+      "resolution": "User approved reporting limitations: F1 exploratory/post-pilot; F2-F4 prior exposure pending verification; retrospective weather-aware results, no untouched confirmation or operational/causal/profit claims."
+    }
+  },
+  "approval_communicated_date": "2026-11-08",
+  "approval_timestamp_semantics": "approved_at_utc records receipt of the user-communicated approval, not a claimed team meeting or signature time",
+  "approval_identity_limit": "No individual approver names, meeting record, signatures, or separate approvals were supplied or invented"
+}

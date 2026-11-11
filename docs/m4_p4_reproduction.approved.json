@@ -1,0 +1,92 @@
+{
+  "status": "APPROVED",
+  "request": {
+    "environment": {
+      "packages": {
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "pyarrow": "26.0.1",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.17.1",
+        "threadpoolctl": "3.8.0"
+      },
+      "python": "3.11.9"
+    },
+    "file_sha256": {
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\ablation_M0_M5.yaml": "8e6d58bccdb7eba9da74447131f2e1695c4268ab0439ba4e612ccea827fbf48b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\research_protocol.yaml": "0f2a3634e588968022d5d466c64f592fc3627f0306ce9a62b8d4926cbe197f52",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\CANDIDATE_COMPLETE.json": "5c57187b0c7d9d4fe16d4787f2caf13c7a1a640243f35a1636343c73b2867740",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.meta.json": "9fe377a89f4466f85d26645370dbb32ccc406ec1a1f603449052c8afa4411cdf",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\curated_sales_weather.parquet": "e0322cc2a12fff9a46a8dfd5f88453db5329c1ab09e35c5c2bd311cbec6f977f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.meta.json": "d2b8d3d4664b4fbc8fc0098ed291ba8509fb5c8255538ce73f9e81256bb7ca2b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\model_features.parquet": "e4186aeb3a2da9996dcb9deec164cc70ca11c0a869b932720c9786c64a3ab17d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\m4_feature_candidates\\candidate-t77rmmvr\\reconciliation_report.json": "fff540406bd601d1a20ee4e690847d84f96295236052abfc998b24c46f39bd4c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\docs\\m4_phase3e_reproduction.md": "2cd4a5b34e7195ca027d94e5e50d2e697447d16e18617a7f65b21bcd53078c69",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\scripts\\m4_pilot.py": "88bd9ed3fa2717b56e2012dba67c8f853ed220e3e3ed8a9d5a9cc15646129005",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\clean_data.py": "43e901eb05a955dd70143750c2a26a4176f56fb996d8435544c2b6a3b450f1bb",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\fetch_weather.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\load_favorita.py": "46b89f5aeafd6d1711610c7c35a23e4d97b3c4cb4d2b976348f298db23bc55de",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\data\\merge_data.py": "45cc3a47ca94e42ef57b31c1cbfc1197bb8697d61505137916a94e3efce57011",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\cost_simulation.py": "3a76afa3e0c3bcdab17d3e52a241112d2800ec065a09c04de6c55b79f0057f6c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\decision_matrix.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\feature_staging.py": "727a41a46c406138b6f466dd0bc0ec2a56ef61cdfe127918e9bf6ada3e3bb62b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p1_execution.py": "b27e1977feb415f981c809a1ffe3d57f607365f42810dc2a9af0ddbd4d6c5610",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p1_residual_policy.py": "a7c6944b251963d5457a4821e2bf87b3429b3a4e5530d80cf1a906eef49901c1",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p4_calibration.py": "6cd1bc6764b3ff8c2026afb0beee50bb7a8451462c2837da5e0e053d4552090b",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\p4_reproduction.py": "0d80df87ce75dad94bb4b1fe7fe6f3099f600c529f943137e85583ba043567e9",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\paired_bootstrap.py": "b29e9bf2cb2e22554c6b30fabc3fbfc48c22628bce34792698550416c5290b5a",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\policy_evaluation.py": "d7294ae326fd3311dc79cefbe7f4a7657d186356593cda44d04a5e260a7da8b0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_artifacts.py": "4d4e757634388672f84c3f4b66807ff6b1b3f039b958c5e6ca55385edc7f8456",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_contracts.py": "49e0a96a4482b6bc380408942d21fb2e689c349bd559a8d193484465823b039c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_models.py": "0250bfe24c79b8c289aaa42914b8bc05cd0d73376b67c7a379f1eb0298928bce",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_pipeline.py": "2d301df204a6f5643f36ab3bc39c49d6649d099a06a66819e70374fdf2911843",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_preflight.py": "a7892b287a928e470ef8723d75350ef93b28a6fd0ab604ad841a196ac2e55a32",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\build_features.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\features\\lag_features.py": "76b201d5938565b9f88d1e69ac0a16334e3ffe13f33051eefd24060c123ed583",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\baselines.py": "bdd1a8cb3e62f614ca9890fe6fb797bd8ddabdc0f464225b145fee5420e931c8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\evaluation.py": "e0a5cb4c38d2fa26a135f2fe5a093c60008d59ceb6150bfd0153c9296c9c5f0c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\feature_spec.py": "24e259491ea48459907bf37607c0ee50543989278a135176aa388cb6bbffce3e",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\point_models.py": "c397f4330a7eaf627c801f8c32bdbd5bb18b0d518c996449bf22c165120aa21d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\rolling_validation.py": "1d43d7caa360c45bd5388924287061bc25c46d80f9d5bbbe7ee47b382130f45d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\forecasting\\sarimax.py": "ae78356fdb7b23e7aa6f129011e61cd72b637761fa831204cf539b196f98f679"
+    },
+    "pinned_git_objects": {
+      "notebooks/03_forecasting_ml/train_ml.ipynb": "40564f6805d90470269490574bd2b0262896063887defbe02e9a9d3328aca422",
+      "results/tables/rq2_ml_experiments.csv": "2ad15fb4f2c97d4ce4924ca2dc518ce4c4881fd7100a22387af0f3425c480199",
+      "results/tables/rq2_ml_provenance.json": "f49e06eb40dbe9b9713050c2288bde77dda1f7f6026c066e875f87995f899667",
+      "results/tables/rq2_ml_tuning_log.csv": "9fa281c1cc52c964176ab02c310b0453c2c3ba51f80f09a10e9da27fc0a9d40d"
+    },
+    "specification": {
+      "configs": [
+        "M0",
+        "M3"
+      ],
+      "differences": [
+        "verified M4 candidate, not authenticated original M3 input",
+        "local package versions recorded; no exact numerical reproduction claim",
+        "validation-only algorithm selection added; only winner refitted",
+        "full precision raw and clipped exports; no four-decimal rounding"
+      ],
+      "expected_refits": 8,
+      "expected_selection_fits": 56,
+      "folds": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "full_precision": true,
+      "label": "M4_REPRODUCED_M3",
+      "seed": 42,
+      "selection": "minimum clipped validation MAE; first candidate; algorithm order Ridge, ExtraTrees, HistGradientBoosting",
+      "source_commit": "b35f5cc8f5dd2d07b0a545b6e5a60963afdff6bc"
+    },
+    "status": "PENDING_APPROVAL"
+  },
+  "request_sha256": "db4fb6db9f947518da1f4d9c517785bb46bf7da21e2c59301735ec729d879294",
+  "approved_by": "User; individual name not supplied",
+  "approval_evidence": "Explicit user authorization in this conversation on 2026-11-09 for docs/m4_p4_reproduction.request.json, semantic SHA-256 db4fb6db9f947518da1f4d9c517785bb46bf7da21e2c59301735ec729d879294, authorizing 56 selection fits plus 8 fresh refits and accepting documented input/environment differences. No additional team approval or signature is claimed.",
+  "approval_communicated_date": "2026-11-09"
+}
