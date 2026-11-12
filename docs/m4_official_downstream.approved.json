@@ -1,0 +1,129 @@
+{
+  "status": "APPROVED",
+  "request": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "purpose": "Fixed-week downstream uncertainty for OFFICIAL-test hybrid P4 costs",
+    "p4_source": "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574",
+    "file_sha256": {
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_handoff_migration_archive_20261111T155113Z\\manifest.json": "c318563aa7347aacda66cf73b56ade7ea4544ad487c3b8112cc60338122961a0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_handoff_migration_archive_20261111T155113Z\\COMPLETE.json": "c72496e4931829aeedd2bec0e22f9e04a2f14d05346ff43bfbdec5a75522a099",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\calibration.csv": "f5ab237414c61afa2f8c91a36a65ba455ca0cfbbbeb0b4a1d8f780dc186c632c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\comparisons.csv": "e459c7fbc9a6f08bb7246f7efd1d41b31b01993c4d92b3f177027141cd04fd82",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\matched_costs.csv": "efc84060e09f0297d742735b604fac1ad0f98776916eea6c0c4985cd9a39ae56",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\p4_rows.csv": "dc1230b57a9d71a043bd8eb27d093287e505cca7451f9895766bcbf0b1098302",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\STARTED.json": "0e17a491382ea34e3780fd5a05b4d6eaec4643224c9476f2f7b18f174d2a3d3f",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p4_official_hybrid_20261111T143107Z_25d4b1fea9fe400b8b8c935025b3e574\\manifest.json": "f6869ab0a14d7c255be8238c06794fc63b3435c3b755f98c3a2ae00e3800b59d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\p1_rows.csv": "4919ca712b0915e6183e08aa44f95b1801eaf4e738a652aa99df65feb246028a",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\calibration.csv": "19f00d76e04a011f475cb64ad5b53b0a7d96248d20afed02d124cc5b505e7d4d",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\paired_rows.csv": "403a9365fe5ccd655ce3c48d16f958346b4610f1ea82607625d95f355d70d136",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\cost_indices.csv": "333b4c8a0f61fc31e6cba8b305e41da57ebe78accc067c73d3a43f30b67e0bee",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_p1_20261108T173741Z_4d68ed38ce2f4d1299d1e464d47dfa64\\manifest.json": "b814f6afd57aa3c82299d09e57c9f36e819b9c0934e1816ad222166a55d8e223",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\row_costs.csv": "43fc545c1808b72ce2bce6cb0de20ec833168c85ff97e7eaea7fdaa8722eea05",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\comparisons.csv": "3827c672dbebfe56a892f81f7946abc9d42cf50ce0c7ed1b7a2c470c1e8ea419",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\manifest.json": "4d63ecb368045dc5d6c5a87d50ad8f81e095cadc6bb53bcbdf2f3b7ba3e8cf57",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_costs_p2_p3_20261108T134955Z_b112ad3e7866\\STARTED.json": "f98f02395d0bffaf835d528b28ddcfb84f73bb036d87007faeae5aa497fd5bfe",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a.csv": "8e3b4634bcc36e356855d6f0aa036c1e6882d9b4e140c5343ab5d23727a3b427",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\metrics.csv": "c56f2fde9ad41ce2a7673425d12bec6d31642916d65bd532270db591216dcca0",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\tuning.csv": "962279a11eb25b7391cc492a65dbb6e83fb92078d19d9478ae293a48d8d19eb7",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\splits.csv": "e0987a58ea1bff742dcb68d9e0d32014e706fc201639a99d0fa0207055d962a3",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\exclusions.csv": "d309d70b5db233288f27c3a003fda79c19f855e44ccd911a920145c93031a850",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\experiments\\m4_quantiles_final_f1_f4_m0_m3_20261108T123157Z_eb881cc4c56a\\manifest.json": "52af9f59fcba69255393423c5990fb445bac743d32b13555d09b1be3ee5ca199",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\data\\processed\\point_models.csv.gz": "71e790d360f80a6c3c6d86142391e2ff2947d4d79ec808c2ba3e8095d1623927",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\results\\tables\\weather_signatures_for_m4.csv": "d61abeb960d8dd38be96ce564c2435ae2cd59c0b0f358f832adfef271a49cfb8",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\final_handoff.py": "10f1fb422e0ca274f291d0d4bffb70d9eac165d914508aa35e92cfad8847dec4",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\fixed_week_bootstrap.py": "eeab6a25e8cc981ad4454e1f3c77142dc254ac9eb1360a3a02cde0c0ce6f5d55",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\src\\decision\\quantile_contracts.py": "49e0a96a4482b6bc380408942d21fb2e689c349bd559a8d193484465823b039c",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\research_protocol.yaml": "1c393db9efd9b5a41de937104e4d33d5ddbe8e858e14e3db73957e30bbc82607",
+      "D:\\01_Workspace\\01_University\\Nam_3\\1_term1\\1_PhanTichThongKe\\3_Project\\01_STAT3013_R11\\configs\\cost_scenarios.yaml": "2c5ed7561bf3c7d59a574b41b0de25f1837ee57c921c3c32f5e03e7fd2a3a9d8"
+    },
+    "specification": {
+      "label": "M4_FIXED_WEEK_ROBUSTNESS_COMPLIANCE_SUPPLEMENT",
+      "seed": 42,
+      "replicates": 1000,
+      "confidence": 0.95,
+      "interval": "percentile_linear",
+      "folds": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "scenarios": [
+        "S1",
+        "S3",
+        "S5"
+      ],
+      "block": "floor((date - shared fold test_start).days / 7); four fixed calendar blocks",
+      "draws": "default_rng(42).integers(0,4,size=(1000,4,4)); shared across all comparisons",
+      "contrasts": [
+        [
+          "P3",
+          "P2"
+        ],
+        [
+          "P4_M3",
+          "P4_M0"
+        ],
+        [
+          "P2",
+          "P1"
+        ],
+        [
+          "P3",
+          "P1"
+        ],
+        [
+          "P4_M0",
+          "P1"
+        ],
+        [
+          "P4_M3",
+          "P1"
+        ]
+      ],
+      "variants": [
+        "corrected",
+        "raw_clipped_sensitivity"
+      ],
+      "raw_sensitivity": "ONLY P2/P3 change; P1 and clipped-residual P4 remain fixed",
+      "pooling": "sum sampled costs and counts within each fold, then across fixed folds",
+      "cell_primary": "all 112 scored dates, all four complete folds; 140 eligible cells",
+      "incomplete_cells": "retain point estimates, CI NA; no imputation or partial-week reindexing",
+      "denominator": "P1 resampled jointly; zero denominator -> NA, report valid/undefined counts",
+      "metrics": [
+        "six mean-cost differences",
+        "six P1-normalized differences",
+        "six relative differences versus comparison policy",
+        "four P1 policy indices"
+      ],
+      "scopes": [
+        "pooled_F1_F4",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "family_city_pooled"
+      ],
+      "limitations": [
+        "only four weekly blocks per fold; no guaranteed nominal coverage",
+        "fixed policies; excludes model-selection, calibration and refit uncertainty",
+        "F1 exploratory/post-pilot; F2-F4 prior exposure verification pending",
+        "no multiple-testing control, causal or operational guarantee",
+        "M4_REPRODUCED_M3 is not official M3 or exact numerical reproduction",
+        "cell/cost estimands extend M3 pooled MAE design; not preregistered before tests",
+        "observed sales is a censored demand proxy; simulated costs are not money/profit/ROI",
+        "old moving-block results remain separate; no relabeling or recommendation changes"
+      ]
+    },
+    "scope": "six contrasts, 3 scenarios, corrected and direct-only raw sensitivity, pooled/F1-F4/140 complete cells; 14 incomplete cells CI unavailable",
+    "no_forecasting_fits": true,
+    "no_economic_recalculation": true,
+    "execution_authorized": false
+  },
+  "request_sha256": "343325e3dfe94d4bc08652192b33d50eb0d78724b09b4930600ec41efdec6931",
+  "approved_by": "M4 (Huy) self-approved",
+  "approval_evidence": "User selected \"Duyet, chay luon\" on 2026-11-12 immediately after presentation of docs/m4_official_downstream.request.json, semantic SHA-256 343325e3dfe94d4bc08652192b33d50eb0d78724b09b4930600ec41efdec6931, with 30 frozen inputs verified unchanged, and the scope: fixed-week bootstrap of official hybrid P4 costs followed by Decision Matrix/table/figure/manuscript re-export with CIs into a new output directory. No team approval, signatures or meeting records are claimed.",
+  "approval_communicated_date": "2026-11-12",
+  "approved_at_utc": "2026-11-11T17:01:40.560123+00:00",
+  "approval_scope_note": "M4 (Huy) self-approval only. Team review/sign-off has not been recorded. No forecasting fits or economic recalculation."
+}
